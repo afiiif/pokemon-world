@@ -1,0 +1,28 @@
+name: Quality Check
+
+on:
+  push:
+    branches: [main, beta]
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  lint:
+    name: ESLint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
+      - name: Lint files
+        run: yarn lint
+
+  type-check:
+    name: Type check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
+      - name: Perform type checking
+        run: yarn lint:types

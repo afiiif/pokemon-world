@@ -1,0 +1,10 @@
+{
+  "extends": ["react-moonstone", "next/core-web-vitals"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.eslint.json"
+  },
+  "rules": {
+    "jsx-a11y/anchor-is-valid": "warn"
+  }
+}

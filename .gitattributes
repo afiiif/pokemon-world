@@ -1,0 +1,13 @@
+*.js     eol=lf
+*.jsx    eol=lf
+*.ts     eol=lf
+*.tsx    eol=lf
+*.json   eol=lf
+*.html   eol=lf
+*.xml    eol=lf
+*.css    eol=lf
+*.scss   eol=lf
+*.md     eol=lf
+*.mdx    eol=lf
+*.yml    eol=lf
+*.yaml   eol=lf

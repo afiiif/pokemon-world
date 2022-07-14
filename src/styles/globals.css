@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-slate-50 text-gray-700;
+  }
+
+  #__next {
+    @apply lg:grid lg:grid-cols-[auto_13rem_minmax(0,_65rem)_auto];
+  }
+}

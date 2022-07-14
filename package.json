@@ -13,10 +13,12 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "lint:types": "tsc --noEmit",
-    "code-check": "yarn format:fix && yarn lint && yarn lint:types"
+    "code-check": "yarn format:fix && yarn lint && yarn lint:types",
+    "codegen": "graphql-codegen"
   },
   "dependencies": {
     "clsx": "^1.2.1",
+    "graphql": "^16.5.0",
     "mini-svg-data-uri": "^1.4.4",
     "next": "12.2.2",
     "react": "18.2.0",
@@ -27,6 +29,9 @@
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
+    "@graphql-codegen/cli": "^2.8.1",
+    "@graphql-codegen/typescript": "^2.7.1",
+    "@graphql-codegen/typescript-operations": "^2.5.1",
     "@types/node": "18.0.3",
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",

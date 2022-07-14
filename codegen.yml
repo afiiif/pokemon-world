@@ -1,0 +1,6 @@
+generates:
+  ./src/generated/graphql.types.ts:
+    schema: https://beta.pokeapi.co/graphql/v1beta
+    plugins:
+      - typescript
+      - typescript-operations

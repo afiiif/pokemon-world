@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { GetStaticPropsResult } from 'next';
 import { useEffect, useState } from 'react';
 import { useIntersection } from 'react-power-ups';
@@ -5,6 +6,8 @@ import { dehydrate, DehydratedState } from 'react-query';
 
 import { queryPokemonGenAndTypes } from '@/api/queries/pokemon-gen-and-types';
 import { QueryPokemonFilter, queryPokemons, useInfQueryPokemons } from '@/api/queries/pokemons';
+import PokemonCard from '@/components/features/pokemon-list/pokemon-card';
+import PokemonCardsShimmer from '@/components/features/pokemon-list/pokemon-cards-shimmer';
 import PokemonListFilter from '@/components/features/pokemon-list/pokemon-list-filter';
 import queryClient from '@/config/react-query';
 
@@ -28,7 +31,8 @@ export async function getStaticProps(): Promise<Result> {
 
 export default function PokemonListPage() {
   const [filter, setFilter] = useState<QueryPokemonFilter>(INITIAL_FILTER);
-  const { data, isFetching, fetchNextPage } = useInfQueryPokemons(filter);
+  const { data, isFetching, isFetchingNextPage, isPreviousData, fetchNextPage } =
+    useInfQueryPokemons(filter);
 
   const loadMoreRef = useIntersection({
     rootMargin: '560px',
@@ -47,15 +51,12 @@ export default function PokemonListPage() {
       </div>
       <hr className="-mx-6 mb-8 hidden lg:block" />
 
-      <div className="grid grid-cols-[repeat(auto-fit,_minmax(243px,_1fr))] gap-3.5">
+      {isPreviousData && <div className="relative -top-4 text-center">⏳ Loading...</div>}
+      <div className={clsx('pokemon-card-container', isPreviousData && 'opacity-60')}>
         {data!.pages.map((pokemons) =>
-          pokemons.map((pokemon) => (
-            <div key={pokemon.id} className="h-32 rounded-md border p-5">
-              {pokemon.name}
-            </div>
-          )),
+          pokemons.map((pokemon) => <PokemonCard key={pokemon.id} {...pokemon} />),
         )}
-        {isFetching && <div>⏳ Loading...</div>}
+        {isFetchingNextPage && <PokemonCardsShimmer />}
       </div>
       <div ref={loadMoreRef} />
     </>

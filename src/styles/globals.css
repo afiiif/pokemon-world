@@ -11,3 +11,46 @@
     @apply lg:grid lg:grid-cols-[auto_13rem_minmax(0,_65rem)_auto];
   }
 }
+
+@layer components {
+  .pokemon-card-container {
+    @apply grid grid-cols-[repeat(auto-fit,_minmax(243px,_1fr))] gap-3.5;
+  }
+  .pokemon-card {
+    @apply relative grid grid-cols-[auto_1fr_128px] grid-rows-[auto_auto_1fr_auto] overflow-hidden
+      rounded-md bg-gray-200 p-4 text-sm text-white;
+  }
+  .pokemon-card > img {
+    @apply col-start-3 row-span-3 row-start-2 -mt-5 drop-shadow-lg transition-transform;
+  }
+  .pokemon-card.bg-elm-bug,
+  .pokemon-card.bg-elm-electric,
+  .pokemon-card.bg-elm-ice,
+  .pokemon-card.bg-elm-rock {
+    @apply text-inherit;
+  }
+  .pokemon-card > * {
+    @apply relative z-[1];
+  }
+  .pokemon-card > .pokeball-flat {
+    @apply right-12 bottom-4 z-0 rotate-12 scale-125;
+  }
+  .pokemon-card-number {
+    @apply mt-2 flex items-center gap-1.5 rounded-full bg-white/60 px-2.5 py-1 font-semibold text-gray-700;
+  }
+
+  .pokeball-flat {
+    @apply absolute h-[60px] w-[60px] rounded-full bg-white/10;
+  }
+  .pokeball-flat::before,
+  .pokeball-flat::after {
+    content: '';
+    @apply absolute left-[-50px] top-[-50px] block h-[160px] w-[160px] rounded-full border-[40px] border-white/10;
+  }
+  .pokeball-flat::before {
+    clip-path: polygon(0 0, 100% 0, 100% 75px, 0% 75px);
+  }
+  .pokeball-flat::after {
+    clip-path: polygon(0 85px, 100% 85px, 100% 100%, 0% 100%);
+  }
+}

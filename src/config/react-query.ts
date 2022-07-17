@@ -5,6 +5,7 @@ const queryClient = new QueryClient({
     queries: {
       staleTime: Infinity,
       retry: 1,
+      networkMode: 'offlineFirst',
     },
   },
 });

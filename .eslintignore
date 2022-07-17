@@ -34,5 +34,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
-# generated types
+# generated
 /src/generated/graphql.types.ts
+/public/sw.js
+/public/workbox-*.js

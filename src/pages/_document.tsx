@@ -1,0 +1,30 @@
+import { Head, Html, Main, NextScript } from 'next/document';
+
+export default function Document() {
+  return (
+    <Html>
+      <Head>
+        <meta name="application-name" content="Pokemon World" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Pokemon World" />
+        <meta name="description" content="Pokemon World App" />
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="manifest" href="/manifest.json" />
+
+        <link rel="apple-touch-icon" href="/favicons/apple-icon.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-icon-152x152.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-icon-180x180.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicons/favicon-96x96.png" />
+      </Head>
+      <body>
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
+  );
+}

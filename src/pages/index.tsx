@@ -46,7 +46,7 @@ export default function PokemonListPage() {
 
   return (
     <>
-      <div className="sticky top-16 z-10 -m-3.5 mb-8 flex translate-y-[var(--scroll-distance)] gap-2.5 border-b px-3.5 py-2.5 lg:top-2 lg:z-30 lg:-mx-6 lg:-mt-10 lg:mb-0 lg:translate-y-0 lg:border-0 lg:bg-transparent lg:py-3 lg:px-6 lg:backdrop-blur-0">
+      <div className="sticky-section">
         <PokemonListFilter filter={filter} setFilter={setFilter} />
       </div>
       <hr className="-mx-6 mb-8 hidden lg:block" />

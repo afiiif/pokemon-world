@@ -19,8 +19,9 @@ export default function PokemonCard({ id, name, pokemon_v2_pokemons }: Pokemon_V
         alt={name}
         width={128}
         height={128}
-        quality={1}
+        quality={25}
         className="group-hover:scale-125"
+        priority={id < 7}
       />
       <div className="pokemon-card-number">{String(id).padStart(3, '0')}</div>
       <div className="pokeball-flat" />

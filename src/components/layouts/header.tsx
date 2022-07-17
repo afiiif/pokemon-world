@@ -3,8 +3,8 @@ import Link from 'next/link';
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-20 translate-y-[var(--scroll-distance)] bg-white shadow lg:col-span-full lg:translate-y-0">
-      <div className="mx-auto flex h-16 max-w-7xl justify-between px-3.5 py-2.5 lg:h-20 lg:px-6">
+    <header id="_header">
+      <div id="_header-inner">
         <Link href="/" className="-ml-px inline-flex flex-col items-end">
           <Image
             src="/images/pokemon-logo.png"

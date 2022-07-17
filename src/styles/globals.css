@@ -10,6 +10,23 @@
   #__next {
     @apply lg:grid lg:grid-cols-[auto_13rem_minmax(0,_65rem)_auto];
   }
+
+  #_nav {
+    @apply fixed bottom-0 z-10 w-full border-t bg-white lg:relative lg:col-start-2 lg:h-full lg:min-h-[calc(100vh_-_80px)] lg:border-r lg:border-t-0 lg:bg-transparent;
+  }
+  #_nav-inner {
+    @apply flex gap-2 p-2 text-[10px] lg:sticky lg:top-20 lg:flex-col lg:py-12 lg:px-6 lg:text-base;
+  }
+  #_nav .nav-link {
+    @apply flex w-full flex-col items-center lg:flex-row lg:gap-2 lg:py-2;
+  }
+
+  #_header {
+    @apply sticky top-0 z-20 translate-y-[var(--scroll-distance)] bg-white shadow lg:col-span-full lg:translate-y-0;
+  }
+  #_header-inner {
+    @apply mx-auto flex h-16 max-w-7xl justify-between px-3.5 py-2.5 lg:h-20 lg:px-6;
+  }
 }
 
 @layer components {

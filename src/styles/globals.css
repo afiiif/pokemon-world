@@ -30,6 +30,16 @@
 }
 
 @layer components {
+  .pokemon-elm {
+    @apply text-white;
+  }
+  .pokemon-elm.bg-elm-bug,
+  .pokemon-elm.bg-elm-electric,
+  .pokemon-elm.bg-elm-ice,
+  .pokemon-elm.bg-elm-rock {
+    @apply text-inherit;
+  }
+
   .pokemon-card-container {
     @apply grid grid-cols-[repeat(auto-fit,_minmax(243px,_1fr))] gap-3.5;
   }

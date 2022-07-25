@@ -1,10 +1,14 @@
+import clsx from 'clsx';
 import Image from 'next/future/image';
 import { NextSeo } from 'next-seo';
+import { useState } from 'react';
 import { FaAngleDoubleRight } from 'react-icons/fa';
 
 import { Pokemon_V2_Pokemon } from '@/generated/graphql.types';
 import { getDescription, getPokemonImage } from '@/helpers/pokemon';
 import { snakeCaseToTitleCase } from '@/utils/string';
+
+import PokemonDetailButton, { CatchState } from './pokemon-detail-button';
 
 type Props = {
   pokemon: Pokemon_V2_Pokemon;
@@ -13,6 +17,8 @@ type Props = {
 export default function PokemonDetailCard({ pokemon }: Props) {
   const pokemonName = snakeCaseToTitleCase(pokemon.name);
   const types = pokemon.pokemon_v2_pokemontypes.map(({ pokemon_v2_type }) => pokemon_v2_type!.name);
+
+  const [catchState, setCatchState] = useState<CatchState>('void');
 
   return (
     <section
@@ -28,12 +34,18 @@ export default function PokemonDetailCard({ pokemon }: Props) {
       <div className="relative col-span-full text-2xl">{String(pokemon.id).padStart(3, '0')}</div>
       <div className="-mt-8 pl-8 pr-4 md:col-start-2 md:-mt-16 md:px-6">
         <Image
+          key={catchState}
           src={getPokemonImage(pokemon.id)}
           alt={pokemonName}
           width={400}
           height={400}
           quality={25}
-          className="relative mx-auto w-full max-w-[400px] place-self-end drop-shadow-2xl"
+          className={clsx(
+            'relative mx-auto w-full max-w-[400px] place-self-end drop-shadow-2xl',
+            catchState === 'catching' && 'pokemon-shrinking',
+            catchState === 'fail' && 'pokemon-release',
+            catchState === 'success' && 'pokemon-release-delayed',
+          )}
         />
       </div>
 
@@ -58,12 +70,7 @@ export default function PokemonDetailCard({ pokemon }: Props) {
       </div>
 
       <div className="mt-4 md:row-start-4 md:self-end md:justify-self-start">
-        <button
-          type="button"
-          className="w-full rounded-full bg-white py-3 px-12 text-gray-700 shadow-md active:translate-y-1"
-        >
-          Catch!
-        </button>
+        <PokemonDetailButton catchState={catchState} setCatchState={setCatchState} />
       </div>
     </section>
   );

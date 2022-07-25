@@ -33,7 +33,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
-    "@graphql-codegen/cli": "^2.8.1",
+    "@graphql-codegen/cli": "^2.9.1",
     "@graphql-codegen/typescript": "^2.7.1",
     "@graphql-codegen/typescript-operations": "^2.5.1",
     "@types/node": "18.0.3",

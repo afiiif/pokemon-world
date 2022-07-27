@@ -1,38 +1,38 @@
-import { QueryFunctionContext, useQuery } from 'react-query';
+import { QueryFunctionContext, useQuery, UseQueryOptions } from 'react-query';
 
-import { Pokemon_V2_Pokemonspecies } from '@/generated/graphql.types';
+import { PokemonAbilities, PokemonBase, PokemonMoves, PokemonStats } from '@/types/pokemon';
 
 import fetcher from '../fetcher';
 
 const POKEMON = /* GraphQL */ `
   query Pokemon($name: String) {
-    pokemon_v2_pokemonspecies(where: { name: { _eq: $name } }) {
+    pokemon_v2_pokemon(where: { name: { _eq: $name } }) {
       id
       name
-      pokemon_v2_pokemons {
-        id
-        name
-        height
-        weight
-        pokemon_v2_pokemontypes {
+      height
+      weight
+      pokemon_v2_pokemontypes {
+        pokemon_v2_type {
+          name
+        }
+      }
+      pokemon_v2_pokemonstats {
+        stat_id
+        base_stat
+      }
+      pokemon_v2_pokemonabilities {
+        pokemon_v2_ability {
+          name
+          pokemon_v2_abilityeffecttexts(where: { language_id: { _eq: 9 } }) {
+            short_effect
+          }
+        }
+      }
+      pokemon_v2_pokemonmoves(distinct_on: move_id) {
+        pokemon_v2_move {
+          name
           pokemon_v2_type {
-            id
             name
-          }
-        }
-        pokemon_v2_pokemonstats {
-          stat_id
-          base_stat
-        }
-        pokemon_v2_pokemonabilities {
-          pokemon_v2_ability {
-            name
-          }
-        }
-        pokemon_v2_pokemonmoves {
-          pokemon_v2_move {
-            name
-            power
           }
         }
       }
@@ -40,16 +40,35 @@ const POKEMON = /* GraphQL */ `
   }
 `;
 
-export type QueryPokemonKey = ['pokemon', string];
-export type QueryPokemonData = {
-  pokemon_v2_pokemonspecies: Pokemon_V2_Pokemonspecies[];
+type FetchPokemonResponse = {
+  pokemon_v2_pokemon: [
+    PokemonBase & {
+      pokemon_v2_pokemonstats: PokemonStats;
+      pokemon_v2_pokemonabilities: PokemonAbilities;
+      pokemon_v2_pokemonmoves: PokemonMoves;
+    },
+  ];
 };
 
-export const queryPokemon = (ctx: QueryFunctionContext<QueryPokemonKey>) =>
-  fetcher<QueryPokemonData>(POKEMON, { name: ctx.queryKey[1] });
+export type QueryPokemonKey = ['pokemon', string];
+export type QueryPokemonData = FetchPokemonResponse['pokemon_v2_pokemon'][0];
 
-export const useQueryPokemon = (name: string) =>
-  useQuery<QueryPokemonData, unknown, QueryPokemonData, QueryPokemonKey>(
-    ['pokemon', name],
-    queryPokemon,
-  );
+export const fetchPokemon = async (ctx: QueryFunctionContext<QueryPokemonKey>) => {
+  const res = await fetcher<FetchPokemonResponse>(POKEMON, { name: ctx.queryKey[1] });
+  return res.pokemon_v2_pokemon[0];
+};
+
+export const useQueryPokemon = <T = QueryPokemonData>(
+  name: string,
+  options?: Omit<
+    UseQueryOptions<QueryPokemonData, unknown, T, QueryPokemonKey>,
+    'queryKey' | 'queryFn'
+  >,
+) =>
+  useQuery<QueryPokemonData, unknown, T, QueryPokemonKey>(['pokemon', name], fetchPokemon, options);
+
+export const useQueryPokemonTypes = (name: string) =>
+  useQueryPokemon(name, {
+    select: (data) =>
+      data.pokemon_v2_pokemontypes.map(({ pokemon_v2_type }) => pokemon_v2_type!.name),
+  });

@@ -4,7 +4,7 @@ import { Dispatch, SetStateAction, useEffect, useRef } from 'react';
 export type CatchState = 'void' | 'catching' | 'success' | 'fail';
 
 const CATCH_STATE_OPTION = {
-  void: ['Catch!', null],
+  void: ['Catch!', null, 'text-gray-700'],
   catching: ['Catching...', null, 'text-gray-500'],
   success: ['Caught!', '🎉', 'text-emerald-600'],
   fail: ['Failed', '😓', 'text-red-500'],
@@ -43,7 +43,7 @@ export default function PokemonDetailButton({ catchState, setCatchState }: Props
     <button
       type="button"
       className={clsx(
-        'relative h-14 w-full rounded-full bg-white py-3 px-10 text-gray-700 shadow-md active:translate-y-1 disabled:pointer-events-none md:pl-[4.25rem]',
+        'relative h-14 w-full rounded-full bg-white py-3 px-10 shadow-md active:translate-y-1 disabled:pointer-events-none md:pl-[4.25rem]',
         className,
       )}
       onClick={onCatch}

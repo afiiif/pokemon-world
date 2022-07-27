@@ -1,42 +1,52 @@
 import clsx from 'clsx';
 import Image from 'next/future/image';
+import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaAngleDoubleRight } from 'react-icons/fa';
 
-import { Pokemon_V2_Pokemon } from '@/generated/graphql.types';
-import { getDescription, getPokemonImage } from '@/helpers/pokemon';
+import { useQueryPokemon, useQueryPokemonTypes } from '@/api/queries/pokemon';
+import { useQueryPokemonSpecies } from '@/api/queries/pokemon-species';
+import { getDescription, getPokemonId, getPokemonImage } from '@/helpers/pokemon';
 import { snakeCaseToTitleCase } from '@/utils/string';
 
 import PokemonDetailButton, { CatchState } from './pokemon-detail-button';
 
-type Props = {
-  pokemon: Pokemon_V2_Pokemon;
-};
+export default function PokemonDetailCard() {
+  const { query } = useRouter();
+  const [pokemonSpeciesName, pokemonNameSlug] = query.slug as [string, string?];
 
-export default function PokemonDetailCard({ pokemon }: Props) {
-  const pokemonName = snakeCaseToTitleCase(pokemon.name);
-  const types = pokemon.pokemon_v2_pokemontypes.map(({ pokemon_v2_type }) => pokemon_v2_type!.name);
+  const pokemonSpecies = useQueryPokemonSpecies(pokemonSpeciesName).data!;
+  const pokemonName = pokemonNameSlug || pokemonSpecies.pokemon_v2_pokemons[0].name;
+  const pokemon = useQueryPokemon(pokemonName).data!;
+  const pokemonTypes = useQueryPokemonTypes(pokemonName).data!;
+  const displayedPokemonName = snakeCaseToTitleCase(pokemonName);
 
   const [catchState, setCatchState] = useState<CatchState>('void');
+  useEffect(() => {
+    setCatchState('void');
+  }, [pokemonNameSlug]);
 
   return (
     <section
-      className={`pokemon-elm relative -mx-3.5 -mt-3.5 overflow-hidden lg:m-0 lg:-mt-4 bg-elm-${types[0]} grid p-3.5 pt-6 md:grid-cols-[auto,_28rem] md:p-6 lg:rounded-md`}
+      className={`pokemon-elm relative -mx-3.5 -mt-3.5 overflow-hidden bg-elm-${pokemonTypes[0]} grid p-3.5 py-6 md:-mb-16 md:grid-cols-[auto,_28rem] md:p-6 md:pb-24 lg:m-0 lg:-mt-4 lg:rounded-md lg:pb-6 lg:shadow-md`}
     >
-      <NextSeo title={pokemonName} description={getDescription(pokemon)} />
+      <NextSeo
+        title={`${displayedPokemonName} #${getPokemonId(pokemon.id)}`}
+        description={getDescription(pokemon)}
+      />
 
       <div className="absolute h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/10 md:h-80 md:w-80" />
       <div className="pokeball-flat right-20 top-64 origin-top-right -rotate-12 scale-[2.2] sm:right-32 sm:scale-[2.8]" />
       <FaAngleDoubleRight className="absolute top-72 left-28 hidden scale-[1.7] text-9xl text-white/10 md:block" />
 
-      <h1 className="relative col-span-full text-3xl font-bold">{pokemonName}</h1>
-      <div className="relative col-span-full text-2xl">{String(pokemon.id).padStart(3, '0')}</div>
+      <h1 className="relative col-span-full text-3xl font-bold">{displayedPokemonName}</h1>
+      <div className="relative col-span-full text-2xl">{getPokemonId(pokemon.id)}</div>
       <div className="-mt-8 pl-8 pr-4 md:col-start-2 md:-mt-16 md:px-6">
         <Image
           key={catchState}
           src={getPokemonImage(pokemon.id)}
-          alt={pokemonName}
+          alt={displayedPokemonName}
           width={400}
           height={400}
           quality={25}
@@ -52,11 +62,11 @@ export default function PokemonDetailCard({ pokemon }: Props) {
       <div className="relative flex items-end divide-x divide-white rounded-md bg-white/60 py-3 text-center text-xs text-gray-700 md:col-start-2">
         <div className="grow px-2">
           <div className="flex justify-center gap-1.5 pb-1">
-            {types.map((type) => (
+            {pokemonTypes.map((type) => (
               <div key={type} className={`bg-elm-${type} h-3.5 w-3.5 rounded-full`} />
             ))}
           </div>
-          <div className="font-medium capitalize">{types.join(' / ')}</div>
+          <div className="font-medium capitalize">{pokemonTypes.join(' / ')}</div>
           <div className="text-gray-500">Type</div>
         </div>
         <div className="grow px-2">
@@ -70,7 +80,11 @@ export default function PokemonDetailCard({ pokemon }: Props) {
       </div>
 
       <div className="mt-4 md:row-start-4 md:self-end md:justify-self-start">
-        <PokemonDetailButton catchState={catchState} setCatchState={setCatchState} />
+        <PokemonDetailButton
+          key={pokemonNameSlug}
+          catchState={catchState}
+          setCatchState={setCatchState}
+        />
       </div>
     </section>
   );

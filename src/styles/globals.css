@@ -31,7 +31,7 @@
 
 @layer components {
   .pokemon-elm {
-    @apply text-white;
+    @apply text-white transition-[background];
   }
   .pokemon-elm.bg-elm-bug,
   .pokemon-elm.bg-elm-electric,

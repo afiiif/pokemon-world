@@ -1,4 +1,17 @@
 @layer components {
+  #_pokemon-detail-card {
+    @apply pokemon-elm relative -mx-3.5 -mt-3.5 grid overflow-hidden p-3.5 py-6
+           md:-mb-16 md:grid-cols-[auto,_28rem] md:p-6 md:pb-24
+           lg:m-0 lg:-mt-4 lg:rounded-md lg:pb-6 lg:shadow-md;
+  }
+
+  #_pokemon-detail-base-props {
+    @apply relative flex items-end divide-x divide-white rounded-md bg-white/60 py-3 text-center text-xs text-gray-700 md:col-start-2;
+    > div {
+      @apply grow px-2;
+    }
+  }
+
   .pokeball {
     @apply relative h-12 w-12 overflow-hidden rounded-full bg-white shadow;
     &::before {

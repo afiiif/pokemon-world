@@ -1,7 +1,5 @@
 import { QueryFunctionContext, useInfiniteQuery } from 'react-query';
 
-import { Pokemon_V2_Pokemonspecies } from '@/generated/graphql.types';
-
 import fetcher from '../fetcher';
 
 const LIMIT = 12;
@@ -11,10 +9,25 @@ export type QueryPokemonFilter = {
   generationId?: number;
   typeId?: number;
 };
-export type QueryPokemonsKey = ['pokemons', QueryPokemonFilter];
-export type QueryPokemonsData = Pokemon_V2_Pokemonspecies[];
 
-export const queryPokemons = async (ctx: QueryFunctionContext<QueryPokemonsKey>) => {
+type FetchPokemonsResponse = {
+  pokemon_v2_pokemonspecies: {
+    id: number;
+    name: string;
+    pokemon_v2_pokemons: {
+      pokemon_v2_pokemontypes: {
+        pokemon_v2_type: {
+          name: string;
+        };
+      }[];
+    }[];
+  }[];
+};
+
+export type QueryPokemonsKey = ['pokemons', QueryPokemonFilter];
+export type QueryPokemonsData = FetchPokemonsResponse['pokemon_v2_pokemonspecies'];
+
+export const fetchPokemons = async (ctx: QueryFunctionContext<QueryPokemonsKey>) => {
   const { name, generationId, typeId } = ctx.queryKey[1];
 
   const POKEMONS = `
@@ -46,14 +59,14 @@ export const queryPokemons = async (ctx: QueryFunctionContext<QueryPokemonsKey>)
     }
   `;
 
-  const res = await fetcher<{ pokemon_v2_pokemonspecies: Pokemon_V2_Pokemonspecies[] }>(POKEMONS);
+  const res = await fetcher<FetchPokemonsResponse>(POKEMONS);
   return res.pokemon_v2_pokemonspecies;
 };
 
 export const useInfQueryPokemons = (filter: QueryPokemonFilter) =>
   useInfiniteQuery<QueryPokemonsData, unknown, QueryPokemonsData, QueryPokemonsKey>(
     ['pokemons', filter],
-    queryPokemons,
+    fetchPokemons,
     {
       keepPreviousData: true,
       getNextPageParam: (lastPage, allPages) =>

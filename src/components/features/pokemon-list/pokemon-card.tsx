@@ -1,11 +1,11 @@
 import Image from 'next/future/image';
 import Link from 'next/link';
 
-import { Pokemon_V2_Pokemonspecies } from '@/generated/graphql.types';
+import { QueryPokemonsData } from '@/api/queries/pokemons';
 import { getPokemonId, getPokemonImage } from '@/helpers/pokemon';
 import { snakeCaseToTitleCase } from '@/utils/string';
 
-export default function PokemonCard({ id, name, pokemon_v2_pokemons }: Pokemon_V2_Pokemonspecies) {
+export default function PokemonCard({ id, name, pokemon_v2_pokemons }: QueryPokemonsData[0]) {
   const types = pokemon_v2_pokemons[0].pokemon_v2_pokemontypes.map(
     (item) => item.pokemon_v2_type!.name,
   );

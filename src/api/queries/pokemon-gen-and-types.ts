@@ -20,18 +20,19 @@ const POKEMON_GENERATIONS_AND_TYPES = /* GraphQL */ `
   }
 `;
 
-export type QueryPokemonsGenAndTypesKey = ['pokemon-g&t'];
-export type QueryPokemonsGenAndTypesResData = {
+type FetchPokemonsGenAndTypesResponse = {
   pokemon_v2_generation: Pick<Pokemon_V2_Generation, 'id' | 'name'>[];
   pokemon_v2_pokemontype: { pokemon_v2_type: Pick<Pokemon_V2_Type, 'id' | 'name'> }[];
 };
+
+export type QueryPokemonsGenAndTypesKey = ['pokemon-g&t'];
 export type QueryPokemonsGenAndTypesData = {
   generations: Pick<Pokemon_V2_Generation, 'id' | 'name'>[];
   types: Pick<Pokemon_V2_Type, 'id' | 'name'>[];
 };
 
-export const queryPokemonGenAndTypes: () => Promise<QueryPokemonsGenAndTypesData> = async () => {
-  const res = await fetcher<QueryPokemonsGenAndTypesResData>(POKEMON_GENERATIONS_AND_TYPES);
+export const fetchPokemonGenAndTypes: () => Promise<QueryPokemonsGenAndTypesData> = async () => {
+  const res = await fetcher<FetchPokemonsGenAndTypesResponse>(POKEMON_GENERATIONS_AND_TYPES);
 
   return {
     generations: res.pokemon_v2_generation.map(({ id, name }) => {
@@ -54,4 +55,4 @@ export const useQueryPokemonGenAndTypes = () =>
     unknown,
     QueryPokemonsGenAndTypesData,
     QueryPokemonsGenAndTypesKey
-  >(['pokemon-g&t'], queryPokemonGenAndTypes);
+  >(['pokemon-g&t'], fetchPokemonGenAndTypes);

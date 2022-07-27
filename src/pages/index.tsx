@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import { useIntersection } from 'react-power-ups';
 import { dehydrate, DehydratedState } from 'react-query';
 
-import { queryPokemonGenAndTypes } from '@/api/queries/pokemon-gen-and-types';
-import { QueryPokemonFilter, queryPokemons, useInfQueryPokemons } from '@/api/queries/pokemons';
+import { fetchPokemonGenAndTypes } from '@/api/queries/pokemon-gen-and-types';
+import { fetchPokemons, QueryPokemonFilter, useInfQueryPokemons } from '@/api/queries/pokemons';
 import PokemonCard from '@/components/features/pokemon-list/pokemon-card';
 import PokemonCardsShimmer from '@/components/features/pokemon-list/pokemon-cards-shimmer';
 import PokemonListFilter from '@/components/features/pokemon-list/pokemon-list-filter';
@@ -16,8 +16,8 @@ type Result = GetStaticPropsResult<{ dehydratedState: DehydratedState }>;
 const INITIAL_FILTER = { name: '', generationId: 0, typeId: 0 };
 
 export async function getStaticProps(): Promise<Result> {
-  await queryClient.fetchInfiniteQuery(['pokemons', INITIAL_FILTER], queryPokemons);
-  await queryClient.fetchQuery(['pokemon-g&t'], queryPokemonGenAndTypes);
+  await queryClient.fetchInfiniteQuery(['pokemons', INITIAL_FILTER], fetchPokemons);
+  await queryClient.fetchQuery(['pokemon-g&t'], fetchPokemonGenAndTypes);
 
   // https://github.com/tannerlinsley/react-query/issues/1458
   const dehydratedState = JSON.parse(JSON.stringify(dehydrate(queryClient)));

@@ -1,25 +1,19 @@
 import clsx from 'clsx';
 import Image from 'next/future/image';
-import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { FaAngleDoubleRight } from 'react-icons/fa';
 
-import { useQueryPokemon, useQueryPokemonTypes } from '@/api/queries/pokemon';
-import { useQueryPokemonSpecies } from '@/api/queries/pokemon-species';
+import { useQueryPokemonTypes } from '@/api/queries/pokemon';
 import { getPokemonId, getPokemonImage } from '@/helpers/pokemon';
 import { snakeCaseToTitleCase } from '@/utils/string';
 
+import useCurrentPokemon from '../hooks/use-current-pokemon';
 import PokemonDetailButton, { CatchState } from './pokemon-detail-button';
 
 export default function PokemonDetailMain() {
-  const { query } = useRouter();
-  const [pokemonSpeciesName, pokemonNameSlug] = query.slug as [string, string?];
-
-  const pokemonSpecies = useQueryPokemonSpecies(pokemonSpeciesName).data!;
-  const pokemonName = pokemonNameSlug || pokemonSpecies.pokemon_v2_pokemons[0].name;
-  const pokemon = useQueryPokemon(pokemonName).data!;
-  const pokemonTypes = useQueryPokemonTypes(pokemonName).data!;
-  const displayedPokemonName = snakeCaseToTitleCase(pokemonName);
+  const { pokemon } = useCurrentPokemon();
+  const pokemonTypes = useQueryPokemonTypes(pokemon.name).data!;
+  const displayedPokemonName = snakeCaseToTitleCase(pokemon.name);
 
   const [catchState, setCatchState] = useState<CatchState>('void');
 

@@ -1,24 +1,21 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { HiChevronRight } from 'react-icons/hi';
 
-import { useQueryPokemonSpecies } from '@/api/queries/pokemon-species';
 import { snakeCaseToTitleCase } from '@/utils/string';
 
-export default function PokemonDetailForms() {
-  const { query } = useRouter();
-  const [pokemonSpeciesName] = query.slug as [string];
+import useCurrentPokemon from '../hooks/use-current-pokemon';
 
-  const pokemons = useQueryPokemonSpecies(pokemonSpeciesName).data!.pokemon_v2_pokemons;
+export default function PokemonDetailForms() {
+  const { pokemonSpecies } = useCurrentPokemon();
 
   return (
     <section className="mb-4 rounded-md bg-white p-3.5 shadow-md">
       <h2 className="pb-2 text-xl font-bold">Forms</h2>
-      {pokemons.map((pokemon) => {
+      {pokemonSpecies.pokemon_v2_pokemons.map((pokemon) => {
         const href =
-          pokemon.name === pokemonSpeciesName
-            ? `/pokemon/${pokemonSpeciesName}`
-            : `/pokemon/${pokemonSpeciesName}/${pokemon.name}`;
+          pokemon.name === pokemonSpecies.name
+            ? `/pokemon/${pokemonSpecies.name}`
+            : `/pokemon/${pokemonSpecies.name}/${pokemon.name}`;
 
         return (
           <Link

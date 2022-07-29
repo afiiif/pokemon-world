@@ -2,20 +2,17 @@ import { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } fro
 import { NextSeo } from 'next-seo';
 import { dehydrate, DehydratedState } from 'react-query';
 
-import { fetchPokemon, useQueryPokemon, useQueryPokemonTypes } from '@/api/queries/pokemon';
-import { fetchPokemonSpecies, useQueryPokemonSpecies } from '@/api/queries/pokemon-species';
+import { fetchPokemon, useQueryPokemonTypes } from '@/api/queries/pokemon';
+import { fetchPokemonSpecies } from '@/api/queries/pokemon-species';
 import queryClient from '@/config/react-query';
 import PokemonDetailForms from '@/features/pokemon-detail/components/pokemon-detail-forms';
 import PokemonDetailMain from '@/features/pokemon-detail/components/pokemon-detail-main';
+import useCurrentPokemon from '@/features/pokemon-detail/hooks/use-current-pokemon';
 import { getDescription, getPokemonId } from '@/helpers/pokemon';
 import { snakeCaseToTitleCase } from '@/utils/string';
 
 type Context = GetStaticPropsContext<{ slug: [string] | [string, string] }>;
-type Result = GetStaticPropsResult<{
-  pokemonSpeciesName: string;
-  pokemonName: string;
-  dehydratedState: DehydratedState;
-}>;
+type Result = GetStaticPropsResult<{ dehydratedState: DehydratedState }>;
 
 export async function getStaticProps({ params }: Context): Promise<Result> {
   const { slug } = params!;
@@ -42,8 +39,6 @@ export async function getStaticProps({ params }: Context): Promise<Result> {
 
     return {
       props: {
-        pokemonSpeciesName,
-        pokemonName,
         dehydratedState,
       },
     };
@@ -63,26 +58,20 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
   };
 }
 
-type Props = {
-  pokemonSpeciesName: string;
-  pokemonName: string;
-};
-
-export default function PokemonDetail({ pokemonSpeciesName, pokemonName }: Props) {
-  const pokemonSpecies = useQueryPokemonSpecies(pokemonSpeciesName).data!;
-  const pokemon = useQueryPokemon(pokemonName).data!;
-  const pokemonTypes = useQueryPokemonTypes(pokemonName).data!;
+export default function PokemonDetail() {
+  const { pokemonSpecies, pokemon } = useCurrentPokemon();
+  const pokemonTypes = useQueryPokemonTypes(pokemon.name).data!;
   const hasForms = pokemonSpecies.pokemon_v2_pokemons.length > 1;
 
   return (
     <>
       <NextSeo
-        title={`${snakeCaseToTitleCase(pokemonName)} #${getPokemonId(pokemon.id)}`}
+        title={`${snakeCaseToTitleCase(pokemon.name)} #${getPokemonId(pokemon.id)}`}
         description={getDescription(pokemon)}
       />
 
       <section id="_pokemon-detail-card" className={`bg-elm-${pokemonTypes[0]}`}>
-        <PokemonDetailMain key={pokemonName} />
+        <PokemonDetailMain key={pokemon.name} />
       </section>
 
       <section

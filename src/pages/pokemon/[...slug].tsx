@@ -4,9 +4,9 @@ import { dehydrate, DehydratedState } from 'react-query';
 
 import { fetchPokemon, useQueryPokemon, useQueryPokemonTypes } from '@/api/queries/pokemon';
 import { fetchPokemonSpecies, useQueryPokemonSpecies } from '@/api/queries/pokemon-species';
-import PokemonDetailForms from '@/components/features/pokemon-detail/pokemon-detail-forms';
-import PokemonDetailMain from '@/components/features/pokemon-detail/pokemon-detail-main';
 import queryClient from '@/config/react-query';
+import PokemonDetailForms from '@/features/pokemon-detail/components/pokemon-detail-forms';
+import PokemonDetailMain from '@/features/pokemon-detail/components/pokemon-detail-main';
 import { getDescription, getPokemonId } from '@/helpers/pokemon';
 import { snakeCaseToTitleCase } from '@/utils/string';
 

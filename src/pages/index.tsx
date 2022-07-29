@@ -6,10 +6,10 @@ import { dehydrate, DehydratedState } from 'react-query';
 
 import { fetchPokemonGenAndTypes } from '@/api/queries/pokemon-gen-and-types';
 import { fetchPokemons, QueryPokemonFilter, useInfQueryPokemons } from '@/api/queries/pokemons';
-import PokemonCard from '@/components/features/pokemon-list/pokemon-card';
-import PokemonCardsShimmer from '@/components/features/pokemon-list/pokemon-cards-shimmer';
-import PokemonListFilter from '@/components/features/pokemon-list/pokemon-list-filter';
 import queryClient from '@/config/react-query';
+import PokemonCard from '@/features/pokemon-list/components/pokemon-card';
+import PokemonCardsShimmer from '@/features/pokemon-list/components/pokemon-cards-shimmer';
+import PokemonListFilter from '@/features/pokemon-list/components/pokemon-list-filter';
 
 type Result = GetStaticPropsResult<{ dehydratedState: DehydratedState }>;
 

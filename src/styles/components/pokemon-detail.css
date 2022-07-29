@@ -1,6 +1,6 @@
 @layer components {
-  #_pokemon-detail-card {
-    @apply pokemon-elm relative -mx-3.5 -mt-3.5 grid overflow-hidden p-3.5 py-6
+  #_pokemon-detail-main-card {
+    @apply pokemon-elm relative -mx-3.5 -mt-3.5 -mb-14 grid overflow-hidden px-3.5 pt-6 pb-24
            md:-mb-16 md:grid-cols-[auto,_28rem] md:p-6 md:pb-24
            lg:m-0 lg:-mt-4 lg:rounded-md lg:pb-6 lg:shadow-md;
   }
@@ -189,6 +189,18 @@
     }
     100% {
       @apply translate-y-0 opacity-0;
+    }
+  }
+
+  .pokemon-detail-card-container {
+    @apply relative -mx-3.5 -mb-16 px-3.5 pb-16 text-sm transition-[background]
+           md:mt-4 md:px-6
+           lg:m-0 lg:mt-6 lg:!bg-transparent lg:p-0 lg:transition-none;
+  }
+  .pokemon-detail-card {
+    @apply mb-6 rounded-md bg-white p-3.5 shadow-md md:p-5;
+    h2 {
+      @apply pb-1.5 text-xl font-bold;
     }
   }
 }

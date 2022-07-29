@@ -2,7 +2,7 @@ import Image from 'next/future/image';
 import Link from 'next/link';
 
 import { QueryPokemonsData } from '@/api/queries/pokemons';
-import { getPokemonId, getPokemonImage } from '@/helpers/pokemon';
+import { formatPokemonId, getPokemonImage } from '@/helpers/pokemon';
 import { snakeCaseToTitleCase } from '@/utils/string';
 
 export default function PokemonCard({ id, name, pokemon_v2_pokemons }: QueryPokemonsData[0]) {
@@ -24,7 +24,7 @@ export default function PokemonCard({ id, name, pokemon_v2_pokemons }: QueryPoke
         className="group-hover:scale-125"
         priority={id < 7}
       />
-      <div className="pokemon-card-number">{getPokemonId(id)}</div>
+      <div className="pokemon-card-number">{formatPokemonId(id)}</div>
       <div className="pokeball-flat" />
     </Link>
   );

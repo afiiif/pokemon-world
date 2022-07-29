@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { FaAngleDoubleRight } from 'react-icons/fa';
 
 import { useQueryPokemonTypes } from '@/api/queries/pokemon';
-import { getPokemonId, getPokemonImage } from '@/helpers/pokemon';
+import { formatPokemonId, getPokemonImage } from '@/helpers/pokemon';
 import { snakeCaseToTitleCase } from '@/utils/string';
 
 import useCurrentPokemon from '../hooks/use-current-pokemon';
@@ -24,7 +24,7 @@ export default function PokemonDetailMain() {
       <FaAngleDoubleRight className="absolute top-72 left-28 hidden scale-[1.7] text-9xl text-white/10 md:block" />
 
       <h1 className="relative col-span-full text-3xl font-bold">{displayedPokemonName}</h1>
-      <div className="relative col-span-full text-2xl">{getPokemonId(pokemon.id)}</div>
+      <div className="relative col-span-full text-2xl">{formatPokemonId(pokemon.id)}</div>
       <div className="-mt-8 pl-8 pr-4 md:col-start-2 md:-mt-16 md:px-6">
         <Image
           key={catchState}

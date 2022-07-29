@@ -5,10 +5,11 @@ import { dehydrate, DehydratedState } from 'react-query';
 import { fetchPokemon, useQueryPokemonTypes } from '@/api/queries/pokemon';
 import { fetchPokemonSpecies } from '@/api/queries/pokemon-species';
 import queryClient from '@/config/react-query';
+import PokemonDetailDesciption from '@/features/pokemon-detail/components/pokemon-detail-desciption';
 import PokemonDetailForms from '@/features/pokemon-detail/components/pokemon-detail-forms';
 import PokemonDetailMain from '@/features/pokemon-detail/components/pokemon-detail-main';
 import useCurrentPokemon from '@/features/pokemon-detail/hooks/use-current-pokemon';
-import { getDescription, getPokemonId } from '@/helpers/pokemon';
+import { formatPokemonId, getDescription } from '@/helpers/pokemon';
 import { snakeCaseToTitleCase } from '@/utils/string';
 
 type Context = GetStaticPropsContext<{ slug: [string] | [string, string] }>;
@@ -61,23 +62,33 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
 export default function PokemonDetail() {
   const { pokemonSpecies, pokemon } = useCurrentPokemon();
   const pokemonTypes = useQueryPokemonTypes(pokemon.name).data!;
-  const hasForms = pokemonSpecies.pokemon_v2_pokemons.length > 1;
 
   return (
     <>
       <NextSeo
-        title={`${snakeCaseToTitleCase(pokemon.name)} #${getPokemonId(pokemon.id)}`}
-        description={getDescription(pokemon)}
+        title={`${snakeCaseToTitleCase(pokemon.name)} #${formatPokemonId(pokemon.id)}`}
+        description={getDescription(pokemonSpecies, pokemon)}
       />
 
-      <section id="_pokemon-detail-card" className={`bg-elm-${pokemonTypes[0]}`}>
+      <section id="_pokemon-detail-main-card" className={`bg-elm-${pokemonTypes[0]}`}>
         <PokemonDetailMain key={pokemon.name} />
       </section>
 
-      <section
-        className={`bg-elm-${pokemonTypes[0]} relative -mx-3.5 -mb-16 p-3.5 pb-16 transition-[background] md:mt-4 md:pt-0 lg:mt-6 lg:mb-0 lg:bg-transparent lg:pb-0 lg:transition-none`}
-      >
-        {hasForms && <PokemonDetailForms />}
+      <section className={`pokemon-detail-card-container bg-elm-${pokemonTypes[0]}`}>
+        <PokemonDetailForms />
+        <PokemonDetailDesciption />
+        <section className="pokemon-detail-card">
+          <h2>Stats</h2>
+          <p>...</p>
+        </section>
+        <section className="pokemon-detail-card">
+          <h2>Abilities</h2>
+          <p>...</p>
+        </section>
+        <section className="pokemon-detail-card">
+          <h2>Moves</h2>
+          <p>...</p>
+        </section>
       </section>
     </>
   );

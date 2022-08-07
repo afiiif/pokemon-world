@@ -174,7 +174,7 @@
     animation: fade-up-then-out 2s ease forwards;
     &::before {
       content: '';
-      @apply absolute bottom-0 left-1/2 inline-block translate-y-[100%] -translate-x-1/2 border-8 border-transparent border-t-gray-700;
+      @apply absolute bottom-px left-1/2 inline-block translate-y-[100%] -translate-x-1/2 border-[9px] border-transparent border-t-gray-700;
     }
   }
   @keyframes fade-up-then-out {

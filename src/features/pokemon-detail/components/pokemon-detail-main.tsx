@@ -1,7 +1,6 @@
 import clsx from 'clsx';
 import Image from 'next/future/image';
 import { useState } from 'react';
-import { FaAngleDoubleRight } from 'react-icons/fa';
 
 import { useQueryPokemonTypes } from '@/api/queries/pokemon';
 import { formatPokemonId, getPokemonImage } from '@/helpers/pokemon';
@@ -9,6 +8,7 @@ import { snakeCaseToTitleCase } from '@/utils/string';
 
 import useCurrentPokemon from '../hooks/use-current-pokemon';
 import PokemonDetailButton, { CatchState } from './pokemon-detail-button';
+import PokemonDetailForms from './pokemon-detail-forms';
 
 export default function PokemonDetailMain() {
   const { pokemon } = useCurrentPokemon();
@@ -21,11 +21,21 @@ export default function PokemonDetailMain() {
     <>
       <div className="absolute h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/10 md:h-80 md:w-80" />
       <div className="pokeball-flat right-20 top-64 origin-top-right -rotate-12 scale-[2.2] sm:right-32 sm:scale-[2.8]" />
-      <FaAngleDoubleRight className="absolute top-72 left-28 hidden scale-[1.7] text-9xl text-white/10 md:block" />
+      <Image
+        src={`/icons/pokemon-types/${pokemonTypes[0]}.svg`}
+        alt={pokemonTypes[0]}
+        width={230}
+        height={230}
+        quality={25}
+        className="absolute top-56 left-[calc(40%_-_17rem)] hidden opacity-10 md:block"
+      />
 
       <h1 className="relative col-span-full text-3xl font-bold">{displayedPokemonName}</h1>
-      <div className="relative col-span-full text-2xl">{formatPokemonId(pokemon.id)}</div>
-      <div className="-mt-8 pl-8 pr-4 md:col-start-2 md:-mt-16 md:px-6">
+      <div className="relative">
+        <PokemonDetailForms />
+        <div className="text-2xl">{formatPokemonId(pokemon.id)}</div>
+      </div>
+      <div className="-mt-8 pl-8 pr-4 md:-mt-8 md:px-6">
         <Image
           key={catchState}
           src={getPokemonImage(pokemon.id)}
@@ -62,7 +72,7 @@ export default function PokemonDetailMain() {
         </div>
       </div>
 
-      <div className="mt-4 md:row-start-4 md:self-end md:justify-self-start">
+      <div className="mt-4 md:row-start-3 md:self-end md:justify-self-start">
         <PokemonDetailButton catchState={catchState} setCatchState={setCatchState} />
       </div>
     </>

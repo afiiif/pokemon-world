@@ -6,7 +6,6 @@ import { fetchPokemon, useQueryPokemonTypes } from '@/api/queries/pokemon';
 import { fetchPokemonSpecies } from '@/api/queries/pokemon-species';
 import queryClient from '@/config/react-query';
 import PokemonDetailDesciption from '@/features/pokemon-detail/components/pokemon-detail-desciption';
-import PokemonDetailForms from '@/features/pokemon-detail/components/pokemon-detail-forms';
 import PokemonDetailMain from '@/features/pokemon-detail/components/pokemon-detail-main';
 import useCurrentPokemon from '@/features/pokemon-detail/hooks/use-current-pokemon';
 import { formatPokemonId, getDescription } from '@/helpers/pokemon';
@@ -75,7 +74,6 @@ export default function PokemonDetail() {
       </section>
 
       <section className={`pokemon-detail-card-container bg-elm-${pokemonTypes[0]}`}>
-        <PokemonDetailForms />
         <PokemonDetailDesciption />
         <section className="pokemon-detail-card">
           <h2>Stats</h2>

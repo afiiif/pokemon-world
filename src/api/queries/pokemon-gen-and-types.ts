@@ -33,6 +33,10 @@ export type QueryPokemonsGenAndTypesData = {
 
 export const fetchPokemonGenAndTypes: () => Promise<QueryPokemonsGenAndTypesData> = async () => {
   const res = await fetcher<FetchPokemonsGenAndTypesResponse>(POKEMON_GENERATIONS_AND_TYPES);
+  const types = res.pokemon_v2_pokemontype.map(({ pokemon_v2_type }) => ({
+    id: pokemon_v2_type!.id,
+    name: toSentenceCase(pokemon_v2_type!.name),
+  }));
 
   return {
     generations: res.pokemon_v2_generation.map(({ id, name }) => {
@@ -42,10 +46,7 @@ export const fetchPokemonGenAndTypes: () => Promise<QueryPokemonsGenAndTypesData
         name: `Generation ${generationNumber.toUpperCase()}`,
       };
     }),
-    types: res.pokemon_v2_pokemontype.map(({ pokemon_v2_type }) => ({
-      id: pokemon_v2_type!.id,
-      name: toSentenceCase(pokemon_v2_type!.name),
-    })),
+    types: types.sort((a, b) => a.name.localeCompare(b.name)),
   };
 };
 

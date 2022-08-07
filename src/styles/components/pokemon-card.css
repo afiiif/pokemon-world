@@ -1,6 +1,6 @@
 @layer components {
   .pokemon-card-container {
-    @apply grid grid-cols-[repeat(auto-fit,_minmax(243px,_1fr))] gap-3.5;
+    @apply grid grid-cols-[repeat(auto-fit,_minmax(15.25rem,_1fr))] gap-3.5;
   }
 
   .pokemon-card {

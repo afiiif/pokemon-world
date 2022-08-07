@@ -57,6 +57,10 @@ export default function PokemonListPage() {
           pokemons.map((pokemon) => <PokemonCard key={pokemon.id} {...pokemon} />),
         )}
         {isFetchingNextPage && <PokemonCardsShimmer />}
+
+        {/* Add 2 empty div to enforce 3 columns layout even when just displaying 1 card */}
+        <div />
+        <div />
       </div>
       <div ref={loadMoreRef} />
     </>

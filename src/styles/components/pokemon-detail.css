@@ -193,14 +193,40 @@
   }
 
   .pokemon-detail-card-container {
-    @apply relative -mx-3.5 -mb-16 px-3.5 pb-16 text-sm transition-[background]
+    @apply relative -mx-3.5 -mb-16 flex gap-6 px-3.5 pb-16 transition-[background-color]
            md:mt-4 md:px-6
            lg:m-0 lg:mt-6 lg:!bg-transparent lg:p-0 lg:transition-none;
   }
   .pokemon-detail-card {
     @apply mb-6 rounded-md bg-white p-3.5 shadow-md md:p-5;
     h2 {
-      @apply pb-1.5 text-xl font-bold;
+      @apply pb-2 text-xl font-bold;
+    }
+  }
+
+  .pokemon-desc-slick {
+    @apply relative;
+    .slick-list {
+      @apply overflow-hidden transition-[height];
+    }
+    .slick-slide {
+      @apply float-left;
+    }
+    .slick-arrow {
+      @apply absolute top-0 rounded-full text-2xl;
+      &::before {
+        content: '';
+        @apply absolute m-1 block h-4 w-4 rounded-full bg-white;
+      }
+      > svg {
+        @apply relative z-[1];
+      }
+    }
+    .slick-prev {
+      @apply -left-7 scale-x-[-1] md:-ml-0.5;
+    }
+    .slick-next {
+      @apply -right-7 md:-mr-0.5;
     }
   }
 }

@@ -1,11 +1,6 @@
 import { QueryFunctionContext, useQuery } from 'react-query';
 
-import {
-  Maybe,
-  Pokemon_V2_Pokemon,
-  Pokemon_V2_Pokemonhabitat,
-  Pokemon_V2_Pokemonspecies,
-} from '@/generated/graphql.types';
+import { Maybe, Pokemon_V2_Pokemon, Pokemon_V2_Pokemonspecies } from '@/generated/graphql.types';
 
 import fetcher from '../fetcher';
 
@@ -41,7 +36,7 @@ type FetchPokemonSpeciesResponse = {
   pokemon_v2_pokemonspecies: [
     Pick<Pokemon_V2_Pokemonspecies, 'id' | 'name'> & {
       pokemon_v2_pokemonspeciesflavortexts: { id: number; flavor_text: string }[];
-      pokemon_v2_pokemonhabitat: Maybe<Pokemon_V2_Pokemonhabitat>;
+      pokemon_v2_pokemonhabitat: Maybe<{ name: string }>;
       pokemon_v2_pokemons: Pick<Pokemon_V2_Pokemon, 'id' | 'name' | 'pokemon_v2_pokemontypes'>[];
     },
   ];

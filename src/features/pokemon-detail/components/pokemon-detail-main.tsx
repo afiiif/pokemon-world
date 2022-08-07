@@ -43,6 +43,7 @@ export default function PokemonDetailMain() {
           width={400}
           height={400}
           quality={25}
+          priority
           className={clsx(
             'relative mx-auto w-full max-w-[400px] place-self-end drop-shadow-2xl',
             catchState === 'catching' && 'pokemon-shrinking',

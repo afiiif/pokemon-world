@@ -1,5 +1,6 @@
+import clsx from 'clsx';
 import { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from 'next';
-import { NextSeo } from 'next-seo';
+import Masonry from 'react-masonry-css';
 import { dehydrate, DehydratedState } from 'react-query';
 
 import { fetchPokemon, useQueryPokemonTypes } from '@/api/queries/pokemon';
@@ -7,8 +8,8 @@ import { fetchPokemonSpecies } from '@/api/queries/pokemon-species';
 import queryClient from '@/config/react-query';
 import PokemonDetailDesciption from '@/features/pokemon-detail/components/pokemon-detail-desciption';
 import PokemonDetailMain from '@/features/pokemon-detail/components/pokemon-detail-main';
+import PokemonDetailSeo from '@/features/pokemon-detail/components/pokemon-detail-seo';
 import useCurrentPokemon from '@/features/pokemon-detail/hooks/use-current-pokemon';
-import { formatPokemonId, getDescription } from '@/helpers/pokemon';
 import { snakeCaseToTitleCase } from '@/utils/string';
 
 type Context = GetStaticPropsContext<{ slug: [string] | [string, string] }>;
@@ -64,30 +65,45 @@ export default function PokemonDetail() {
 
   return (
     <>
-      <NextSeo
-        title={`${snakeCaseToTitleCase(pokemon.name)} #${formatPokemonId(pokemon.id)}`}
-        description={getDescription(pokemonSpecies, pokemon)}
-      />
+      <PokemonDetailSeo />
 
       <section id="_pokemon-detail-main-card" className={`bg-elm-${pokemonTypes[0]}`}>
         <PokemonDetailMain key={pokemon.name} />
       </section>
 
-      <section className={`pokemon-detail-card-container bg-elm-${pokemonTypes[0]}`}>
+      <Masonry
+        breakpointCols={{ default: 2, 768: 1 }}
+        className={`pokemon-detail-card-container bg-elm-${pokemonTypes[0]}`}
+      >
         <PokemonDetailDesciption />
         <section className="pokemon-detail-card">
           <h2>Stats</h2>
-          <p>...</p>
+          <div className="h-64">...</div>
+        </section>
+        <section className="pokemon-detail-card">
+          <h2>Habitat</h2>
+          <p className={clsx(!pokemonSpecies.habitat && 'text-gray-400')}>
+            {snakeCaseToTitleCase(pokemonSpecies.habitat || 'N/A')}
+          </p>
         </section>
         <section className="pokemon-detail-card">
           <h2>Abilities</h2>
-          <p>...</p>
+          <ul className="list-disc space-y-2 pl-5">
+            {pokemon.pokemon_v2_pokemonabilities.map(({ pokemon_v2_ability }) => (
+              <li key={pokemon_v2_ability.name}>
+                <h3 className="font-semibold">{snakeCaseToTitleCase(pokemon_v2_ability.name)}</h3>
+                <p className="text-sm text-gray-500">
+                  {pokemon_v2_ability.pokemon_v2_abilityeffecttexts[0].short_effect}
+                </p>
+              </li>
+            ))}
+          </ul>
         </section>
         <section className="pokemon-detail-card">
           <h2>Moves</h2>
-          <p>...</p>
+          <p className="h-72">...</p>
         </section>
-      </section>
+      </Masonry>
     </>
   );
 }

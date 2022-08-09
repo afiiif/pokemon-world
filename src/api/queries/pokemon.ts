@@ -31,9 +31,8 @@ const POKEMON = /* GraphQL */ `
       pokemon_v2_pokemonmoves(distinct_on: move_id) {
         pokemon_v2_move {
           name
-          pokemon_v2_type {
-            name
-          }
+          type_id
+          power
         }
       }
     }

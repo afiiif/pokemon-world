@@ -33,7 +33,7 @@ export default function PokemonDetailMain() {
       <h1 className="relative col-span-full text-3xl font-bold">{displayedPokemonName}</h1>
       <div className="relative">
         <PokemonDetailForms />
-        <div className="text-2xl">{formatPokemonId(pokemon.id)}</div>
+        <div className="text-2xl">#{formatPokemonId(pokemon.id)}</div>
       </div>
       <div className="-mt-8 pl-8 pr-4 md:-mt-8 md:px-6">
         <Image

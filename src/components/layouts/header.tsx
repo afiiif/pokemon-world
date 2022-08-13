@@ -14,8 +14,8 @@ export default function Header() {
             alt="Pokemon logo"
             className="h-auto w-20 lg:w-[154px]"
           />
-          <div className="-mt-1 inline-block -rotate-6 border border-white bg-gradient-to-br from-sky-600 to-pink-600 px-3 text-[9px] font-bold tracking-widest text-white lg:text-base">
-            WORLD
+          <div className="-mt-1 inline-block -rotate-6 border border-white bg-gradient-to-br from-sky-600 to-pink-600 px-1.5 text-[9px] font-bold tracking-widest text-white lg:px-3 lg:text-base">
+            AWESOME
           </div>
         </Link>
         <div className="self-center">[ 🚧 Menu ]</div>

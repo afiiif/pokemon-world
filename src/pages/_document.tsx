@@ -4,11 +4,11 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        <meta name="application-name" content="Pokemon World" />
+        <meta name="application-name" content="Pokemon Awesome" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Pokemon World" />
-        <meta name="description" content="Pokemon World App" />
+        <meta name="apple-mobile-web-app-title" content="Pokemon Awesome" />
+        <meta name="description" content="Pokemon Awesome App" />
         <meta name="theme-color" content="#ffffff" />
 
         <link rel="manifest" href="/manifest.json" />

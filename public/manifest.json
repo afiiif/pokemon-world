@@ -4,9 +4,9 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "Pokemon World",
-  "short_name": "Pokemon World",
-  "description": "Pokemon World App",
+  "name": "Pokemon Awesome",
+  "short_name": "Pokemon Awesome",
+  "description": "Pokemon Awesome App",
   "icons": [
     {
       "src": "/favicons/android-icon-36x36.png",

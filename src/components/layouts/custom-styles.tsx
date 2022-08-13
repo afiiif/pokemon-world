@@ -4,7 +4,7 @@ import { useWindowEvent } from 'react-power-ups';
 
 type ScrollState = {
   position: number;
-  distance: number;
+  hideHeader: boolean;
 };
 
 const scrollReducer = (prev: ScrollState) => {
@@ -12,14 +12,14 @@ const scrollReducer = (prev: ScrollState) => {
   const distance = newPosition - prev.position;
   return {
     position: newPosition,
-    distance: Math.max(0, Math.min(64, prev.distance + distance)),
+    hideHeader: newPosition > 128 && distance > 0,
   };
 };
 
 export default function CustomStyles() {
   const [scrollState, dispatchScrollState] = useReducer(scrollReducer, {
     position: 0,
-    distance: 0,
+    hideHeader: false,
   });
 
   useWindowEvent('scroll', dispatchScrollState);
@@ -29,7 +29,7 @@ export default function CustomStyles() {
       <style>
         {`
           :root {
-            --scroll-distance: -${scrollState.distance}px
+            --header-distance: ${scrollState.hideHeader ? '-4rem' : 0};
           }
         `}
       </style>

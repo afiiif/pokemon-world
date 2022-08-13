@@ -20,7 +20,7 @@
   }
 
   #_header {
-    @apply sticky top-0 z-20 translate-y-[var(--scroll-distance)] bg-white shadow
+    @apply sticky top-0 z-20 translate-y-[var(--header-distance)] bg-white shadow transition-transform
            lg:col-span-full lg:translate-y-0;
   }
   #_header-inner {

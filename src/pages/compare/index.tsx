@@ -26,7 +26,7 @@ export default function ComparePokemonsPage() {
   if (pokemons.length > 0) {
     return (
       <>
-        <Script src="http://asvd.github.io/syncscroll/syncscroll.js" />
+        <Script src="https://asvd.github.io/syncscroll/syncscroll.js" />
 
         <div
           // @ts-ignore name property for syncscroll.js

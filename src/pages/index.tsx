@@ -40,6 +40,8 @@ export default function PokemonListPage() {
     enabled: !isFetching,
   });
 
+  const pokemons = data!.pages.flat();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [filter]);
@@ -53,9 +55,10 @@ export default function PokemonListPage() {
 
       {isPreviousData && <div className="relative -top-4 text-center">⏳ Loading...</div>}
       <div className={clsx('pokemon-card-container', isPreviousData && 'opacity-60')}>
-        {data!.pages.map((pokemons) =>
-          pokemons.map((pokemon) => <PokemonCard key={pokemon.id} {...pokemon} />),
-        )}
+        {pokemons.map((pokemon) => (
+          <PokemonCard key={pokemon.id} {...pokemon} />
+        ))}
+        {!isFetching && pokemons.length === 0 && 'No result'}
         {isFetchingNextPage && <PokemonCardsShimmer />}
 
         {/* Add 2 empty div to enforce 3 columns layout even when just displaying 1 card */}

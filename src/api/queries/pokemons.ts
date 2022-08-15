@@ -2,7 +2,7 @@ import { QueryFunctionContext, useInfiniteQuery } from 'react-query';
 
 import fetcher from '../fetcher';
 
-const LIMIT = 12;
+const LIMIT = 18;
 
 export type QueryPokemonFilter = {
   name: string;

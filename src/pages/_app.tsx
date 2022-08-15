@@ -2,13 +2,16 @@ import '@/styles/globals.css';
 
 import type { AppProps } from 'next/app';
 import { DefaultSeo } from 'next-seo';
+import { useState } from 'react';
 import { Hydrate, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
 import Layout from '@/components/layouts/layout';
-import queryClient from '@/config/react-query';
+import getQueryClient from '@/config/react-query';
 
 export default function App({ Component, pageProps }: AppProps) {
+  const [queryClient] = useState(getQueryClient);
+
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>

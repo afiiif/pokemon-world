@@ -4,7 +4,7 @@ import { dehydrate, DehydratedState } from 'react-query';
 
 import { fetchPokemon, useQueryPokemonTypes } from '@/api/queries/pokemon';
 import { fetchPokemonSpecies } from '@/api/queries/pokemon-species';
-import queryClient from '@/config/react-query';
+import getQueryClient from '@/config/react-query';
 import PokemonDetailAbilities from '@/features/pokemon-detail/components/pokemon-detail-abilities';
 import PokemonDetailBaseStats from '@/features/pokemon-detail/components/pokemon-detail-base-stats';
 import PokemonDetailDesciption from '@/features/pokemon-detail/components/pokemon-detail-desciption';
@@ -28,6 +28,8 @@ export async function getStaticProps({ params }: Context): Promise<Result> {
   const [pokemonSpeciesName, pokemonNameSlug] = slug;
 
   try {
+    const queryClient = getQueryClient();
+
     const data = await queryClient.fetchQuery(
       ['pokemon-species', pokemonSpeciesName],
       fetchPokemonSpecies,

@@ -61,7 +61,7 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
   };
 }
 
-export default function PokemonDetail() {
+export default function PokemonDetailPage() {
   const { pokemon } = useCurrentPokemon();
   const pokemonTypes = useQueryPokemonTypes(pokemon.name).data!;
 

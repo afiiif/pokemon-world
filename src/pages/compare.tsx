@@ -6,9 +6,9 @@ import { HiOutlineArrowsExpand } from 'react-icons/hi';
 import { useQueries } from 'react-query';
 
 import { fetchPokemon } from '@/api/queries/pokemon';
-import MainSection from '@/features/compare-pokemons/main-section';
-import MovesSection from '@/features/compare-pokemons/moves-section';
-import StatsAndAbilitySection from '@/features/compare-pokemons/stats-and-ability-section';
+import MainSection from '@/features/compare-pokemons/components/main-section';
+import MovesSection from '@/features/compare-pokemons/components/moves-section';
+import StatsAndAbilitySection from '@/features/compare-pokemons/components/stats-and-ability-section';
 import { snakeCaseToTitleCase } from '@/utils/string';
 
 const MAX_POKEMON_TO_COMPARE = 8;

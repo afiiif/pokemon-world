@@ -7,6 +7,18 @@
     @apply lg:grid lg:grid-cols-[auto_13rem_minmax(0,_65rem)_auto];
   }
 
+  @media screen(xl) {
+    #__next.hide-sidebar {
+      @apply flex flex-col;
+      #_nav {
+        @apply hidden;
+      }
+      main {
+        @apply self-center;
+      }
+    }
+  }
+
   #_nav {
     @apply fixed bottom-0 z-10 w-full border-t bg-white
            lg:relative lg:col-start-2 lg:h-full lg:min-h-[calc(100vh_-_80px)] lg:border-r lg:border-t-0 lg:bg-transparent;

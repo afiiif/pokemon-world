@@ -15,11 +15,11 @@ type Props = {
 
 export default function PokemonListFilter({ filter, setFilter }: Props) {
   const { data } = useQueryPokemonGenAndTypes();
-  const { pathname, query, replace, asPath } = useRouter();
+  const { query, replace, asPath } = useRouter();
 
   const [setKeyword] = useThrottleFn<[ChangeEvent<HTMLInputElement>]>(({ target }) => {
     setFilter((prev) => ({ ...prev, name: target.value.trim() }));
-    replace(getNewRoute(pathname, { q: target.value.trim() }));
+    replace(getNewRoute({ q: target.value.trim() }));
   }, 600);
 
   const isFilteredByGenOrType = filter.generationId || filter.typeId;
@@ -84,7 +84,7 @@ export default function PokemonListFilter({ filter, setFilter }: Props) {
             value={filter.generationId}
             onChange={({ target }) => {
               setFilter((prev) => ({ ...prev, generationId: Number(target.value) }));
-              replace(getNewRoute(pathname, { gen: target.value }));
+              replace(getNewRoute({ gen: target.value }));
             }}
             className="mx-px h-[38px] rounded-md border-x-[12px] border-white bg-white ring-1 ring-gray-200"
           >
@@ -99,7 +99,7 @@ export default function PokemonListFilter({ filter, setFilter }: Props) {
             value={filter.typeId}
             onChange={({ target }) => {
               setFilter((prev) => ({ ...prev, typeId: Number(target.value) }));
-              replace(getNewRoute(pathname, { type: target.value }));
+              replace(getNewRoute({ type: target.value }));
             }}
             className="mx-px h-[38px] rounded-md border-x-[12px] border-white bg-white ring-1 ring-gray-200"
           >

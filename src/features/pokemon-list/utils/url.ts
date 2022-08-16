@@ -10,7 +10,7 @@ export const getFilterParam = () => {
   return { q, gen, type };
 };
 
-export const getNewRoute = (pathname: string, param: FilterParam) => {
+export const getNewRoute = (param: FilterParam) => {
   const { q, gen, type } = getFilterParam();
   const merged = { q, gen, type, ...param };
 
@@ -20,5 +20,5 @@ export const getNewRoute = (pathname: string, param: FilterParam) => {
   if (Number(merged.type)) temp.push(['type', merged.type]);
 
   const qs = temp.map(([key, value]) => `${key}=${value}`).join('&');
-  return `${pathname}?${qs}`;
+  return `${window.location.pathname}?${qs}`;
 };

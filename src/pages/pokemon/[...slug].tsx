@@ -7,6 +7,7 @@ import { fetchPokemonSpecies } from '@/api/queries/pokemon-species';
 import getQueryClient from '@/config/react-query';
 import PokemonDetailAbilities from '@/features/pokemon-detail/components/pokemon-detail-abilities';
 import PokemonDetailBaseStats from '@/features/pokemon-detail/components/pokemon-detail-base-stats';
+import PokemonDetailCompare from '@/features/pokemon-detail/components/pokemon-detail-compare';
 import PokemonDetailDesciption from '@/features/pokemon-detail/components/pokemon-detail-desciption';
 import PokemonDetailHabitat from '@/features/pokemon-detail/components/pokemon-detail-habitat';
 import PokemonDetailMain from '@/features/pokemon-detail/components/pokemon-detail-main';
@@ -84,6 +85,7 @@ export default function PokemonDetailPage() {
         <PokemonDetailHabitat />
         <PokemonDetailAbilities />
         <PokemonDetailMoves />
+        <PokemonDetailCompare />
       </Masonry>
     </>
   );

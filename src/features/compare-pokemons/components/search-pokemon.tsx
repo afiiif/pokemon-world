@@ -8,7 +8,11 @@ import { titleCaseToSnakeCase } from '@/utils/string';
 
 import usePokemonsParam from '../hooks/use-pokemons-param';
 
-export default function SearchPokemon() {
+type Props = {
+  onChange?: (pokemon: string) => void;
+};
+
+export default function SearchPokemon({ onChange }: Props) {
   const { pathname, replace } = useRouter();
 
   const { data = [] } = usePokemonNames();
@@ -30,7 +34,11 @@ export default function SearchPokemon() {
       value={null}
       onChange={(pokemonTitleCase: string) => {
         const pokemon = titleCaseToSnakeCase(pokemonTitleCase);
-        replace(`${pathname}?pokemons=${[...new Set([...pokemons, pokemon])].join(',')}`);
+        if (onChange) {
+          onChange(pokemon);
+        } else {
+          replace(`${pathname}?pokemons=${[...new Set([...pokemons, pokemon])].join(',')}`);
+        }
       }}
     >
       <div className="relative">

@@ -2,14 +2,14 @@ import { Combobox, Transition } from '@headlessui/react';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { useFirstMount } from 'react-power-ups';
 
 import { usePokemonNames } from '@/api/queries/pokemon-names';
+import { titleCaseToSnakeCase } from '@/utils/string';
 
-import { getNewRoute, getPokemonsParam } from '../utils/url';
+import usePokemonsParam from '../hooks/use-pokemons-param';
 
 export default function SearchPokemon() {
-  const { replace } = useRouter();
+  const { pathname, replace } = useRouter();
 
   const { data = [] } = usePokemonNames();
   const [keyword, setKeyword] = useState('');
@@ -19,17 +19,19 @@ export default function SearchPokemon() {
     )
     .slice(0, 10);
 
-  const isFirstMount = useFirstMount();
-  const pokemons = getPokemonsParam();
+  const pokemons = usePokemonsParam();
   const placeholder =
-    !isFirstMount && pokemons.length > 0
+    pokemons.length > 0
       ? '🔍 Add more pokemon to the comparison'
       : '🔍 Search Pokemon to be compared';
 
   return (
     <Combobox
       value={null}
-      onChange={(pokemon: string) => replace(getNewRoute({ addPokemon: pokemon }))}
+      onChange={(pokemonTitleCase: string) => {
+        const pokemon = titleCaseToSnakeCase(pokemonTitleCase);
+        replace(`${pathname}?pokemons=${[...new Set([...pokemons, pokemon])].join(',')}`);
+      }}
     >
       <div className="relative">
         <Combobox.Input

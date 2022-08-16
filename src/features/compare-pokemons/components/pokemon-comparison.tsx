@@ -9,7 +9,7 @@ import { fetchPokemon } from '@/api/queries/pokemon';
 import { snakeCaseToTitleCase } from '@/utils/string';
 
 import { MAX_POKEMON_TO_COMPARE } from '../constants';
-import { getNewRoute, getPokemonsParam } from '../utils/url';
+import usePokemonsParam from '../hooks/use-pokemons-param';
 import MainSection from './main-section';
 import MovesSection from './moves-section';
 import PokemonComparisonCard from './pokemon-comparison-card';
@@ -17,9 +17,9 @@ import SearchPokemon from './search-pokemon';
 import StatsAndAbilitySection from './stats-and-ability-section';
 
 export default function PokemonComparison() {
-  const { replace } = useRouter();
+  const { pathname, replace } = useRouter();
 
-  const pokemons = getPokemonsParam();
+  const pokemons = usePokemonsParam();
 
   const results = useQueries({
     // @ts-ignore
@@ -87,7 +87,13 @@ export default function PokemonComparison() {
               {pokemons.length > 2 && (
                 <button
                   type="button"
-                  onClick={() => replace(getNewRoute({ removePokemon: pokemonName }))}
+                  onClick={() =>
+                    replace(
+                      `${pathname}?pokemons=${pokemons
+                        .filter((pokemon) => pokemon !== pokemonName)
+                        .join(',')}`,
+                    )
+                  }
                   className="absolute top-0.5 right-3 z-[2] p-0.5 text-3xl text-white"
                 >
                   <IoMdCloseCircle />

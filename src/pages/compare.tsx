@@ -1,17 +1,14 @@
 import { NextSeo } from 'next-seo';
-import { useFirstMount } from 'react-power-ups';
 
 import PokemonComparison from '@/features/compare-pokemons/components/pokemon-comparison';
 import SearchPokemon from '@/features/compare-pokemons/components/search-pokemon';
-import { getPokemonsParam } from '@/features/compare-pokemons/utils/url';
+import usePokemonsParam from '@/features/compare-pokemons/hooks/use-pokemons-param';
 import { snakeCaseToTitleCase } from '@/utils/string';
 
 export default function ComparePokemonsPage() {
-  const isFirstMount = useFirstMount();
+  const pokemons = usePokemonsParam();
 
-  const pokemons = getPokemonsParam();
-
-  if (isFirstMount || pokemons.length === 0) {
+  if (pokemons.length === 0) {
     return (
       <>
         <NextSeo title="Compare Pokemons" />

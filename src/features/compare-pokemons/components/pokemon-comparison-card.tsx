@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { ReactNode } from 'react';
 
-import { getPokemonsParam } from '../utils/url';
+import usePokemonsParam from '../hooks/use-pokemons-param';
 
 type Props = {
   className?: string;
@@ -9,7 +9,7 @@ type Props = {
 };
 
 export default function PokemonComparisonCard({ className, children }: Props) {
-  const pokemons = getPokemonsParam();
+  const pokemons = usePokemonsParam();
 
   return (
     <div

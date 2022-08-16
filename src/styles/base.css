@@ -14,7 +14,7 @@
         @apply hidden;
       }
       main {
-        @apply self-center;
+        @apply max-w-full self-center;
       }
     }
   }

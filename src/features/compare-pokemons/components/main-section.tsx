@@ -13,14 +13,14 @@ export default function MainSection({ pokemonName }: Props) {
 
   if (!pokemon) {
     return (
-      <div className="pokemon-elm relative h-72 rounded-md bg-gray-200 p-2.5 pt-16 shadow-md">
-        <div className="pokeball-flat left-1/2 top-32 -translate-x-1/2 animate-pulse opacity-30 invert" />
-      </div>
+      <section className="pokemon-elm relative h-96 rounded-md bg-gray-200 p-2.5 pt-16 shadow-md">
+        <div className="pokeball-flat left-1/2 top-40 -translate-x-1/2 animate-pulse opacity-30 invert" />
+      </section>
     );
   }
 
   return (
-    <div
+    <section
       className={`pokemon-elm relative rounded-md p-2.5 pt-16 shadow-md bg-elm-${pokemonTypes[0]}`}
     >
       <Image
@@ -53,6 +53,6 @@ export default function MainSection({ pokemonName }: Props) {
           <div className="text-gray-500">Weight</div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

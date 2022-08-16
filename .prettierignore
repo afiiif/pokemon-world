@@ -37,3 +37,5 @@ yarn-error.log*
 # generated
 /public/sw.js
 /public/workbox-*.js
+/.temp
+/public/generated

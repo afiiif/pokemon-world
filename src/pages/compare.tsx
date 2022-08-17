@@ -12,7 +12,7 @@ export default function ComparePokemonsPage() {
     return (
       <>
         <NextSeo title="Compare Pokemons" />
-        <h1 className="pt-4 pb-6 text-2xl font-bold">Compare Pokemons</h1>
+        <h1 className="pb-6 text-2xl font-bold">Compare Pokemons</h1>
         <SearchPokemon />
       </>
     );
@@ -23,7 +23,7 @@ export default function ComparePokemonsPage() {
       <NextSeo title="Compare Pokemons" />
       {pokemons.length === 1 ? (
         <>
-          <h1 className="pt-4 pb-6 text-2xl font-bold">
+          <h1 className="pb-6 text-2xl font-bold">
             Compare {snakeCaseToTitleCase(pokemons[0])} with...
           </h1>
           <SearchPokemon />

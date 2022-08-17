@@ -23,12 +23,12 @@
     @apply fixed bottom-0 z-10 w-full border-t bg-white
            lg:relative lg:col-start-2 lg:h-full lg:min-h-[calc(100vh_-_80px)] lg:border-r lg:border-t-0 lg:bg-transparent;
     .nav-link {
-      @apply flex w-full flex-col items-center py-1.5 lg:flex-row lg:gap-2 lg:py-2;
+      @apply flex w-full flex-col items-center rounded-md py-1.5 hover:bg-slate-100 lg:flex-row lg:gap-2 lg:p-3;
     }
   }
   #_nav-inner {
     @apply flex gap-2 px-2 py-0.5 text-[10px]
-           lg:sticky lg:top-20 lg:flex-col lg:py-12 lg:px-6 lg:text-base;
+           lg:sticky lg:top-20 lg:block lg:py-10 lg:pl-3 lg:pr-5 lg:text-base;
   }
 
   #_header {

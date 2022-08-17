@@ -42,7 +42,7 @@ export default function PokemonListFilter({ filter, setFilter }: Props) {
       <input
         type="text"
         placeholder="🔍 Search pokémon"
-        className="flex-1 rounded-md bg-slate-200 px-3 lg:flex-none"
+        className="flex-1 rounded-md bg-slate-200 px-3 lg:w-52"
         onInput={setKeyword}
         maxLength={11}
         defaultValue={query.q}

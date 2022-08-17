@@ -2,7 +2,7 @@ import { Head, Html, Main, NextScript } from 'next/document';
 
 export default function Document() {
   return (
-    <Html>
+    <Html lang="en">
       <Head>
         <meta name="application-name" content="Pokemon Awesome" />
         <meta name="apple-mobile-web-app-capable" content="yes" />

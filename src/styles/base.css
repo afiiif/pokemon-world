@@ -38,4 +38,8 @@
   #_header-inner {
     @apply mx-auto flex h-16 max-w-7xl justify-between px-3.5 py-2.5 lg:h-20 lg:px-6;
   }
+
+  .ReactQueryDevtools {
+    @apply absolute;
+  }
 }

@@ -11,6 +11,7 @@ import { snakeCaseToTitleCase } from '@/utils/string';
 
 import { MAX_POKEMON_TO_COMPARE } from '../constants';
 import usePokemonsParam from '../hooks/use-pokemons-param';
+import Card from './card';
 import MainSection from './main-section';
 import MovesSection from './moves-section';
 import PokemonComparisonCard from './pokemon-comparison-card';
@@ -107,16 +108,16 @@ export default function PokemonComparison() {
         </div>
         <div className="flex">
           {pokemons.map((pokemonName) => (
-            <PokemonComparisonCard key={pokemonName}>
+            <PokemonComparisonCard key={pokemonName} className="relative flex flex-col">
               <MovesSection pokemonName={pokemonName} />
-              <section className="mt-2.5 rounded-md bg-white p-3.5 shadow-md">
+              <Card>
                 <Link
                   href={`/pokemon/${pokemonName}`}
                   className="block text-center decoration-slate-400 hover:font-semibold hover:underline focus:font-semibold focus:underline"
                 >
                   Details →
                 </Link>
-              </section>
+              </Card>
             </PokemonComparisonCard>
           ))}
         </div>

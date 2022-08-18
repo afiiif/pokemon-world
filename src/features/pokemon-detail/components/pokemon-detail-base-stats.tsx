@@ -2,14 +2,14 @@ import { useQueryPokemonTypes } from '@/api/queries/pokemon';
 import { MAX_BASE_STATS, STATS_LABELS } from '@/constants/pokemon';
 
 import useCurrentPokemon from '../hooks/use-current-pokemon';
+import PokemonDetailCard from './pokemon-detail-card';
 
 export default function PokemonDetailBaseStats() {
   const { pokemon } = useCurrentPokemon();
   const pokemonTypes = useQueryPokemonTypes(pokemon.name).data!;
 
   return (
-    <section className="pokemon-detail-card">
-      <h2>Base Stats</h2>
+    <PokemonDetailCard heading="Base Stats">
       <div className="space-y-1 text-sm">
         {STATS_LABELS.map((label, idx) => {
           const baseStat = pokemon.pokemon_v2_pokemonstats[idx].base_stat;
@@ -29,6 +29,6 @@ export default function PokemonDetailBaseStats() {
           );
         })}
       </div>
-    </section>
+    </PokemonDetailCard>
   );
 }

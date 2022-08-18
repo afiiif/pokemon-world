@@ -2,12 +2,13 @@ import { HiArrowCircleRight } from 'react-icons/hi';
 import Slider from 'react-slick';
 
 import useCurrentPokemon from '../hooks/use-current-pokemon';
+import PokemonDetailCard from './pokemon-detail-card';
 
 export default function PokemonDetailDesciption() {
   const { pokemonSpecies } = useCurrentPokemon();
 
   return (
-    <section className="pokemon-detail-card">
+    <PokemonDetailCard>
       <Slider
         className="pokemon-desc-slick"
         adaptiveHeight
@@ -26,6 +27,6 @@ export default function PokemonDetailDesciption() {
           <p key={description}>{description}</p>
         ))}
       </Slider>
-    </section>
+    </PokemonDetailCard>
   );
 }

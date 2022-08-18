@@ -13,7 +13,7 @@ export default function MainSection({ pokemonName }: Props) {
 
   if (!pokemon) {
     return (
-      <section className="pokemon-elm relative h-96 rounded-md bg-gray-200 p-2.5 pt-16 shadow-md">
+      <section className="pokemon-elm relative mb-2.5 h-96 rounded-md bg-gray-200 p-2.5 pt-16 shadow-md">
         <div className="pokeball-flat left-1/2 top-40 -translate-x-1/2 animate-pulse opacity-30 invert" />
       </section>
     );
@@ -21,7 +21,7 @@ export default function MainSection({ pokemonName }: Props) {
 
   return (
     <section
-      className={`pokemon-elm relative rounded-md p-2.5 pt-16 shadow-md bg-elm-${pokemonTypes[0]}`}
+      className={`pokemon-elm relative mb-2.5 rounded-md p-2.5 pt-16 shadow-md bg-elm-${pokemonTypes[0]}`}
     >
       <Image
         src={getPokemonImage(pokemon.id)}

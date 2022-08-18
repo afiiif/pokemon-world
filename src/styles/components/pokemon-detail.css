@@ -197,12 +197,6 @@
            md:mt-4 md:px-6
            lg:m-0 lg:mt-6 lg:!bg-transparent lg:p-0 lg:transition-none;
   }
-  .pokemon-detail-card {
-    @apply mb-6 rounded-md bg-white p-3.5 shadow-md md:p-5;
-    h2 {
-      @apply pb-2 text-xl font-bold;
-    }
-  }
 
   .pokemon-desc-slick {
     @apply relative;

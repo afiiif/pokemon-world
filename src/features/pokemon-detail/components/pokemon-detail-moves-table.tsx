@@ -26,7 +26,7 @@ export default function PokemonDetailMovesTable({ pokemon }: Props) {
             const moveType = TYPE[pokemon_v2_move.type_id as keyof typeof TYPE];
             return (
               <tr key={pokemon_v2_move.name} className="hover:bg-slate-50">
-                <td className="border-b border-r px-2 py-1">
+                <td className="whitespace-nowrap border-b border-r px-2 py-1">
                   {snakeCaseToTitleCase(pokemon_v2_move.name)}
                 </td>
                 <td className="flex items-center gap-1.5 border-b border-r px-2 py-1 capitalize">

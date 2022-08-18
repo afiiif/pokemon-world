@@ -13,7 +13,7 @@ export default function MovesSection({ pokemonName }: Props) {
   if (!pokemon) {
     return (
       <Card heading="Moves">
-        <div className="mt-2 h-3 w-24 animate-pulse rounded-full bg-white/10 invert" />
+        <div className="mt-3 h-3 w-24 animate-pulse rounded-full bg-white/10 invert" />
         <div className="-mt-3 ml-auto h-3 w-12 animate-pulse rounded-full bg-white/10 invert" />
         <div className="mt-3.5 h-3 w-20 animate-pulse rounded-full bg-white/10 invert" />
         <div className="-mt-3 ml-auto h-3 w-12 animate-pulse rounded-full bg-white/10 invert" />

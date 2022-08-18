@@ -107,17 +107,19 @@ export default function PokemonComparison() {
           ))}
         </div>
         <div className="flex">
-          {pokemons.map((pokemonName) => (
+          {pokemons.map((pokemonName, idx) => (
             <PokemonComparisonCard key={pokemonName} className="relative flex flex-col">
               <MovesSection pokemonName={pokemonName} />
-              <Card>
-                <Link
-                  href={`/pokemon/${pokemonName}`}
-                  className="block text-center decoration-slate-400 hover:font-semibold hover:underline focus:font-semibold focus:underline"
-                >
-                  Details →
-                </Link>
-              </Card>
+              {results[idx].data && (
+                <Card>
+                  <Link
+                    href={`/pokemon/${pokemonName}`}
+                    className="-m-2 block rounded-md p-2 text-center decoration-slate-400 hover:bg-slate-50 hover:font-semibold focus:bg-slate-50 focus:font-semibold"
+                  >
+                    Details →
+                  </Link>
+                </Card>
+              )}
             </PokemonComparisonCard>
           ))}
         </div>

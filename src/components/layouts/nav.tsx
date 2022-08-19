@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import {
+  HiOutlineArchive,
   HiOutlineColorSwatch,
-  HiOutlineInformationCircle,
   HiOutlinePresentationChartLine,
   HiOutlineViewGrid,
 } from 'react-icons/hi';
@@ -29,9 +29,9 @@ export default function Nav() {
           </Link>
         </li>
         <li className="flex-1">
-          <Link href="/about" className="nav-link">
-            <HiOutlineInformationCircle className="text-2xl" />
-            About
+          <Link href="/my-pokemons" className="nav-link">
+            <HiOutlineArchive className="text-2xl" />
+            My Pokémons
           </Link>
         </li>
       </ul>

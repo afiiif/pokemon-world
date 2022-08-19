@@ -22,7 +22,7 @@ export default function PokemonDetailForms() {
       <Menu.Button className="mb-3 mt-2 flex items-center gap-2 rounded-md bg-white/60 px-3 py-1.5 text-typography-light">
         Forms ({pokemonSpecies.pokemon_v2_pokemons.length}) <HiChevronDown />
       </Menu.Button>
-      <Menu.Items className="absolute top-12 z-10 overflow-x-auto rounded-md bg-white py-2 text-typography-light dark:bg-dark-light dark:text-typography-dark lg:max-h-96">
+      <Menu.Items className="absolute top-12 z-10 max-h-96 overflow-x-auto rounded-md bg-white py-2 text-typography-light dark:bg-dark-light dark:text-typography-dark">
         {pokemonSpecies.pokemon_v2_pokemons.map((pokemon) => {
           const href =
             pokemon.name === pokemonSpecies.name

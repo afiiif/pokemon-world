@@ -1,5 +1,12 @@
 import clsx from 'clsx';
 import { Dispatch, SetStateAction, useEffect, useRef } from 'react';
+import { useLocalStorage } from 'react-power-ups';
+
+import { useQueryPokemonTypes } from '@/api/queries/pokemon';
+import { validateLocalStorageData } from '@/features/my-pokemons/utils/validate-local-storage';
+import { MyPokemon } from '@/types/pokemon';
+
+import useCurrentPokemon from '../hooks/use-current-pokemon';
 
 export type CatchState = 'void' | 'catching' | 'success' | 'fail';
 
@@ -16,6 +23,11 @@ type Props = {
 };
 
 export default function PokemonDetailButton({ catchState, setCatchState }: Props) {
+  const { pokemon } = useCurrentPokemon();
+  const pokemonTypes = useQueryPokemonTypes(pokemon.name).data!;
+
+  const [, setMyPokemons] = useLocalStorage<MyPokemon[]>('myPokemons');
+
   const timeoutRef = useRef<NodeJS.Timeout>();
 
   const onCatch = () => {
@@ -24,6 +36,19 @@ export default function PokemonDetailButton({ catchState, setCatchState }: Props
       const isSuccess = Math.random() > 0.5;
       const [status, timeOut]: [CatchState, number] = isSuccess ? ['success', 2800] : ['fail', 800];
       setCatchState(status);
+      if (isSuccess) {
+        setMyPokemons((prev) => {
+          const newPokemon: MyPokemon = {
+            id: pokemon.id,
+            name: pokemon.name,
+            types: pokemonTypes,
+          };
+          if (validateLocalStorageData(prev)) {
+            return prev!.some((item) => item.id === pokemon.id) ? prev : [newPokemon, ...prev!];
+          }
+          return [newPokemon];
+        });
+      }
       timeoutRef.current = setTimeout(() => {
         setCatchState('void');
       }, timeOut);

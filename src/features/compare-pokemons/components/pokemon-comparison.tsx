@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import Script from 'next/script';
-import { useEffect } from 'react';
+import { useEffect, useId } from 'react';
 import { HiOutlineArrowsExpand } from 'react-icons/hi';
 import { IoMdCloseCircle } from 'react-icons/io';
 import { useQueries } from 'react-query';
@@ -33,10 +32,25 @@ export default function PokemonComparison() {
 
   useEffect(() => () => document.querySelector('#__next')!.classList.remove('hide-sidebar'), []);
 
+  const idElmCardHeadContainer = useId();
+  const idElmCardBodyContainer = useId();
+
+  useEffect(() => {
+    const elmCardHead = document.getElementById(idElmCardHeadContainer) as HTMLDivElement;
+    const elmCardBody = document.getElementById(idElmCardBodyContainer) as HTMLDivElement;
+
+    const onScroll: (event: HTMLElementEventMap['scroll']) => void = ({ target }) => {
+      elmCardHead.scrollLeft = (target as HTMLDivElement).scrollLeft;
+    };
+    elmCardBody.addEventListener('scroll', onScroll);
+
+    return () => {
+      elmCardBody.removeEventListener('scroll', onScroll);
+    };
+  }, []);
+
   return (
     <>
-      <Script src="https://asvd.github.io/syncscroll/syncscroll.js" />
-
       {pokemons.length > 4 && (
         <div className="relative hidden xl:block">
           <button
@@ -60,8 +74,7 @@ export default function PokemonComparison() {
       )}
 
       <div
-        // @ts-ignore name property for syncscroll.js
-        name="pokemons-syncscroll"
+        id={idElmCardHeadContainer}
         className="syncscroll sticky top-0 z-[1] -mx-3.5 mt-3 flex overflow-x-hidden pl-2 lg:top-20 lg:pl-3"
       >
         {results.map(({ data }, idx) => {
@@ -79,8 +92,7 @@ export default function PokemonComparison() {
       </div>
 
       <div
-        // @ts-ignore name property for syncscroll.js
-        name="pokemons-syncscroll"
+        id={idElmCardBodyContainer}
         className="syncscroll -mx-3.5 -mt-[3.75rem] overflow-x-auto overscroll-x-none pl-2 pb-5 lg:snap-x lg:snap-mandatory lg:pl-3"
       >
         <div className="flex">

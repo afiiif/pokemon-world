@@ -1,9 +1,18 @@
 import Image from 'next/future/image';
 import Link from 'next/link';
+import { useState } from 'react';
 import { BsGithub } from 'react-icons/bs';
 import { HiMoon, HiSun } from 'react-icons/hi';
 
+import useIsomorphicLayoutEffect from '@/hooks/use-isomorphic-layout-effect';
+
 export default function Header() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  useIsomorphicLayoutEffect(() => {
+    if (localStorage.theme === 'dark') setDarkMode(true);
+  });
+
   return (
     <header id="_header">
       <div id="_header-inner">
@@ -25,7 +34,7 @@ export default function Header() {
           <a
             href="https://github.com/afiiif"
             title="Pokemon Awesome on GitHub"
-            className="p-2 text-2xl"
+            className="p-2 text-2xl dark:text-white"
           >
             <span className="sr-only">Pokemon Awesome on GitHub</span>
             <BsGithub />
@@ -35,11 +44,21 @@ export default function Header() {
             className="relative inline-flex cursor-pointer items-center text-2xl"
             title="Toggle dark mode"
           >
-            <input type="checkbox" id="darkmode-toggle" className="peer sr-only" />
-            <div className="h-7 w-11 rounded-full bg-elm-electric transition-colors peer-checked:bg-elm-dark" />
-            <div className="absolute left-0 top-0 m-0.5 h-6 w-6 rounded-full bg-white transition-[left] peer-checked:left-4" />
-            <HiSun className="absolute top-0 left-0 m-0.5 opacity-100 transition-all peer-checked:left-4 peer-checked:opacity-0" />
-            <HiMoon className="absolute top-0 left-0 m-0.5 opacity-0 transition-all peer-checked:left-4 peer-checked:opacity-100" />
+            <input
+              type="checkbox"
+              id="darkmode-toggle"
+              className="sr-only"
+              checked={darkMode}
+              onChange={({ target }) => {
+                setDarkMode(target.checked);
+                localStorage.theme = target.checked ? 'dark' : 'light';
+                document.documentElement.classList.toggle('dark', target.checked);
+              }}
+            />
+            <div className="h-7 w-11 rounded-full bg-elm-electric transition-colors dark:bg-slate-500" />
+            <div className="absolute left-0 top-0 m-0.5 h-6 w-6 rounded-full bg-white transition-[left] dark:left-4" />
+            <HiSun className="absolute top-0 left-0 m-0.5 opacity-100 transition-all dark:left-4 dark:opacity-0" />
+            <HiMoon className="absolute top-0 left-0 m-0.5 opacity-0 transition-all dark:left-4 dark:text-typography-light dark:opacity-100" />
           </label>
         </div>
       </div>

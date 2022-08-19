@@ -6,33 +6,31 @@ import {
   HiOutlineViewGrid,
 } from 'react-icons/hi';
 
-import ReactIconAsImg from '../commons/react-icon-as-img';
-
 export default function Nav() {
   return (
     <nav id="_nav">
       <ul id="_nav-inner">
         <li className="flex-1">
           <Link href="/" className="nav-link">
-            <ReactIconAsImg icon={HiOutlineViewGrid} />
+            <HiOutlineViewGrid className="text-2xl" />
             Pokémons
           </Link>
         </li>
         <li className="flex-1">
           <Link href="/compare" className="nav-link">
-            <ReactIconAsImg icon={HiOutlineColorSwatch} />
+            <HiOutlineColorSwatch className="text-2xl" />
             Compare
           </Link>
         </li>
         <li className="flex-1">
           <Link href="/statistics" className="nav-link">
-            <ReactIconAsImg icon={HiOutlinePresentationChartLine} />
+            <HiOutlinePresentationChartLine className="text-2xl" />
             Statistics
           </Link>
         </li>
         <li className="flex-1">
           <Link href="/about" className="nav-link">
-            <ReactIconAsImg icon={HiOutlineInformationCircle} />
+            <HiOutlineInformationCircle className="text-2xl" />
             About
           </Link>
         </li>

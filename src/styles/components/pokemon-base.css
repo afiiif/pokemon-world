@@ -6,7 +6,7 @@
     &.bg-elm-electric,
     &.bg-elm-ice,
     &.bg-elm-rock {
-      @apply text-inherit;
+      @apply text-inherit dark:text-white;
     }
   }
 

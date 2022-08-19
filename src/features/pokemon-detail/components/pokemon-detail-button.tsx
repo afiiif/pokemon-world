@@ -4,7 +4,7 @@ import { Dispatch, SetStateAction, useEffect, useRef } from 'react';
 export type CatchState = 'void' | 'catching' | 'success' | 'fail';
 
 const CATCH_STATE_OPTION = {
-  void: ['Catch!', null, 'text-gray-700'],
+  void: ['Catch!', null, 'text-typography-light'],
   catching: ['Catching...', null, 'text-gray-500'],
   success: ['Caught!', '🎉', 'text-emerald-600'],
   fail: ['Failed', '😓', 'text-red-500'],

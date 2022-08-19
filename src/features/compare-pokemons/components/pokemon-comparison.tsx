@@ -114,7 +114,7 @@ export default function PokemonComparison() {
                 <Card>
                   <Link
                     href={`/pokemon/${pokemonName}`}
-                    className="-m-2 block rounded-md p-2 text-center decoration-slate-400 hover:bg-slate-50 hover:font-semibold focus:bg-slate-50 focus:font-semibold"
+                    className="-m-2 block rounded-md p-2 text-center decoration-slate-400 hover:bg-slate-50 hover:font-semibold focus:bg-slate-50 focus:font-semibold dark:hover:bg-dark-light dark:focus:bg-dark-light"
                   >
                     Details →
                   </Link>

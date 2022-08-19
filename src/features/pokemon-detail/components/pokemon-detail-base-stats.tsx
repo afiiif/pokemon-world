@@ -17,7 +17,7 @@ export default function PokemonDetailBaseStats() {
             <div key={label} className="flex items-center">
               <div className="w-24">{label}</div>
               <div className="mr-2.5 w-7 text-right font-semibold">{baseStat}</div>
-              <div className="h-2 w-full flex-1 overflow-hidden rounded-full bg-slate-200">
+              <div className="h-2 w-full flex-1 overflow-hidden rounded-full bg-slate-200 dark:bg-dark-base">
                 <div
                   className={`h-full bg-elm-${pokemonTypes[0]} transition-all`}
                   style={{

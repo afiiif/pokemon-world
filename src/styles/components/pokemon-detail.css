@@ -6,7 +6,7 @@
   }
 
   #_pokemon-detail-base-props {
-    @apply relative flex items-end divide-x divide-white rounded-md bg-white/60 py-3 text-center text-xs text-gray-700 md:col-start-2;
+    @apply relative flex items-end divide-x divide-white rounded-md bg-white/60 py-3 text-center text-xs text-typography-light md:col-start-2;
     > div {
       @apply grow px-2;
     }
@@ -206,21 +206,14 @@
     .slick-slide {
       @apply float-left;
     }
-    .slick-arrow {
-      @apply absolute top-0 rounded-full text-2xl;
-      &::before {
-        content: '';
-        @apply absolute m-1 block h-4 w-4 rounded-full bg-white;
+    .slick-dots {
+      @apply -mb-0.5 !flex justify-center gap-2 pt-4 text-[0];
+      > li > button {
+        @apply h-2 w-2 rounded-full bg-slate-300 transition-[width,_background] dark:bg-slate-500;
       }
-      > svg {
-        @apply relative z-[1];
+      .slick-active > button {
+        @apply w-4 bg-slate-600 dark:bg-slate-300;
       }
-    }
-    .slick-prev {
-      @apply -left-7 scale-x-[-1] md:-ml-0.5;
-    }
-    .slick-next {
-      @apply -right-7 md:-mr-0.5;
     }
   }
 }

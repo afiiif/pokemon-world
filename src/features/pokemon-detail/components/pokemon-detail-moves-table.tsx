@@ -14,7 +14,7 @@ export default function PokemonDetailMovesTable({ pokemon }: Props) {
   return (
     <div className="relative max-h-[26rem] overflow-y-auto">
       <table className="w-full border-separate border-spacing-0 border-l text-sm">
-        <thead className="sticky top-0 bg-white text-left">
+        <thead className="sticky top-0 bg-white text-left dark:bg-dark-card">
           <tr>
             <th className="border-t border-b-2 border-r px-2 py-1.5">Name</th>
             <th className="border-t border-b-2 border-r px-2 py-1.5">Type</th>
@@ -25,7 +25,7 @@ export default function PokemonDetailMovesTable({ pokemon }: Props) {
           {pokemon.pokemon_v2_pokemonmoves.map(({ pokemon_v2_move }) => {
             const moveType = TYPE[pokemon_v2_move.type_id as keyof typeof TYPE];
             return (
-              <tr key={pokemon_v2_move.name} className="hover:bg-slate-50">
+              <tr key={pokemon_v2_move.name} className="hover:bg-slate-50 dark:hover:bg-slate-700">
                 <td className="whitespace-nowrap border-b border-r px-2 py-1">
                   {snakeCaseToTitleCase(pokemon_v2_move.name)}
                 </td>

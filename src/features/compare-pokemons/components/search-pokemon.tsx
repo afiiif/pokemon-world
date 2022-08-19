@@ -43,7 +43,7 @@ export default function SearchPokemon({ onChange }: Props) {
     >
       <div className="relative">
         <Combobox.Input
-          className="w-full rounded-md border py-2 px-3"
+          className="w-full rounded-md border py-2 px-3 text-typography-light"
           onChange={(event) => setKeyword(event.target.value)}
           type="search"
           placeholder={placeholder}
@@ -56,7 +56,7 @@ export default function SearchPokemon({ onChange }: Props) {
           leaveTo="opacity-0"
         >
           {keyword && (
-            <Combobox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-sm shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+            <Combobox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-sm shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-dark-light dark:text-typography-dark">
               {filteredPokemons.length === 0 ? (
                 <div className="cursor-default select-none py-2 px-4 text-gray-500">
                   Nothing found.
@@ -68,7 +68,7 @@ export default function SearchPokemon({ onChange }: Props) {
                     className={({ active }) =>
                       clsx(
                         'relative cursor-default select-none truncate py-2 px-4',
-                        active && 'bg-slate-600 text-white',
+                        active && 'bg-slate-50 dark:bg-slate-700',
                       )
                     }
                     value={pokemon}

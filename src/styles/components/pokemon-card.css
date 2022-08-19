@@ -4,13 +4,13 @@
   }
 
   .pokemon-card {
-    @apply relative grid grid-cols-[auto_1fr_128px] grid-rows-[auto_auto_1fr_auto] overflow-hidden rounded-md bg-gray-200 p-4 text-sm text-white;
+    @apply relative grid grid-cols-[auto_1fr_128px] grid-rows-[auto_auto_1fr_auto] overflow-hidden rounded-md bg-elm-undefined p-4 text-sm text-white;
 
     &.bg-elm-bug,
     &.bg-elm-electric,
     &.bg-elm-ice,
     &.bg-elm-rock {
-      @apply text-inherit;
+      @apply text-inherit dark:text-white;
     }
 
     > img {
@@ -25,6 +25,6 @@
   }
 
   .pokemon-card-number {
-    @apply mt-2 rounded-full bg-white/60 px-2.5 py-1 font-semibold text-gray-700;
+    @apply mt-2 rounded-full bg-white/60 px-2.5 py-1 font-semibold text-typography-light;
   }
 }

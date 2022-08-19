@@ -19,10 +19,10 @@ export default function PokemonDetailForms() {
 
   return (
     <Menu>
-      <Menu.Button className="mb-3 mt-2 flex items-center gap-2 rounded-md bg-white/60 px-3 py-1.5 text-gray-700">
+      <Menu.Button className="mb-3 mt-2 flex items-center gap-2 rounded-md bg-white/60 px-3 py-1.5 text-typography-light">
         Forms ({pokemonSpecies.pokemon_v2_pokemons.length}) <HiChevronDown />
       </Menu.Button>
-      <Menu.Items className="absolute top-12 z-10 rounded-md bg-white py-2 text-gray-700">
+      <Menu.Items className="absolute top-12 z-10 overflow-x-auto rounded-md bg-white py-2 text-typography-light dark:bg-dark-light dark:text-typography-dark lg:max-h-96">
         {pokemonSpecies.pokemon_v2_pokemons.map((pokemon) => {
           const href =
             pokemon.name === pokemonSpecies.name
@@ -35,7 +35,7 @@ export default function PokemonDetailForms() {
                   href={href}
                   className={clsx(
                     'flex items-center gap-1 py-1 px-3',
-                    active && 'bg-slate-100',
+                    active && 'bg-slate-50 dark:bg-slate-700',
                     asPath === href && 'font-semibold',
                   )}
                   replace

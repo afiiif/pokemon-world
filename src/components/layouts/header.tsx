@@ -11,7 +11,7 @@ export default function Header() {
 
   useIsomorphicLayoutEffect(() => {
     if (localStorage.theme === 'dark') setDarkMode(true);
-  });
+  }, []);
 
   return (
     <header id="_header">

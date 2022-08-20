@@ -1,6 +1,6 @@
 export const STATS_LABELS = ['HP', 'Attack', 'Defense', 'Sp. Attack', 'Sp. Defense', 'Speed'];
 
-export const MAX_BASE_STATS = 170;
+export const MAX_BASE_STATS = 255;
 
 export const TYPE = {
   1: 'normal',

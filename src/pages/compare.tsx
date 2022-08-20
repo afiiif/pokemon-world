@@ -31,9 +31,11 @@ export default function ComparePokemonsPage() {
           <h1 className="pb-6 text-2xl font-bold">
             Compare {snakeCaseToTitleCase(pokemons[0])} with...
           </h1>
-          <SearchPokemon />
+          <div className="max-w-xl">
+            <SearchPokemon />
+          </div>
           {pokemon && (
-            <div className="mx-auto flex w-80 items-center justify-around pt-8 md:mx-0">
+            <div className="flex max-w-xl items-center justify-around pt-8">
               <Image
                 src={getPokemonImage(pokemon.id)}
                 alt={pokemon.name}
@@ -42,7 +44,7 @@ export default function ComparePokemonsPage() {
                 quality={25}
               />
               <div className="text-2xl">VS</div>
-              <div className="text-6xl">❓</div>
+              <div className="w-32 pl-6 text-6xl">❓</div>
             </div>
           )}
         </>

@@ -3,13 +3,12 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { BsGithub } from 'react-icons/bs';
 import { HiMoon, HiSun } from 'react-icons/hi';
-
-import useIsomorphicLayoutEffect from '@/hooks/use-isomorphic-layout-effect';
+import { useIsomorphicLayoutEffect as useLayoutEffect } from 'react-power-ups';
 
 export default function Header() {
   const [darkMode, setDarkMode] = useState(false);
 
-  useIsomorphicLayoutEffect(() => {
+  useLayoutEffect(() => {
     if (localStorage.theme === 'dark') setDarkMode(true);
   }, []);
 

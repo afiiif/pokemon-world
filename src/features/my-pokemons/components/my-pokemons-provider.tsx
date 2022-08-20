@@ -1,6 +1,6 @@
-import { ReactNode, useMemo, useState } from 'react';
+import { ReactNode, useMemo } from 'react';
+import { useLocalStorage } from 'react-power-ups';
 
-import useIsomorphicLayoutEffect from '@/hooks/use-isomorphic-layout-effect';
 import { MyPokemon } from '@/types/pokemon';
 
 import { MyPokemonsContext } from '../contexts/my-pokemons';
@@ -11,23 +11,13 @@ type Props = {
 };
 
 export default function MyPokemonsProvider({ children }: Props) {
-  const [myPokemons, setMyPokemons] = useState<MyPokemon[]>([]);
+  const [myPokemons, setMyPokemons] = useLocalStorage<MyPokemon[]>({
+    key: 'myPokemons',
+    initialValue: [],
+    validator: validateLocalStorageData,
+  });
 
-  useIsomorphicLayoutEffect(() => {
-    try {
-      const savedValue = JSON.parse(localStorage.myPokemons);
-      if (validateLocalStorageData(savedValue)) {
-        setMyPokemons(savedValue);
-      }
-    } catch {
-      localStorage.removeItem('myPokemons');
-    }
-  }, []);
-
-  useIsomorphicLayoutEffect(() => {
-    localStorage.myPokemons = JSON.stringify(myPokemons);
-  }, [myPokemons]);
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const value = useMemo(() => ({ myPokemons, setMyPokemons }), [myPokemons]);
 
   return <MyPokemonsContext.Provider value={value}>{children}</MyPokemonsContext.Provider>;

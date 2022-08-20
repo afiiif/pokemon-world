@@ -8,6 +8,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 
 import Layout from '@/components/layouts/layout';
 import getQueryClient from '@/config/react-query';
+import MyPokemonsProvider from '@/features/my-pokemons/components/my-pokemons-provider';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(getQueryClient);
@@ -21,7 +22,9 @@ export default function App({ Component, pageProps }: AppProps) {
           description="Pokemon Awesome"
         />
         <Layout>
-          <Component {...pageProps} />
+          <MyPokemonsProvider>
+            <Component {...pageProps} />
+          </MyPokemonsProvider>
         </Layout>
         <ReactQueryDevtools />
       </Hydrate>

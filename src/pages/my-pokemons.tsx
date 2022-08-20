@@ -1,17 +1,13 @@
 import Image from 'next/future/image';
 import Link from 'next/link';
 import { HiTrash } from 'react-icons/hi';
-import { useLocalStorage } from 'react-power-ups';
 
-import { validateLocalStorageData } from '@/features/my-pokemons/utils/validate-local-storage';
+import { useMyPokemons } from '@/features/my-pokemons/contexts/my-pokemons';
 import { formatPokemonId, getPokemonImage } from '@/helpers/pokemon';
-import { MyPokemon } from '@/types/pokemon';
 import { snakeCaseToTitleCase } from '@/utils/string';
 
 export default function MyPokemonsPage() {
-  const [storageData, setMyPokemons] = useLocalStorage<MyPokemon[]>('myPokemons');
-
-  const myPokemons = validateLocalStorageData(storageData) ? storageData! : [];
+  const { myPokemons, setMyPokemons } = useMyPokemons();
 
   if (myPokemons.length === 0) {
     return (

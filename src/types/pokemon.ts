@@ -3,7 +3,7 @@ import {
   Pokemon_V2_Move,
   Pokemon_V2_Pokemon,
   Pokemon_V2_Pokemonstat,
-} from '@/generated/graphql.types';
+} from '../generated/graphql.types';
 
 export type PokemonBase = Pick<
   Pokemon_V2_Pokemon,

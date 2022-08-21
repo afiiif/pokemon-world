@@ -18,6 +18,15 @@ const nextConfig = {
       ],
     },
   },
+  async redirects() {
+    return [
+      {
+        source: '/statistics',
+        destination: '/statistics/types',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = withPWA({

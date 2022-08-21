@@ -23,7 +23,7 @@ export default function Nav() {
           </Link>
         </li>
         <li className="flex-1">
-          <Link href="/statistics" className="nav-link">
+          <Link href="/statistics/types" className="nav-link">
             <HiOutlinePresentationChartLine className="text-2xl" />
             Statistics
           </Link>

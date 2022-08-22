@@ -10,7 +10,7 @@ type FetchStatisticsResponse = {
 };
 
 export const fetchStatistics = async (): Promise<FetchStatisticsResponse> => {
-  const res = await fetch('/generated/statistics.json');
+  const res = await fetch('/generated/statistics/types.json');
   return res.json();
 };
 

@@ -5,7 +5,7 @@ function RibbonTooltip({ ribbon }: RibbonTooltipComponentProps) {
   const { source, target } = ribbon;
 
   return (
-    <div className="rounded-md bg-white p-2 text-xs shadow-md">
+    <div className="rounded-md bg-white p-2 text-xs text-typography-light shadow-md">
       {source.id === target.id ? (
         <div className="flex items-center gap-2">
           <div style={{ background: source.color }} className="h-3 w-3 rounded-full" />

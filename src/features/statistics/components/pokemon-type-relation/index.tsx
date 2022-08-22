@@ -19,12 +19,12 @@ export default function PokemonTypeRelation() {
   const { keys, colors, data } = statistics;
 
   return (
-    <div className="2xl:-mr-32 2xl:flex 2xl:items-center">
-      <div className="aspect-square w-full flex-1 2xl:max-w-[calc(100%_-_14rem)]">
+    <div className="-mx-3.5 lg:mx-0 2xl:-mr-32 2xl:flex 2xl:items-center 2xl:gap-6">
+      <div className="aspect-square w-full flex-1 2xl:max-w-[calc(100%_-_15.5rem)]">
         <ResponsiveChord
           keys={keys}
           data={data}
-          margin={{ top: 60, right: 60, bottom: 90, left: 60 }}
+          margin={{ top: 36, right: 36, bottom: 36, left: 36 }}
           padAngle={0.02}
           innerRadiusRatio={0.96}
           innerRadiusOffset={0.02}
@@ -39,12 +39,12 @@ export default function PokemonTypeRelation() {
             from: 'color',
             modifiers: [['darker', 0.6]],
           }}
-          labelRotation={-90}
           labelTextColor={{
             from: 'color',
             modifiers: [['darker', 1]],
           }}
           colors={colors}
+          theme={{ fontSize: 12 }}
           motionConfig="stiff"
           arcTooltip={ArcTooltipMemoized}
           ribbonTooltip={RibbonTooltipMemoized}

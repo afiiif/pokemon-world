@@ -1,3 +1,5 @@
+/* eslint-disable prefer-destructuring */
+/* eslint-disable no-plusplus */
 import { gql, request } from 'graphql-request';
 import { mkdirSync, writeFileSync } from 'node:fs';
 
@@ -51,6 +53,77 @@ const KEYOF_TYPES = Object.fromEntries(TYPES.map((type, idx) => [type, idx]));
 
 const TYPES_COLORS = TYPES.map((type) => TYPE_COLOR[type as keyof typeof TYPE_COLOR]);
 
+// eslint-disable-next-line sonarjs/cognitive-complexity
+const computeRank = (typeRelation: number[][]) => {
+  type Rank = { n: number; type?: string[] }[];
+  const largestSingleType: Rank = [{ n: 0 }, { n: 0 }, { n: 0 }];
+  const largestMultiType: Rank = [{ n: 0 }, { n: 0 }, { n: 0 }];
+  const smallestSingleType: Rank = [{ n: Infinity }, { n: Infinity }, { n: Infinity }];
+  const smallestMultiType: Rank = [{ n: Infinity }, { n: Infinity }, { n: Infinity }];
+  const noOccurenceMultiType: string[][] = [];
+
+  for (let i = 0; i < typeRelation.length; i++) {
+    for (let j = i; j < typeRelation.length; j++) {
+      const currentTotal = typeRelation[i][j];
+      if (i === j) {
+        if (currentTotal >= largestSingleType[0].n) {
+          largestSingleType[2] = largestSingleType[1];
+          largestSingleType[1] = largestSingleType[0];
+          largestSingleType[0] = { n: currentTotal, type: [TYPES[i]] };
+        } else if (currentTotal >= largestSingleType[1].n) {
+          largestSingleType[2] = largestSingleType[1];
+          largestSingleType[1] = { n: currentTotal, type: [TYPES[i]] };
+        } else if (currentTotal >= largestSingleType[2].n) {
+          largestSingleType[2] = { n: currentTotal, type: [TYPES[i]] };
+        }
+        if (currentTotal <= smallestSingleType[0].n) {
+          smallestSingleType[2] = smallestSingleType[1];
+          smallestSingleType[1] = smallestSingleType[0];
+          smallestSingleType[0] = { n: currentTotal, type: [TYPES[i]] };
+        } else if (currentTotal <= smallestSingleType[1].n) {
+          smallestSingleType[2] = smallestSingleType[1];
+          smallestSingleType[1] = { n: currentTotal, type: [TYPES[i]] };
+        } else if (currentTotal <= smallestSingleType[2].n) {
+          smallestSingleType[2] = { n: currentTotal, type: [TYPES[i]] };
+        }
+      } else {
+        if (currentTotal >= largestMultiType[0].n) {
+          largestMultiType[2] = largestMultiType[1];
+          largestMultiType[1] = largestMultiType[0];
+          largestMultiType[0] = { n: currentTotal, type: [TYPES[i], TYPES[j]] };
+        } else if (currentTotal >= largestMultiType[1].n) {
+          largestMultiType[2] = largestMultiType[1];
+          largestMultiType[1] = { n: currentTotal, type: [TYPES[i], TYPES[j]] };
+        } else if (currentTotal >= largestMultiType[2].n) {
+          largestMultiType[2] = { n: currentTotal, type: [TYPES[i], TYPES[j]] };
+        }
+        if (currentTotal) {
+          if (currentTotal <= smallestMultiType[0].n) {
+            smallestMultiType[2] = smallestMultiType[1];
+            smallestMultiType[1] = smallestMultiType[0];
+            smallestMultiType[0] = { n: currentTotal, type: [TYPES[i], TYPES[j]] };
+          } else if (currentTotal <= smallestMultiType[1].n) {
+            smallestMultiType[2] = smallestMultiType[1];
+            smallestMultiType[1] = { n: currentTotal, type: [TYPES[i], TYPES[j]] };
+          } else if (currentTotal <= smallestMultiType[2].n) {
+            smallestMultiType[2] = { n: currentTotal, type: [TYPES[i], TYPES[j]] };
+          }
+        } else {
+          noOccurenceMultiType.push([TYPES[i], TYPES[j]]);
+        }
+      }
+    }
+  }
+
+  return {
+    largestSingleType,
+    largestMultiType,
+    smallestSingleType,
+    smallestMultiType,
+    noOccurenceMultiType,
+  };
+};
+
 // eslint-disable-next-line unicorn/prefer-top-level-await
 request<FetchPokemonsResponse>(API_ENDPOINT, query).then((data) => {
   const typeRelation = TYPES.map(() => TYPES.map(() => 0));
@@ -85,6 +158,9 @@ request<FetchPokemonsResponse>(API_ENDPOINT, query).then((data) => {
     pokemons,
   };
 
-  mkdirSync('public/generated', { recursive: true });
-  writeFileSync('public/generated/statistics.json', JSON.stringify(statistics));
+  const rank = computeRank(typeRelation);
+
+  mkdirSync('public/generated/statistics', { recursive: true });
+  writeFileSync('public/generated/statistics/types.json', JSON.stringify(statistics));
+  writeFileSync('public/generated/statistics/types-rank.json', JSON.stringify(rank));
 });

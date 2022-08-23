@@ -19,7 +19,23 @@ export default function StatisticsTypesPage() {
 
   return (
     <>
-      <NextSeo title="Statistics of Pokémon Types" />
+      <NextSeo
+        title="Statistics of Pokémon Types"
+        description="See how pokemon types are distributed. What is the most common and the rarest pokemon types?"
+        openGraph={{
+          images: [
+            {
+              url: `${
+                process.env.NEXT_PUBLIC_BASE_URL || ''
+              }/images/pokemon-statistics-thumbnail-1200x630.jpg`,
+              width: 1200,
+              height: 630,
+              alt: 'Pokemon Statistics',
+              type: 'image/jpeg',
+            },
+          ],
+        }}
+      />
       <h1 className="pb-6 text-3xl font-bold">Statistics</h1>
 
       <Nav />

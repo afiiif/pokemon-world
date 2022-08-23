@@ -1,5 +1,12 @@
-const withPWA = require('next-pwa');
+const nextPWA = require('next-pwa');
+
 const runtimeCaching = require('./next-pwa.cache');
+
+const withPWA = nextPWA({
+  dest: 'public',
+  disable: process.env.NODE_ENV === 'development',
+  runtimeCaching,
+});
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -29,11 +36,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withPWA({
-  ...nextConfig,
-  pwa: {
-    dest: 'public',
-    disable: process.env.NODE_ENV === 'development',
-    runtimeCaching,
-  },
-});
+module.exports = withPWA(nextConfig);

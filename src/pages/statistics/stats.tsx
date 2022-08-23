@@ -10,7 +10,12 @@ export default function StatisticsStatsPage() {
 
       <Nav />
 
-      <div className="py-10">🚧 Work in progress...</div>
+      <div className="pt-10 pb-4 text-2xl text-rose-500">
+        🔒 This page only available for premium users
+      </div>
+      <div className="pb-16 text-gray-400">
+        Just kidding. Actually it&apos;s not developed yet 😅
+      </div>
     </>
   );
 }

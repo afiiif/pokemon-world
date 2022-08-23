@@ -19,13 +19,13 @@ export default function StatisticsTypesPage() {
 
   return (
     <>
-      <NextSeo title="Statistics of Pokemon Types" />
+      <NextSeo title="Statistics of Pokémon Types" />
       <h1 className="pb-6 text-3xl font-bold">Statistics</h1>
 
       <Nav />
 
       <section>
-        <h2 className="pt-9 pb-4 text-2xl font-bold">Pokemon Type Relation</h2>
+        <h2 className="pt-9 pb-4 text-2xl font-bold">Pokémon Type Relation</h2>
         <PokemonTypeRelation />
       </section>
 
@@ -39,7 +39,7 @@ export default function StatisticsTypesPage() {
             <SingleType rank={rank.largestSingleType} />
           </div>
           <div>
-            <h3 className="text-lg font-medium">Multi Type</h3>
+            <h3 className="text-lg font-medium">Pair Type</h3>
             <MultiType rank={rank.largestMultiType} />
           </div>
         </div>
@@ -55,15 +55,15 @@ export default function StatisticsTypesPage() {
             <SingleType rank={rank.smallestSingleType} />
           </div>
           <div>
-            <h3 className="text-lg font-medium">Multi Type</h3>
-            <MultiType rank={rank.smallestMultiType} />
+            <h3 className="text-lg font-medium">Pair Type</h3>
+            <p className="text-gray-400">Too many pair type which has only one pokémon 😅</p>
           </div>
         </div>
       </section>
 
       <section>
         <h2 className="mt-8 border-t pt-5 pb-6 text-2xl font-bold md:mt-11 md:pt-8">
-          Zero-Occurrences Pair-Type
+          Zero-Occurrences Pair Type
         </h2>
         <ul className="flex flex-wrap pb-10">
           {rank.noOccurenceMultiType.map(([type1, type2]) => (

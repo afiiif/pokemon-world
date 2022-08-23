@@ -11,7 +11,7 @@ import rank from '~/generated/statistics/types-rank.json';
 
 const PokemonTypeRelation = dynamic(
   () => import('@/features/statistics/components/pokemon-type-relation'),
-  { ssr: false },
+  { ssr: false, loading: () => <div className="h-[100vw] max-h-[42rem]" /> },
 );
 
 export default function StatisticsTypesPage() {

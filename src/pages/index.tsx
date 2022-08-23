@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { GetStaticPropsResult } from 'next';
+import { NextSeo } from 'next-seo';
 import { useEffect, useState } from 'react';
 import { useIntersection } from 'react-power-ups';
 import { dehydrate, DehydratedState } from 'react-query';
@@ -14,6 +15,11 @@ import PokemonListFilter from '@/features/pokemon-list/components/pokemon-list-f
 type Result = GetStaticPropsResult<{ dehydratedState: DehydratedState }>;
 
 const INITIAL_FILTER = { name: '', generationId: 0, typeId: 0 };
+
+const SEO_DESCRIPTION =
+  process.env.NEXT_PUBLIC_SEO_HOMEPAGE_DESCRIPTION ||
+  process.env.NEXT_PUBLIC_SEO_DEFAULT_DESCRIPTION ||
+  'Pokémon Awesome';
 
 export async function getStaticProps(): Promise<Result> {
   const queryClient = getQueryClient();
@@ -49,6 +55,21 @@ export default function PokemonListPage() {
 
   return (
     <>
+      <NextSeo
+        description={SEO_DESCRIPTION}
+        openGraph={{
+          images: [
+            {
+              url: `${process.env.NEXT_PUBLIC_BASE_URL || ''}/images/pokemon-awesome-thumbnail.jpg`,
+              width: 2560,
+              height: 1280,
+              alt: 'Pokemon Awesome',
+              type: 'image/jpeg',
+            },
+          ],
+        }}
+      />
+
       <div className="sticky-section">
         <PokemonListFilter filter={filter} setFilter={setFilter} />
       </div>

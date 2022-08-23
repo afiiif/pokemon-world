@@ -17,9 +17,9 @@ export default function App({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
         <DefaultSeo
-          defaultTitle="Pokemon Awesome"
-          titleTemplate="%s | Pokemon Awesome"
-          description="Pokemon Awesome"
+          defaultTitle="Pokémon Awesome"
+          titleTemplate="%s | Pokémon Awesome"
+          description={process.env.NEXT_PUBLIC_SEO_DEFAULT_DESCRIPTION || 'Pokémon Awesome'}
         />
         <Layout>
           <MyPokemonsProvider>

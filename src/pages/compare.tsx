@@ -1,8 +1,8 @@
 import Image from 'next/future/image';
-import { NextSeo } from 'next-seo';
 
 import { useQueryPokemon } from '@/api/queries/pokemon';
 import PokemonComparison from '@/features/compare-pokemons/components/pokemon-comparison';
+import PokemonComparisonSeo from '@/features/compare-pokemons/components/pokemon-comparison-seo';
 import SearchPokemon from '@/features/compare-pokemons/components/search-pokemon';
 import usePokemonsParam from '@/features/compare-pokemons/hooks/use-pokemons-param';
 import { getPokemonImage } from '@/helpers/pokemon';
@@ -16,8 +16,8 @@ export default function ComparePokemonsPage() {
   if (pokemons.length === 0) {
     return (
       <>
-        <NextSeo title="Compare Pokemons" />
-        <h1 className="pb-6 text-2xl font-bold">Compare Pokemons</h1>
+        <PokemonComparisonSeo />
+        <h1 className="pb-6 text-2xl font-bold">Compare Pokémons</h1>
         <SearchPokemon />
       </>
     );
@@ -25,7 +25,7 @@ export default function ComparePokemonsPage() {
 
   return (
     <>
-      <NextSeo title="Compare Pokemons" />
+      <PokemonComparisonSeo />
       {pokemons.length === 1 ? (
         <>
           <h1 className="pb-6 text-2xl font-bold">

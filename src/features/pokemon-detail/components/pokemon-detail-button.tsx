@@ -21,6 +21,16 @@ type Props = {
   setCatchState: Dispatch<SetStateAction<CatchState>>;
 };
 
+const playAudio = (src: string) => {
+  try {
+    const audio = new Audio(`/audios/${src}`);
+    audio.volume = 0.15;
+    audio.play();
+  } catch {
+    //
+  }
+};
+
 export default function PokemonDetailButton({ catchState, setCatchState }: Props) {
   const { pokemon } = useCurrentPokemon();
   const pokemonTypes = useQueryPokemonTypes(pokemon.name).data!;
@@ -33,8 +43,11 @@ export default function PokemonDetailButton({ catchState, setCatchState }: Props
     setCatchState('catching');
     timeoutRef.current = setTimeout(() => {
       const isSuccess = Math.random() > 0.5;
-      const [status, timeOut]: [CatchState, number] = isSuccess ? ['success', 2800] : ['fail', 800];
+      const [status, timeOut, soundFile]: [CatchState, number, string] = isSuccess
+        ? ['success', 2800, 'acute.mp3']
+        : ['fail', 800, 'blop.mp3'];
       setCatchState(status);
+      playAudio(soundFile);
       if (isSuccess) {
         setMyPokemons((prev) => {
           const newPokemon: MyPokemon = {
@@ -56,14 +69,19 @@ export default function PokemonDetailButton({ catchState, setCatchState }: Props
         setCatchState('void');
       }, timeOut);
     }, 5600);
+    playAudio('jump.mp3');
   };
 
-  useEffect(
-    () => () => {
+  useEffect(() => {
+    // Preload audio
+    fetch(`/audios/jump.mp3`);
+    fetch(`/audios/acute.mp3`);
+    fetch(`/audios/blop.mp3`);
+
+    return () => {
       clearTimeout(timeoutRef.current);
-    },
-    [],
-  );
+    };
+  }, []);
 
   const [label, emoji, className] = CATCH_STATE_OPTION[catchState];
 

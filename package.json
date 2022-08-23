@@ -24,7 +24,7 @@
     "@nivo/chord": "^0.79.1",
     "@nivo/core": "^0.79.0",
     "clsx": "^1.2.1",
-    "graphql": "^16.5.0",
+    "graphql": "^16.6.0",
     "graphql-request": "^4.3.0",
     "mini-svg-data-uri": "^1.4.4",
     "next": "12.2.5",

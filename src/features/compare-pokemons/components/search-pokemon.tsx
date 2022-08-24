@@ -8,6 +8,8 @@ import { titleCaseToSnakeCase } from '@/utils/string';
 
 import usePokemonsParam from '../hooks/use-pokemons-param';
 
+const MAX_SHOWED_POKEMONS = 15;
+
 type Props = {
   onChange?: (pokemon: string) => void;
 };
@@ -21,7 +23,7 @@ export default function SearchPokemon({ onChange }: Props) {
     .filter((pokemon) =>
       pokemon.toLowerCase().replace(/\s+/g, '').includes(keyword.toLowerCase().replace(/\s+/g, '')),
     )
-    .slice(0, 10);
+    .slice(0, MAX_SHOWED_POKEMONS);
 
   const pokemons = usePokemonsParam();
   const placeholder =

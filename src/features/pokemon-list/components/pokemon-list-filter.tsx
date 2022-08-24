@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { ChangeEvent, Dispatch, SetStateAction, useEffect } from 'react';
-import { useThrottleFn } from 'react-power-ups';
+import { useDebounceFn } from 'react-power-ups';
 
 import { useQueryPokemonGenAndTypes } from '@/api/queries/pokemon-gen-and-types';
 import { QueryPokemonFilter } from '@/api/queries/pokemons';
@@ -17,7 +17,7 @@ export default function PokemonListFilter({ filter, setFilter }: Props) {
   const { data } = useQueryPokemonGenAndTypes();
   const { query, replace, asPath } = useRouter();
 
-  const [setKeyword] = useThrottleFn<[ChangeEvent<HTMLInputElement>]>(({ target }) => {
+  const [setKeyword] = useDebounceFn<[ChangeEvent<HTMLInputElement>]>(({ target }) => {
     setFilter((prev) => ({ ...prev, name: target.value.trim() }));
     replace(getNewRoute({ q: target.value.trim() }));
   }, 600);

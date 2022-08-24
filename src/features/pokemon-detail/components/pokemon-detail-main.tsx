@@ -44,7 +44,7 @@ export default function PokemonDetailMain() {
           size={400}
           priority
           className={clsx(
-            'relative mx-auto w-full max-w-[400px] place-self-end drop-shadow-2xl',
+            'relative mx-auto inline-block w-full max-w-[400px] place-self-end drop-shadow-2xl',
             catchState === 'catching' && 'pokemon-shrinking',
             catchState === 'fail' && 'pokemon-release',
             catchState === 'success' && 'pokemon-release-delayed',

@@ -1,0 +1,20 @@
+name: End-to-End Test
+
+on:
+  push:
+    branches: [main, beta]
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  lint:
+    name: E2E test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
+      - name: Install playwright dependencies
+        run: npx playwright install
+      - name: Run e2e test
+        run: yarn test:e2e

@@ -39,8 +39,9 @@ export default function Detail({ activeRibbon }: Props) {
 
       <div className="max-h-96 overflow-auto 2xl:h-[36rem] 2xl:max-h-[36rem]">
         {pokemons[id as keyof typeof pokemons]?.map((pokemonName: string) => {
-          const hasVariant = pokemonName.includes('-');
-          const href = hasVariant ? `${pokemonName.split('-')[0]}/${pokemonName}` : pokemonName;
+          const [mainName, variant = ''] = pokemonName.split('-');
+          const hasVariant = variant.length > 1;
+          const href = hasVariant ? `${mainName}/${pokemonName}` : pokemonName;
 
           return (
             <Link

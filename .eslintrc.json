@@ -6,6 +6,8 @@
   },
   "rules": {
     "jsx-a11y/anchor-is-valid": "warn",
-    "unicorn/prefer-query-selector": "warn"
+    "unicorn/prefer-query-selector": "warn",
+    "jest/no-deprecated-functions": "off",
+    "jest/no-standalone-expect": "off"
   }
 }

@@ -1,7 +1,6 @@
-import Image from 'next/future/image';
-
 import { useQueryPokemon, useQueryPokemonTypes } from '@/api/queries/pokemon';
-import { formatPokemonId, getPokemonImage } from '@/helpers/pokemon';
+import PokemonImage from '@/components/commons/pokemon-image';
+import { formatPokemonId } from '@/helpers/pokemon';
 
 type Props = {
   pokemonName: string;
@@ -23,13 +22,12 @@ export default function MainSection({ pokemonName }: Props) {
     <section
       className={`pokemon-elm relative mb-2.5 rounded-md p-2.5 pt-16 shadow-md bg-elm-${pokemonTypes[0]}`}
     >
-      <Image
-        src={getPokemonImage(pokemon.id)}
+      <PokemonImage
+        idPokemon={pokemon.id}
         alt={pokemon.name}
-        width={128}
-        height={128}
-        quality={25}
+        size={128}
         className="mx-auto text-center"
+        imgClassName="mx-auto text-center"
         priority
       />
       <div className="pt-2 pb-3 text-center">#{formatPokemonId(pokemon.id)}</div>

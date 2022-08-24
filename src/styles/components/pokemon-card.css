@@ -13,7 +13,8 @@
       @apply text-inherit dark:text-white;
     }
 
-    > img {
+    > img,
+    > picture {
       @apply col-start-3 row-span-3 row-start-2 -mt-5 drop-shadow-lg transition-transform;
     }
     > * {

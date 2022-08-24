@@ -1,8 +1,8 @@
-import Image from 'next/future/image';
 import Link from 'next/link';
 
 import { QueryPokemonsData } from '@/api/queries/pokemons';
-import { formatPokemonId, getPokemonImage } from '@/helpers/pokemon';
+import PokemonImage from '@/components/commons/pokemon-image';
+import { formatPokemonId } from '@/helpers/pokemon';
 import { snakeCaseToTitleCase } from '@/utils/string';
 
 export default function PokemonCard({ id, name, pokemon_v2_pokemons }: QueryPokemonsData[0]) {
@@ -15,12 +15,10 @@ export default function PokemonCard({ id, name, pokemon_v2_pokemons }: QueryPoke
       <b className="col-span-3 text-xl">{snakeCaseToTitleCase(name)}</b>
       <b className="col-span-2 pt-3.5">Type:</b>
       <div className="col-span-2 -mr-5 capitalize">{types.join(', ')}</div>
-      <Image
-        src={getPokemonImage(id)}
+      <PokemonImage
+        idPokemon={id}
         alt={name}
-        width={128}
-        height={128}
-        quality={25}
+        size={128}
         className="group-hover:scale-125"
         priority={id < 7}
       />

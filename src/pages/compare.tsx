@@ -1,11 +1,9 @@
-import Image from 'next/future/image';
-
 import { useQueryPokemon } from '@/api/queries/pokemon';
+import PokemonImage from '@/components/commons/pokemon-image';
 import PokemonComparison from '@/features/compare-pokemons/components/pokemon-comparison';
 import PokemonComparisonSeo from '@/features/compare-pokemons/components/pokemon-comparison-seo';
 import SearchPokemon from '@/features/compare-pokemons/components/search-pokemon';
 import usePokemonsParam from '@/features/compare-pokemons/hooks/use-pokemons-param';
-import { getPokemonImage } from '@/helpers/pokemon';
 import { snakeCaseToTitleCase } from '@/utils/string';
 
 export default function ComparePokemonsPage() {
@@ -36,13 +34,7 @@ export default function ComparePokemonsPage() {
           </div>
           {pokemon && (
             <div className="flex max-w-xl items-center justify-around pt-8">
-              <Image
-                src={getPokemonImage(pokemon.id)}
-                alt={pokemon.name}
-                width={128}
-                height={128}
-                quality={25}
-              />
+              <PokemonImage idPokemon={pokemon.id} alt={pokemon.name} size={128} />
               <div className="text-2xl">VS</div>
               <div className="w-32 pl-6 text-6xl">❓</div>
             </div>

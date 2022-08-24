@@ -1,9 +1,9 @@
-import Image from 'next/future/image';
 import Link from 'next/link';
 import { HiTrash } from 'react-icons/hi';
 
+import PokemonImage from '@/components/commons/pokemon-image';
 import { useMyPokemons } from '@/features/my-pokemons/contexts/my-pokemons';
-import { formatPokemonId, getPokemonImage } from '@/helpers/pokemon';
+import { formatPokemonId } from '@/helpers/pokemon';
 import { snakeCaseToTitleCase } from '@/utils/string';
 
 export default function MyPokemonsPage() {
@@ -47,12 +47,10 @@ export default function MyPokemonsPage() {
               <b className="col-span-3 text-xl">{snakeCaseToTitleCase(name)}</b>
               <b className="col-span-2 pt-3.5">Type:</b>
               <div className="col-span-2 -mr-5 capitalize">{types.join(', ')}</div>
-              <Image
-                src={getPokemonImage(id)}
+              <PokemonImage
+                idPokemon={id}
                 alt={name}
-                width={128}
-                height={128}
-                quality={25}
+                size={128}
                 className="group-hover:scale-125"
                 priority={id < 7}
               />

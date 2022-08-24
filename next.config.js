@@ -22,6 +22,12 @@ const nextConfig = {
           port: '',
           pathname: '/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/**',
         },
+        {
+          protocol: 'https',
+          hostname: 'cdn.statically.io',
+          port: '',
+          pathname: '/gh/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/**',
+        },
       ],
     },
   },

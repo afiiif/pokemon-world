@@ -3,7 +3,8 @@ import Image from 'next/future/image';
 import { useState } from 'react';
 
 import { useQueryPokemonTypes } from '@/api/queries/pokemon';
-import { formatPokemonId, getPokemonImage } from '@/helpers/pokemon';
+import PokemonImage from '@/components/commons/pokemon-image';
+import { formatPokemonId } from '@/helpers/pokemon';
 import { snakeCaseToTitleCase } from '@/utils/string';
 
 import useCurrentPokemon from '../hooks/use-current-pokemon';
@@ -36,13 +37,11 @@ export default function PokemonDetailMain() {
         <div className="text-2xl">#{formatPokemonId(pokemon.id)}</div>
       </div>
       <div className="-mt-8 pl-8 pr-4 md:-mt-8 md:px-6">
-        <Image
+        <PokemonImage
           key={catchState}
-          src={getPokemonImage(pokemon.id)}
+          idPokemon={pokemon.id}
           alt={displayedPokemonName}
-          width={400}
-          height={400}
-          quality={25}
+          size={400}
           priority
           className={clsx(
             'relative mx-auto w-full max-w-[400px] place-self-end drop-shadow-2xl',

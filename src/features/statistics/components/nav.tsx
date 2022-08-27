@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 const ROUTES = [
   { href: '/statistics/types', label: 'Types' },
   { href: '/statistics/stats', label: 'Base Stats' },
-  { href: '/statistics/misc', label: 'Mics.' },
+  { href: '/statistics/misc', label: 'Misc.' },
 ];
 
 export default function Nav() {

@@ -21,6 +21,11 @@ export default function Document() {
         <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="96x96" href="/favicons/favicon-96x96.png" />
 
+        <meta
+          name="google-site-verification"
+          content={process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION}
+        />
+
         <script
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{

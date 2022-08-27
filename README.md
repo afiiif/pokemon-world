@@ -1,8 +1,34 @@
-# Next.js [TypeScript] + Tailwind CSS Starter Template
+# Pokemon Awesome
 
-## Features
+![Pokemon Awesome thumbnail](./public/images/pokemon-catcher-catching.gif)
 
-This starter template contains:
+## Pokemon Data
+
+All Pokemon data used in this project comes from [PokeAPI GraphQL Beta](https://pokeapi.co/docs/graphql).  
+Playground: https://beta.pokeapi.co/graphql/console/
+
+All Pokemon images (artwork) comes from https://github.com/PokeAPI/sprites
+
+## Getting Started
+
+1. Install dependencies using `yarn install`.
+2. Prepare environment variables (`.env.local`), refer to [`.env.example`](./.env.example) file.
+3. Prepare data using `yarn prepare-data`.
+4. Run development server using `yarn dev`.
+
+For production, use this script: `yarn build && yarn start`
+
+## Quality Check
+
+- Prettier check: `yarn format`
+- ESLint check: `yarn lint`
+- TypeScript check: `yarn lint:types`
+- End-to-end test check: `yarn test:e2e`
+
+## Misc.
+
+This project is using [Next.js [TypeScript] + Tailwind CSS Starter Template](https://github.com/afiiif/nextjs-ts-starter-template).  
+The starter template contains:
 
 - ⚡️ [Next.js 12](https://nextjs.org/)
 - ⚛️ [React 18](https://reactjs.org/)
@@ -16,14 +42,3 @@ This starter template contains:
 - 🔗 [Absolute Import](./tsconfig.json) — Import modules using `@/` prefix
 - 💟 [React Icons](https://react-icons.github.io/react-icons/) — Include popular icons in your React projects easily
 - 🌟 [React Power-Ups](https://github.com/afiiif/react-power-ups) — Collection of React hooks to speed-up your app development
-
-## Getting Started
-
-The fastest way to start using this starter template is to run the following command in your terminal:
-
-```bash
-npx @afifu/setup <app-name>
-// Example: npx @afifu/setup my-awesome-app
-```
-
-Enjoy~ 😁

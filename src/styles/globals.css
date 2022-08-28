@@ -6,5 +6,6 @@
 @import './components/pokemon-base.css';
 @import './components/pokemon-card.css';
 @import './components/pokemon-detail.css';
+@import './components/pokemon-evolution.css';
 
 @import 'tailwindcss/utilities';

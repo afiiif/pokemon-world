@@ -20,7 +20,8 @@
     "codegen": "graphql-codegen",
     "generate:pokemons": "tsc scripts/pokemons.ts --outDir .temp && node .temp/scripts/pokemons.js",
     "generate:statistics": "tsc scripts/statistics.ts --outDir .temp && node .temp/scripts/statistics.js",
-    "prepare-data": "yarn generate:pokemons && yarn generate:statistics"
+    "generate:evolution": "tsc scripts/evolution.ts --outDir .temp && node .temp/scripts/evolution.js",
+    "prepare-data": "yarn generate:pokemons && yarn generate:statistics && yarn generate:evolution"
   },
   "dependencies": {
     "@headlessui/react": "^1.6.6",

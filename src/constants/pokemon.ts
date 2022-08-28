@@ -45,3 +45,14 @@ export const TYPE_COLOR = {
   steel: '#b8b8d0',
   water: '#60a5fa',
 };
+
+export const GENERATION_ROMAN_NUM = {
+  1: 'I',
+  2: 'II',
+  3: 'III',
+  4: 'IV',
+  5: 'V',
+  6: 'VI',
+  7: 'VII',
+  8: 'VIII',
+};

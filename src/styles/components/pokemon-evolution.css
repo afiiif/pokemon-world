@@ -1,0 +1,18 @@
+.pokemon-evolution {
+  @apply mb-5;
+
+  > :nth-child(2) {
+    @apply ml-8;
+  }
+  > :nth-child(3) {
+    @apply ml-16;
+  }
+
+  @media screen(md) {
+    @apply grid grid-cols-3 gap-5;
+
+    > li {
+      @apply !mx-0;
+    }
+  }
+}

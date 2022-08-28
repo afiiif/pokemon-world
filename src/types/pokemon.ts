@@ -25,3 +25,12 @@ export type MyPokemon = {
   name: string;
   types: string[];
 };
+
+export type PokemonEvolution = {
+  evolvesFromSpeciesId: number | null;
+  id: number;
+  name: string;
+  generationId: number;
+  generation: string;
+  types: string[];
+}[];

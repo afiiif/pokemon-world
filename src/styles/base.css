@@ -82,12 +82,15 @@
     @apply fixed bottom-0 z-10 w-full border-t bg-white dark:bg-dark-card
            lg:relative lg:col-start-2 lg:h-full lg:min-h-[calc(100vh_-_80px)] lg:border-r lg:border-t-0 lg:bg-transparent dark:lg:bg-transparent;
     .nav-link {
-      @apply flex w-full flex-col items-center rounded-md py-1.5 hover:bg-slate-100 focus:bg-slate-100 dark:hover:bg-dark-light dark:focus:bg-dark-light lg:flex-row lg:gap-2 lg:p-3;
+      @apply flex h-full w-full flex-col items-center rounded-md p-1.5 text-center hover:bg-slate-100 focus:bg-slate-100 dark:hover:bg-dark-light dark:focus:bg-dark-light
+             lg:mt-0.5 lg:flex-row lg:gap-2 lg:p-3 lg:text-left
+             xl:mt-1.5
+             2xl:mt-2;
     }
   }
   #_nav-inner {
-    @apply flex gap-2 px-2 py-0.5 text-[10px]
-           lg:sticky lg:top-20 lg:block lg:py-10 lg:pl-3 lg:pr-5 lg:text-base;
+    @apply flex flex-wrap gap-y-1 px-2 py-0.5 text-[10px]
+           lg:sticky lg:top-20 lg:block lg:py-10 lg:pl-1 lg:pr-5 lg:text-base;
   }
 
   #_header {

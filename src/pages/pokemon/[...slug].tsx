@@ -9,14 +9,20 @@ import PokemonDetailAbilities from '@/features/pokemon-detail/components/pokemon
 import PokemonDetailBaseStats from '@/features/pokemon-detail/components/pokemon-detail-base-stats';
 import PokemonDetailCompare from '@/features/pokemon-detail/components/pokemon-detail-compare';
 import PokemonDetailDesciption from '@/features/pokemon-detail/components/pokemon-detail-desciption';
+import PokemonDetailEvolution from '@/features/pokemon-detail/components/pokemon-detail-evolution';
 import PokemonDetailHabitat from '@/features/pokemon-detail/components/pokemon-detail-habitat';
 import PokemonDetailMain from '@/features/pokemon-detail/components/pokemon-detail-main';
 import PokemonDetailMoves from '@/features/pokemon-detail/components/pokemon-detail-moves';
 import PokemonDetailSeo from '@/features/pokemon-detail/components/pokemon-detail-seo';
 import useCurrentPokemon from '@/features/pokemon-detail/hooks/use-current-pokemon';
+import { PokemonEvolution } from '@/types/pokemon';
+import allEvolutions from '~/generated/pokemon-evolution.json';
 
 type Context = GetStaticPropsContext<{ slug: [string] | [string, string] }>;
-type Result = GetStaticPropsResult<{ dehydratedState: DehydratedState }>;
+type Result = GetStaticPropsResult<{
+  dehydratedState: DehydratedState;
+  evolutions: PokemonEvolution[];
+}>;
 
 export async function getStaticProps({ params }: Context): Promise<Result> {
   const { slug } = params!;
@@ -27,6 +33,10 @@ export async function getStaticProps({ params }: Context): Promise<Result> {
   }
 
   const [pokemonSpeciesName, pokemonNameSlug] = slug;
+
+  const evolutions = allEvolutions.filter((pokemons) =>
+    pokemons.some(({ name }) => name === pokemonSpeciesName),
+  );
 
   try {
     const queryClient = getQueryClient();
@@ -46,6 +56,7 @@ export async function getStaticProps({ params }: Context): Promise<Result> {
     return {
       props: {
         dehydratedState,
+        evolutions,
       },
     };
   } catch {
@@ -64,7 +75,11 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
   };
 }
 
-export default function PokemonDetailPage() {
+type Props = {
+  evolutions: PokemonEvolution[];
+};
+
+export default function PokemonDetailPage({ evolutions }: Props) {
   const { pokemon } = useCurrentPokemon();
   const pokemonTypes = useQueryPokemonTypes(pokemon.name).data!;
 
@@ -75,6 +90,8 @@ export default function PokemonDetailPage() {
       <section id="_pokemon-detail-main-card" className={`bg-elm-${pokemonTypes[0]}`}>
         <PokemonDetailMain key={pokemon.name} />
       </section>
+
+      <PokemonDetailEvolution evolutions={evolutions} type={pokemonTypes[0]} />
 
       <Masonry
         breakpointCols={{ default: 2, 768: 1 }}

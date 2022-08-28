@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import Link from 'next/link';
 import { BsArrow90DegDown, BsArrowRight } from 'react-icons/bs';
 
@@ -7,11 +8,15 @@ import { snakeCaseToTitleCase } from '@/utils/string';
 
 type Props = {
   evolution: PokemonEvolution;
+  className?: string;
 };
 
-export default function PokemonEvolutionChain({ evolution }: Props) {
+export default function PokemonEvolutionChain({ evolution, className }: Props) {
   return (
-    <ul key={evolution.map((pokemon) => pokemon.id).join('')} className="pokemon-evolution">
+    <ul
+      key={evolution.map((pokemon) => pokemon.id).join('')}
+      className={clsx('pokemon-evolution', className)}
+    >
       {evolution.map((pokemon, idx) => {
         const href = `/pokemon/${pokemon.name}`;
         return (
@@ -28,10 +33,10 @@ export default function PokemonEvolutionChain({ evolution }: Props) {
               />
             </Link>
             <div>
-              <Link href={href} className="text-lg font-medium">
+              <Link href={href} className="text-lg font-medium hover:underline">
                 {snakeCaseToTitleCase(pokemon.name)}
               </Link>
-              <div className="text-xs">Generation {pokemon.generation}</div>
+              <div className="text-xs opacity-70">Generation {pokemon.generation}</div>
             </div>
             {idx > 0 && (
               <div className="text-typography-light dark:text-typography-dark">

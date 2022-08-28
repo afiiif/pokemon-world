@@ -31,7 +31,7 @@ export default function PokemonDetailMain() {
         className="absolute top-56 left-[calc(40%_-_17rem)] hidden opacity-10 md:block"
       />
 
-      <h1 className="relative col-span-full text-3xl font-bold">{displayedPokemonName}</h1>
+      <h1 className="h1 relative col-span-full">{displayedPokemonName}</h1>
       <div className="relative">
         <PokemonDetailForms />
         <div className="text-2xl">#{formatPokemonId(pokemon.id)}</div>

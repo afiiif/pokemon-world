@@ -57,7 +57,7 @@ export default function EvolutionsPage() {
         description="Explore Pokemon evolution chain easily. Get an insight into what your favorite Pokemon would evolve into!"
       />
 
-      <h1 className="pb-2 text-3xl font-bold">Pokémon Evolutions</h1>
+      <h1 className="h1 pb-2">Pokémon Evolutions</h1>
 
       <Filter filter={filter} setFilter={setFilter} />
       <hr className="-mx-6 mb-8 hidden lg:block" />

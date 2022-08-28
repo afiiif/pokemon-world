@@ -6,7 +6,7 @@ export default function StatisticsPage() {
   return (
     <>
       <NextSeo title="Statistics of Pokemon" />
-      <h1 className="pb-6 text-3xl font-bold">Statistics</h1>
+      <h1 className="h1 pb-6">Statistics</h1>
 
       <Nav />
 

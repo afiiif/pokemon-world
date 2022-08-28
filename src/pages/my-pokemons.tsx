@@ -35,7 +35,7 @@ export default function MyPokemonsPage() {
 
   return (
     <>
-      <h1 className="pb-6 text-2xl font-bold">My Pokémons</h1>
+      <h1 className="h1 pb-6">My Pokémons</h1>
 
       <div className="pokemon-card-container">
         {myPokemons.map(({ id, name, types }) => (

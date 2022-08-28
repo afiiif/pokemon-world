@@ -56,7 +56,7 @@ export default function PokemonComparison() {
           <button
             type="button"
             onClick={() => document.querySelector('#__next')!.classList.toggle('hide-sidebar')}
-            className="absolute right-0 -top-2 rounded-full border p-2 text-3xl"
+            className="absolute right-0 -top-1 rounded-full border p-2 text-3xl"
             title="Toggle expand"
           >
             <HiOutlineArrowsExpand />
@@ -64,9 +64,7 @@ export default function PokemonComparison() {
         </div>
       )}
 
-      <h1 className="pb-5 text-2xl font-bold xl:pr-16">
-        {pokemons.map(snakeCaseToTitleCase).join(' vs ')}
-      </h1>
+      <h1 className="h1 pb-5 xl:pr-16">{pokemons.map(snakeCaseToTitleCase).join(' vs ')}</h1>
       {pokemons.length < MAX_POKEMON_TO_COMPARE && (
         <div className="-mx-1.5 pb-5 lg:-mx-0.5">
           <SearchPokemon />

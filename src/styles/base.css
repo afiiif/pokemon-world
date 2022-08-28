@@ -62,6 +62,10 @@
     }
   }
 
+  .h1 {
+    @apply text-3xl font-bold;
+  }
+
   #__next {
     @apply lg:grid lg:grid-cols-[auto_13rem_minmax(0,_65rem)_auto];
   }

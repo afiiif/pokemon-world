@@ -15,7 +15,7 @@ export default function ComparePokemonsPage() {
     return (
       <>
         <PokemonComparisonSeo />
-        <h1 className="pb-6 text-2xl font-bold">Compare Pokémons</h1>
+        <h1 className="h1 pb-6">Compare Pokémons</h1>
         <SearchPokemon />
       </>
     );
@@ -26,9 +26,7 @@ export default function ComparePokemonsPage() {
       <PokemonComparisonSeo />
       {pokemons.length === 1 ? (
         <>
-          <h1 className="pb-6 text-2xl font-bold">
-            Compare {snakeCaseToTitleCase(pokemons[0])} with...
-          </h1>
+          <h1 className="h1 pb-6">Compare {snakeCaseToTitleCase(pokemons[0])} with...</h1>
           <div className="max-w-xl">
             <SearchPokemon />
           </div>

@@ -36,7 +36,9 @@ export default function PokemonComparison() {
   const idElmCardBodyContainer = useId();
 
   useEffect(() => {
+    // eslint-disable-next-line unicorn/prefer-query-selector
     const elmCardHead = document.getElementById(idElmCardHeadContainer) as HTMLDivElement;
+    // eslint-disable-next-line unicorn/prefer-query-selector
     const elmCardBody = document.getElementById(idElmCardBodyContainer) as HTMLDivElement;
 
     const onScroll: (event: HTMLElementEventMap['scroll']) => void = ({ target }) => {
@@ -47,7 +49,7 @@ export default function PokemonComparison() {
     return () => {
       elmCardBody.removeEventListener('scroll', onScroll);
     };
-  }, []);
+  }, [idElmCardBodyContainer, idElmCardHeadContainer]);
 
   return (
     <>

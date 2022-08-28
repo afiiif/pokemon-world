@@ -1,5 +1,4 @@
 /* eslint-disable prefer-destructuring */
-/* eslint-disable no-plusplus */
 import { gql, request } from 'graphql-request';
 import { mkdirSync, writeFileSync } from 'node:fs';
 
@@ -122,7 +121,6 @@ const computeRank = (typeRelation: number[][]) => {
   };
 };
 
-// eslint-disable-next-line unicorn/prefer-top-level-await
 request<FetchPokemonsResponse>(API_ENDPOINT, query).then((data) => {
   const typeRelation = TYPES.map(() => TYPES.map(() => 0));
   const pokemons = {};

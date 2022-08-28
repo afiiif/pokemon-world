@@ -12,7 +12,6 @@ const query = gql`
   }
 `;
 
-// eslint-disable-next-line unicorn/prefer-top-level-await
 request<{ pokemon_v2_pokemon: { name: string }[] }>(API_ENDPOINT, query).then((data) => {
   const pokemons = data.pokemon_v2_pokemon.map((pokemon) => pokemon.name);
   const pokemonsTitleCase = pokemons.map(snakeCaseToTitleCase);

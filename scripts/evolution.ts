@@ -1,4 +1,3 @@
-/* eslint-disable no-plusplus */
 import { gql, request } from 'graphql-request';
 import { mkdirSync, writeFileSync } from 'node:fs';
 
@@ -60,7 +59,6 @@ const transformSpecies = (species: PokemonSpeciesRaw): PokemonSpecies => ({
   ),
 });
 
-// eslint-disable-next-line unicorn/prefer-top-level-await
 request<FetchPokemonEvolutionResponse>(API_ENDPOINT, query).then((data) => {
   const evolutions: PokemonSpecies[][] = [];
   let i = 0;

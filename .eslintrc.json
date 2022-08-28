@@ -9,5 +9,14 @@
     "unicorn/prefer-query-selector": "warn",
     "jest/no-deprecated-functions": "off",
     "jest/no-standalone-expect": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["scripts/**/*.[jt]s"],
+      "rules": {
+        "no-plusplus": "off",
+        "unicorn/prefer-top-level-await": "off"
+      }
+    }
+  ]
 }

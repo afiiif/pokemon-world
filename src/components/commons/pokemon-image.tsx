@@ -4,6 +4,7 @@ import Head from 'next/head';
 type Props = {
   idPokemon: number;
   size: number;
+  requestedSize?: number;
   priority?: boolean;
   className?: string;
   imgClassName?: string;
@@ -22,6 +23,7 @@ const WEBP_IMAGE_URL = 'https://cdn.statically.io/gh/afiiif/pokemon-assets/main/
 export default function PokemonImage({
   idPokemon,
   size,
+  requestedSize: requestedSizeTemp,
   priority,
   className,
   imgClassName,
@@ -38,13 +40,12 @@ export default function PokemonImage({
         width={size}
         height={size}
         priority={priority}
-        quality={40}
         className={className}
       />
     );
   }
 
-  const requestedSize = size * 1.5;
+  const requestedSize = requestedSizeTemp || size * 1.5;
 
   const webpSrc = `${WEBP_IMAGE_URL}/${requestedSize}x${requestedSize}/${idPokemon}.webp`;
 

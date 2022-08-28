@@ -3,11 +3,9 @@
 import { gql, request } from 'graphql-request';
 import { mkdirSync, writeFileSync } from 'node:fs';
 
-import { TYPE_COLOR } from '../src/constants/pokemon';
+import { API_ENDPOINT, TYPE_COLOR } from '../src/constants/pokemon';
 import { PokemonBase } from '../src/types/pokemon';
 import { snakeCaseToTitleCase } from '../src/utils/string';
-
-const API_ENDPOINT = 'https://beta.pokeapi.co/graphql/v1beta';
 
 const query = gql`
   {

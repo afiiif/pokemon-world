@@ -2,10 +2,8 @@
 import { gql, request } from 'graphql-request';
 import { mkdirSync, writeFileSync } from 'node:fs';
 
-import { GENERATION_ROMAN_NUM } from '../src/constants/pokemon';
+import { API_ENDPOINT, GENERATION_ROMAN_NUM } from '../src/constants/pokemon';
 import { Maybe, Pokemon_V2_Pokemonspecies } from '../src/generated/graphql.types';
-
-const API_ENDPOINT = 'https://beta.pokeapi.co/graphql/v1beta';
 
 const query = gql`
   {

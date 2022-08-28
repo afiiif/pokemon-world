@@ -1,9 +1,8 @@
 import { request, RequestDocument, Variables } from 'graphql-request';
 import { isBrowser } from 'react-power-ups/lib/utils';
 
+import { API_ENDPOINT } from '@/constants/pokemon';
 import { optmizeGQLString } from '@/utils/string';
-
-export const API_ENDPOINT = 'https://beta.pokeapi.co/graphql/v1beta';
 
 /**
  * It's a little bit complicated to cache GraphQL "POST" request.

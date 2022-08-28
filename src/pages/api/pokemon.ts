@@ -1,7 +1,7 @@
 import request from 'graphql-request';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { API_ENDPOINT } from '@/api/fetcher';
+import { API_ENDPOINT } from '@/constants/pokemon';
 
 const cache = new Map();
 

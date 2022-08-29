@@ -75,9 +75,11 @@ export default function StatsAndAbilitySection({ pokemonName }: Props) {
           {pokemon.pokemon_v2_pokemonabilities.map(({ pokemon_v2_ability }) => (
             <li key={pokemon_v2_ability.name}>
               <div className="font-semibold">{snakeCaseToTitleCase(pokemon_v2_ability.name)}</div>
-              <p className="text-gray-500 dark:text-slate-400">
-                {pokemon_v2_ability.pokemon_v2_abilityeffecttexts[0].short_effect}
-              </p>
+              {pokemon_v2_ability.pokemon_v2_abilityeffecttexts[0]?.short_effect && (
+                <p className="text-gray-500 dark:text-slate-400">
+                  {pokemon_v2_ability.pokemon_v2_abilityeffecttexts[0].short_effect}
+                </p>
+              )}
             </li>
           ))}
         </ul>

@@ -1,5 +1,6 @@
 import Image from 'next/future/image';
 import Head from 'next/head';
+import { ReactEventHandler } from 'react';
 
 type Props = {
   idPokemon: number;
@@ -9,6 +10,7 @@ type Props = {
   className?: string;
   imgClassName?: string;
   alt?: string;
+  onError?: ReactEventHandler<HTMLImageElement>;
 };
 
 const PNG_IMAGE_URL =
@@ -28,6 +30,7 @@ export default function PokemonImage({
   className,
   imgClassName,
   alt = 'pokemon',
+  onError,
   ...props
 }: Props & JSX.IntrinsicElements['picture']) {
   const pngSrc = `${PNG_IMAGE_URL}/${idPokemon}.png`;
@@ -41,6 +44,7 @@ export default function PokemonImage({
         height={size}
         priority={priority}
         className={className}
+        onError={onError}
       />
     );
   }
@@ -57,7 +61,7 @@ export default function PokemonImage({
         </Head>
       )}
 
-      <picture className={className} {...props}>
+      <picture className={className} onError={onError} {...props}>
         <source srcSet={webpSrc} type="image/webp" />
         <source srcSet={pngSrc} type="image/png" />
         <img

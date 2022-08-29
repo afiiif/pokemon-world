@@ -23,6 +23,17 @@ const ELEMENTS = [
   'water',
 ];
 
+const GUESS_POKEMON_IMG_CLASSNAMES = [
+  'grayscale',
+  'brightness-0',
+  'rotate-45',
+  'rotate-90',
+  'rotate-180',
+  '-rotate-45',
+  '-rotate-90',
+  '-rotate-180',
+];
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -48,5 +59,5 @@ module.exports = {
     },
   },
   plugins: [],
-  safelist: ELEMENTS.map((elm) => `bg-elm-${elm}`),
+  safelist: [...ELEMENTS.map((elm) => `bg-elm-${elm}`), ...GUESS_POKEMON_IMG_CLASSNAMES],
 };

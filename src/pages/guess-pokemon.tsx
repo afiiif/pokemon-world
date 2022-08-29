@@ -103,13 +103,15 @@ export default function GuessPokemonPage() {
         </div>
       </div>
 
-      <div className="pokemon-card inline-block text-lg text-typography-light dark:text-typography-dark">
+      <div className="inline-block rounded-md bg-elm-undefined px-4 py-2.5 text-lg">
         Your Score: <b>{score}</b>
       </div>
 
-      <div className="-mx-3.5">
-        <div className="pointer-events-none max-w-full overflow-hidden p-10">
-          {!isFirstRender && (
+      <div className="-mx-3.5 -mt-4 sm:mx-0 2xl:grid 2xl:grid-cols-2">
+        <div className="pointer-events-none flex max-w-full justify-center overflow-hidden p-10">
+          {isFirstRender ? (
+            <div style={{ height: 400 }} />
+          ) : (
             <PokemonImage
               size={400}
               idPokemon={currentPokemonId}
@@ -120,15 +122,14 @@ export default function GuessPokemonPage() {
             />
           )}
         </div>
+        <GuessPokemonForm
+          level={level}
+          state={state}
+          setState={setState}
+          startGame={startGame}
+          setScore={setScore}
+        />
       </div>
-
-      <GuessPokemonForm
-        level={level}
-        state={state}
-        setState={setState}
-        startGame={startGame}
-        setScore={setScore}
-      />
     </>
   );
 }

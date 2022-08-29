@@ -4,6 +4,7 @@ import { Dispatch, SetStateAction, useEffect, useRef } from 'react';
 import { useQueryPokemonTypes } from '@/api/queries/pokemon';
 import { useMyPokemons } from '@/features/my-pokemons/contexts/my-pokemons';
 import { MyPokemon } from '@/types/pokemon';
+import { playAudio } from '@/utils/audio';
 
 import useCurrentPokemon from '../hooks/use-current-pokemon';
 
@@ -19,16 +20,6 @@ const CATCH_STATE_OPTION = {
 type Props = {
   catchState: CatchState;
   setCatchState: Dispatch<SetStateAction<CatchState>>;
-};
-
-const playAudio = (src: string) => {
-  try {
-    const audio = new Audio(`/audios/${src}`);
-    audio.volume = 0.15;
-    audio.play();
-  } catch {
-    //
-  }
 };
 
 export default function PokemonDetailButton({ catchState, setCatchState }: Props) {

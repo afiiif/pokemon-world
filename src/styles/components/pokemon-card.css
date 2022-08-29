@@ -1,31 +1,29 @@
-@layer components {
-  .pokemon-card-container {
-    @apply grid grid-cols-[repeat(auto-fit,_minmax(15.25rem,_1fr))] gap-3.5;
+.pokemon-card-container {
+  @apply grid grid-cols-[repeat(auto-fit,_minmax(15.25rem,_1fr))] gap-3.5;
+}
+
+.pokemon-card {
+  @apply relative grid grid-cols-[auto_1fr_128px] grid-rows-[auto_auto_1fr_auto] overflow-hidden rounded-md bg-elm-undefined p-4 text-sm text-white;
+
+  &.bg-elm-bug,
+  &.bg-elm-electric,
+  &.bg-elm-ice,
+  &.bg-elm-rock {
+    @apply text-inherit dark:text-white;
   }
 
-  .pokemon-card {
-    @apply relative grid grid-cols-[auto_1fr_128px] grid-rows-[auto_auto_1fr_auto] overflow-hidden rounded-md bg-elm-undefined p-4 text-sm text-white;
-
-    &.bg-elm-bug,
-    &.bg-elm-electric,
-    &.bg-elm-ice,
-    &.bg-elm-rock {
-      @apply text-inherit dark:text-white;
-    }
-
-    > img,
-    > picture {
-      @apply col-start-3 row-span-3 row-start-2 -mt-5 drop-shadow-lg transition-transform;
-    }
-    > * {
-      @apply relative z-[1];
-    }
-    > .pokeball-flat {
-      @apply absolute right-12 bottom-4 z-0 rotate-12 scale-125;
-    }
+  > img,
+  > picture {
+    @apply col-start-3 row-span-3 row-start-2 -mt-5 drop-shadow-lg transition-transform;
   }
-
-  .pokemon-card-number {
-    @apply mt-2 rounded-full bg-white/60 px-2.5 py-1 font-semibold text-typography-light;
+  > * {
+    @apply relative z-[1];
   }
+  > .pokeball-flat {
+    @apply absolute right-12 bottom-4 z-0 rotate-12 scale-125;
+  }
+}
+
+.pokemon-card-number {
+  @apply mt-2 rounded-full bg-white/60 px-2.5 py-1 font-semibold text-typography-light;
 }

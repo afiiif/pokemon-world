@@ -1,10 +1,8 @@
-@layer components {
-  .shimmer {
-    @apply animate-pulse rounded-full bg-white/10 invert dark:invert-0;
-  }
+.shimmer {
+  @apply animate-pulse rounded-full bg-white/10 invert dark:invert-0;
+}
 
-  .sticky-section {
-    @apply sticky top-16 z-10 -mx-3.5 -mt-8 mb-8 flex translate-y-[var(--header-distance)] gap-2.5 px-3.5 py-2.5 transition-transform
-           lg:top-2 lg:z-30 lg:-mx-6 lg:-mt-10 lg:mb-0 lg:max-w-xl lg:translate-y-0 lg:py-3 lg:px-6;
-  }
+.sticky-section {
+  @apply sticky top-16 z-10 -mx-3.5 -mt-8 mb-8 flex translate-y-[var(--header-distance)] gap-2.5 px-3.5 py-2.5 transition-transform
+         lg:top-2 lg:z-30 lg:-mx-6 lg:-mt-10 lg:mb-0 lg:max-w-xl lg:translate-y-0 lg:py-3 lg:px-6;
 }

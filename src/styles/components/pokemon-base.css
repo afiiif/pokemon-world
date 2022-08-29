@@ -1,28 +1,26 @@
-@layer components {
-  .pokemon-elm {
-    @apply text-white transition-[background];
+.pokemon-elm {
+  @apply text-white transition-[background];
 
-    &.bg-elm-bug,
-    &.bg-elm-electric,
-    &.bg-elm-ice,
-    &.bg-elm-rock {
-      @apply text-inherit dark:text-white;
-    }
+  &.bg-elm-bug,
+  &.bg-elm-electric,
+  &.bg-elm-ice,
+  &.bg-elm-rock {
+    @apply text-inherit dark:text-white;
   }
+}
 
-  .pokeball-flat {
-    @apply absolute h-[60px] w-[60px] rounded-full bg-white/10;
+.pokeball-flat {
+  @apply absolute h-[60px] w-[60px] rounded-full bg-white/10;
 
-    &::before,
-    &::after {
-      content: '';
-      @apply absolute left-[-50px] top-[-50px] block h-[160px] w-[160px] rounded-full border-[40px] border-white/10;
-    }
-    &::before {
-      clip-path: polygon(0 0, 100% 0, 100% 75px, 0% 75px);
-    }
-    &::after {
-      clip-path: polygon(0 85px, 100% 85px, 100% 100%, 0% 100%);
-    }
+  &::before,
+  &::after {
+    content: '';
+    @apply absolute left-[-50px] top-[-50px] block h-[160px] w-[160px] rounded-full border-[40px] border-white/10;
+  }
+  &::before {
+    clip-path: polygon(0 0, 100% 0, 100% 75px, 0% 75px);
+  }
+  &::after {
+    clip-path: polygon(0 85px, 100% 85px, 100% 100%, 0% 100%);
   }
 }

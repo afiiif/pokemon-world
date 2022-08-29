@@ -1,219 +1,217 @@
-@layer components {
-  #_pokemon-detail-main-card {
-    @apply pokemon-elm relative -mx-3.5 -mt-8 -mb-14 grid overflow-hidden px-3.5 pt-6 pb-24
-           md:-mb-16 md:grid-cols-[auto,_28rem] md:p-6 md:pb-24
-           lg:m-0 lg:-mt-4 lg:rounded-md lg:pb-6 lg:shadow-md;
-  }
+#_pokemon-detail-main-card {
+  @apply pokemon-elm relative -mx-3.5 -mt-8 -mb-14 grid overflow-hidden px-3.5 pt-6 pb-24
+         md:-mb-16 md:grid-cols-[auto,_28rem] md:p-6 md:pb-24
+         lg:m-0 lg:-mt-4 lg:rounded-md lg:pb-6 lg:shadow-md;
+}
 
-  #_pokemon-detail-base-props {
-    @apply relative flex items-end divide-x divide-white rounded-md bg-white/60 py-3 text-center text-xs text-typography-light md:col-start-2;
-    > div {
-      @apply grow px-2;
-    }
+#_pokemon-detail-base-props {
+  @apply relative flex items-end divide-x divide-white rounded-md bg-white/60 py-3 text-center text-xs text-typography-light md:col-start-2;
+  > div {
+    @apply grow px-2;
   }
+}
 
-  .pokeball {
-    @apply relative h-12 w-12 overflow-hidden rounded-full bg-white shadow;
-    &::before {
-      content: '';
-      @apply absolute top-3 block h-5 w-14 -translate-x-1 rounded-[100%] border-[3px] border-black bg-rose-400;
-      clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0% 100%);
-    }
-    &::after {
-      content: '';
-      @apply absolute top-0 block h-1/2 w-full bg-rose-400;
-    }
+.pokeball {
+  @apply relative h-12 w-12 overflow-hidden rounded-full bg-white shadow;
+  &::before {
+    content: '';
+    @apply absolute top-3 block h-5 w-14 -translate-x-1 rounded-[100%] border-[3px] border-black bg-rose-400;
+    clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0% 100%);
   }
+  &::after {
+    content: '';
+    @apply absolute top-0 block h-1/2 w-full bg-rose-400;
+  }
+}
 
-  .pokeball-button {
-    @apply absolute top-4 left-4 z-[1] mt-0.5 h-3.5 w-3.5 rounded-full border-[3px] border-black bg-white;
+.pokeball-button {
+  @apply absolute top-4 left-4 z-[1] mt-0.5 h-3.5 w-3.5 rounded-full border-[3px] border-black bg-white;
+  transform: rotateX(-13deg) rotateY(0deg) translateZ(1.5rem);
+  backface-visibility: hidden;
+}
+
+.pokeball-animate {
+  --bounce-distance: 16%;
+  --bounce-base: -150px;
+  animation: bouncePokeball 2.1s forwards;
+  @media screen(md) {
+    --bounce-distance: calc(100vw - 33rem);
+    --bounce-base: -90px;
+  }
+  @media screen(lg) {
+    --bounce-distance: calc(95vw - 46rem);
+  }
+  @media screen(xl) {
+    --bounce-distance: 29.5rem;
+  }
+}
+@keyframes bouncePokeball {
+  0% {
+    transform: translateY(0);
+    margin-left: 0;
+  }
+  24% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translateY(-385px) scaleY(1.1) scaleX(1);
+  }
+  40% {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translateY(calc(var(--bounce-base))) scaleY(0.95) scaleX(1.05);
+  }
+  60% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translateY(calc(-295px - var(--bounce-base) * 0.1)) scaleY(1.05) scaleX(1);
+  }
+  74% {
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translateY(calc(var(--bounce-base))) scaleY(0.95);
+  }
+  90% {
+    transform: translateY(calc(var(--bounce-base) - 32px)) scaleY(1.02);
+  }
+  100% {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translateY(calc(var(--bounce-base)));
+    margin-left: var(--bounce-distance);
+  }
+}
+
+.pokeball-animate .pokeball-button {
+  animation: orbit 4.5 0.5s linear forwards;
+}
+@keyframes orbit {
+  from {
     transform: rotateX(-13deg) rotateY(0deg) translateZ(1.5rem);
-    backface-visibility: hidden;
   }
+  to {
+    transform: rotateX(-13deg) rotateY(-360deg) translateZ(1.5rem);
+  }
+}
 
-  .pokeball-animate {
-    --bounce-distance: 16%;
-    --bounce-base: -150px;
-    animation: bouncePokeball 2.1s forwards;
-    @media screen(md) {
-      --bounce-distance: calc(100vw - 33rem);
-      --bounce-base: -90px;
-    }
-    @media screen(lg) {
-      --bounce-distance: calc(95vw - 46rem);
-    }
-    @media screen(xl) {
-      --bounce-distance: 29.5rem;
-    }
+.pokeball-shake {
+  animation: shake 1s 2 2.9s;
+}
+@keyframes shake {
+  0% {
+    transform: translate(0) rotate(0);
+    transform-origin: bottom center;
   }
-  @keyframes bouncePokeball {
-    0% {
-      transform: translateY(0);
-      margin-left: 0;
-    }
-    24% {
-      animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-      transform: translateY(-385px) scaleY(1.1) scaleX(1);
-    }
-    40% {
-      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-      transform: translateY(calc(var(--bounce-base))) scaleY(0.95) scaleX(1.05);
-    }
-    60% {
-      animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-      transform: translateY(calc(-295px - var(--bounce-base) * 0.1)) scaleY(1.05) scaleX(1);
-    }
-    74% {
-      transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-      transform: translateY(calc(var(--bounce-base))) scaleY(0.95);
-    }
-    90% {
-      transform: translateY(calc(var(--bounce-base) - 32px)) scaleY(1.02);
-    }
-    100% {
-      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-      transform: translateY(calc(var(--bounce-base)));
-      margin-left: var(--bounce-distance);
-    }
+  20% {
+    transform: translate(-10px) rotate(-15deg);
   }
+  30% {
+    transform: translate(10px) rotate(15deg);
+  }
+  45% {
+    transform: translate(-10px) rotate(-10deg);
+  }
+  100% {
+    transform: translate(0) rotate(0);
+  }
+}
 
-  .pokeball-animate .pokeball-button {
-    animation: orbit 4.5 0.5s linear forwards;
+.pokeball-fade-out {
+  animation: fade-out 0.6s ease-in forwards;
+}
+.pokeball-fade-out-delayed {
+  animation: fade-out 0.6s ease-in forwards 2s;
+}
+.pokeball-fade-out .pokeball-button,
+.pokeball-fade-out-delayed .pokeball-button {
+  @apply hidden;
+}
+@keyframes fade-out {
+  from {
+    @apply opacity-100;
   }
-  @keyframes orbit {
-    from {
-      transform: rotateX(-13deg) rotateY(0deg) translateZ(1.5rem);
-    }
-    to {
-      transform: rotateX(-13deg) rotateY(-360deg) translateZ(1.5rem);
-    }
+  to {
+    @apply opacity-0;
   }
+}
 
-  .pokeball-shake {
-    animation: shake 1s 2 2.9s;
+.pokeball-explosion {
+  @apply absolute rounded-full;
+  animation: explosion 0.7s linear forwards 2.2s;
+  + .pokeball-explosion {
+    animation-delay: 2.4s;
   }
-  @keyframes shake {
-    0% {
-      transform: translate(0) rotate(0);
-      transform-origin: bottom center;
-    }
-    20% {
-      transform: translate(-10px) rotate(-15deg);
-    }
-    30% {
-      transform: translate(10px) rotate(15deg);
-    }
-    45% {
-      transform: translate(-10px) rotate(-10deg);
-    }
-    100% {
-      transform: translate(0) rotate(0);
-    }
+}
+@keyframes explosion {
+  from {
+    @apply h-16 w-16 border-8 border-white/60 opacity-100;
   }
+  to {
+    @apply h-40 w-40 opacity-0;
+  }
+}
 
-  .pokeball-fade-out {
-    animation: fade-out 0.6s ease-in forwards;
+.pokemon-shrinking {
+  animation: shrink 0.6s ease-in forwards 1.6s;
+}
+.pokemon-release {
+  @apply origin-bottom-left opacity-20;
+  transform: scale(0.001);
+  animation: shrink reverse 0.6s ease-in forwards;
+}
+.pokemon-release-delayed {
+  @apply origin-bottom-left opacity-20;
+  transform: scale(0.001);
+  animation: shrink reverse 0.6s ease-in forwards 2s;
+}
+@keyframes shrink {
+  from {
+    @apply scale-100 opacity-100;
   }
-  .pokeball-fade-out-delayed {
-    animation: fade-out 0.6s ease-in forwards 2s;
-  }
-  .pokeball-fade-out .pokeball-button,
-  .pokeball-fade-out-delayed .pokeball-button {
-    @apply hidden;
-  }
-  @keyframes fade-out {
-    from {
-      @apply opacity-100;
-    }
-    to {
-      @apply opacity-0;
-    }
-  }
-
-  .pokeball-explosion {
-    @apply absolute rounded-full;
-    animation: explosion 0.7s linear forwards 2.2s;
-    + .pokeball-explosion {
-      animation-delay: 2.4s;
-    }
-  }
-  @keyframes explosion {
-    from {
-      @apply h-16 w-16 border-8 border-white/60 opacity-100;
-    }
-    to {
-      @apply h-40 w-40 opacity-0;
-    }
-  }
-
-  .pokemon-shrinking {
-    animation: shrink 0.6s ease-in forwards 1.6s;
-  }
-  .pokemon-release {
+  to {
     @apply origin-bottom-left opacity-20;
     transform: scale(0.001);
-    animation: shrink reverse 0.6s ease-in forwards;
   }
-  .pokemon-release-delayed {
-    @apply origin-bottom-left opacity-20;
-    transform: scale(0.001);
-    animation: shrink reverse 0.6s ease-in forwards 2s;
-  }
-  @keyframes shrink {
-    from {
-      @apply scale-100 opacity-100;
-    }
-    to {
-      @apply origin-bottom-left opacity-20;
-      transform: scale(0.001);
-    }
-  }
+}
 
-  .pokeball-caught-info {
-    @apply pointer-events-none absolute -top-12 left-1/2 -translate-x-1/2 rounded-md bg-gray-700 px-3 py-1 font-semibold text-white opacity-0;
-    animation: fade-up-then-out 2s ease forwards;
-    &::before {
-      content: '';
-      @apply absolute bottom-px left-1/2 inline-block translate-y-[100%] -translate-x-1/2 border-[9px] border-transparent border-t-gray-700;
-    }
+.pokeball-caught-info {
+  @apply pointer-events-none absolute -top-12 left-1/2 -translate-x-1/2 rounded-md bg-gray-700 px-3 py-1 font-semibold text-white opacity-0;
+  animation: fade-up-then-out 2s ease forwards;
+  &::before {
+    content: '';
+    @apply absolute bottom-px left-1/2 inline-block translate-y-[100%] -translate-x-1/2 border-[9px] border-transparent border-t-gray-700;
   }
-  @keyframes fade-up-then-out {
-    0% {
-      @apply translate-y-6 opacity-0;
-    }
-    20% {
-      @apply translate-y-0 opacity-100;
-    }
-    80% {
-      @apply translate-y-0 opacity-100;
-    }
-    100% {
-      @apply translate-y-0 opacity-0;
-    }
+}
+@keyframes fade-up-then-out {
+  0% {
+    @apply translate-y-6 opacity-0;
   }
+  20% {
+    @apply translate-y-0 opacity-100;
+  }
+  80% {
+    @apply translate-y-0 opacity-100;
+  }
+  100% {
+    @apply translate-y-0 opacity-0;
+  }
+}
 
-  .pokemon-detail-card-container {
-    @apply relative -mx-3.5 -mb-16 flex gap-6 px-3.5 pb-16 transition-[background-color]
-           md:mt-4 md:px-6
-           lg:m-0 lg:mt-6 lg:!bg-transparent lg:p-0 lg:transition-none;
-  }
+.pokemon-detail-card-container {
+  @apply relative -mx-3.5 -mb-16 flex gap-6 px-3.5 pb-16 transition-[background-color]
+         md:mt-4 md:px-6
+         lg:m-0 lg:mt-6 lg:!bg-transparent lg:p-0 lg:transition-none;
+}
 
-  .pokemon-desc-slick {
-    @apply relative;
-    .slick-list {
-      @apply overflow-hidden transition-[height];
+.pokemon-desc-slick {
+  @apply relative;
+  .slick-list {
+    @apply overflow-hidden transition-[height];
+  }
+  .slick-slide {
+    @apply float-left;
+  }
+  .slick-dots {
+    @apply -mb-0.5 !flex justify-center gap-2 pt-4 text-[0];
+    > li > button {
+      @apply h-2 w-2 rounded-full bg-slate-300 transition-[width,_background] dark:bg-slate-500;
     }
-    .slick-slide {
-      @apply float-left;
-    }
-    .slick-dots {
-      @apply -mb-0.5 !flex justify-center gap-2 pt-4 text-[0];
-      > li > button {
-        @apply h-2 w-2 rounded-full bg-slate-300 transition-[width,_background] dark:bg-slate-500;
-      }
-      .slick-active > button {
-        @apply w-4 bg-slate-600 dark:bg-slate-300;
-      }
+    .slick-active > button {
+      @apply w-4 bg-slate-600 dark:bg-slate-300;
     }
   }
 }

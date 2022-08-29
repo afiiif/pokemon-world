@@ -9,7 +9,7 @@ export default function Document() {
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Pokemon Awesome" />
         <meta name="description" content="Pokemon Awesome App" />
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff" key="meta:theme-color" />
 
         <link rel="manifest" href="/manifest.json" />
 

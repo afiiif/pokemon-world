@@ -1,4 +1,5 @@
 import Image from 'next/future/image';
+import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react';
 import { BsGithub } from 'react-icons/bs';
@@ -59,6 +60,13 @@ export default function Header() {
             <HiSun className="absolute top-0 left-0 m-0.5 opacity-100 transition-all dark:left-4 dark:opacity-0" />
             <HiMoon className="absolute top-0 left-0 m-0.5 opacity-0 transition-all dark:left-4 dark:text-typography-light dark:opacity-100" />
           </label>
+          <Head>
+            <meta
+              name="theme-color"
+              content={darkMode ? '#25303f' : '#ffffff'}
+              key="meta:theme-color"
+            />
+          </Head>
         </div>
       </div>
     </header>

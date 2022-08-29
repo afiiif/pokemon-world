@@ -44,7 +44,11 @@ export default function Nav() {
           </Link>
         </li>
         <li className="order-2 flex-1 md:hidden">
-          <button type="button" className="nav-link" onClick={toggleExpand}>
+          <button
+            type="button"
+            className={clsx('nav-link', menuExpanded && 'text-rose-500')}
+            onClick={toggleExpand}
+          >
             {menuExpanded ? (
               <HiOutlineX className="text-2xl" />
             ) : (
@@ -68,7 +72,7 @@ export default function Nav() {
         <li className={clsx('order-1 flex-1 md:order-2 md:block', !menuExpanded && 'hidden')}>
           <Link href="/guess-pokemon" className="nav-link">
             <HiOutlineLightBulb className="text-2xl" />
-            Guess Pokémon
+            Guess a Pokémon
           </Link>
         </li>
         <li className={clsx('order-1 flex-1 md:order-2 md:block', !menuExpanded && 'hidden')}>

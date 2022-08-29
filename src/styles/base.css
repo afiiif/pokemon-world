@@ -94,7 +94,7 @@
   }
   #_nav-inner {
     @apply flex flex-wrap gap-y-1 px-2 py-0.5 text-[10px]
-           lg:sticky lg:top-20 lg:block lg:py-10 lg:pl-1 lg:pr-5 lg:text-base;
+           lg:sticky lg:top-20 lg:-ml-2 lg:block lg:py-10 lg:pl-0 lg:pr-5 lg:text-base;
   }
 
   #_header {

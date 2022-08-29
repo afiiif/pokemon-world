@@ -51,10 +51,11 @@ export default function GuessPokemonPage() {
 
     if (level === 1) return setState({ ...newState, imgClassName: 'grayscale' });
 
-    if (level === 2) return setState({ ...newState, imgClassName: 'brightness-0' });
+    if (level === 2)
+      return setState({ ...newState, imgClassName: 'brightness-0 opacity-70 dark:invert' });
 
     const classNames = [
-      'brightness-0',
+      'brightness-0 opacity-70 dark:invert',
       ROTATION_CLASSNAME[getRandomBetween(0, 6)],
       Math.random() < 0.5 ? '' : 'scale-x-[-1]',
     ];

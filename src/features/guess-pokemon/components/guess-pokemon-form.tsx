@@ -52,7 +52,9 @@ export default function GuessPokemonForm({ level, state, setState, startGame, se
     setState((prev) => ({
       ...prev,
       answerState: isCorrect ? ANSWER_STATE.CORRECT : ANSWER_STATE.WRONG,
-      imgClassName: prev.imgClassName.replace('brightness-0', '').replace('grayscale', ''),
+      imgClassName: prev.imgClassName
+        .replace('brightness-0 opacity-70 dark:invert', '')
+        .replace('grayscale', ''),
     }));
     playAudio(isCorrect ? 'acute.mp3' : 'blop.mp3');
     timerAction.start();

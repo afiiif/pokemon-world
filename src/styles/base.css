@@ -113,5 +113,8 @@
 
   .ReactQueryDevtools {
     @apply absolute;
+    > button[aria-expanded='false'] {
+      @apply opacity-40 hover:opacity-100;
+    }
   }
 }

@@ -83,6 +83,9 @@
   }
 
   #_nav {
+    @media screen and (max-height: 600px) {
+      @apply hidden;
+    }
     @apply fixed bottom-0 z-10 w-full border-t bg-white dark:bg-dark-card
            lg:relative lg:col-start-2 lg:h-full lg:min-h-[calc(100vh_-_80px)] lg:border-r lg:border-t-0 lg:bg-transparent dark:lg:bg-transparent;
     .nav-link {

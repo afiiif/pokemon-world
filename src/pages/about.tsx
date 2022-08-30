@@ -10,7 +10,7 @@ export default function AboutPage() {
 
       <h1 className="h1 pb-7">About Pokémon Awesome</h1>
 
-      <div className="max-w-2xl space-y-5">
+      <div className="max-w-2xl space-y-5 pb-6">
         <p>
           Pokémon Awesome is a simple yet rich-featured Pokémon website that is built in order to
           allow Pokémon lovers to easily explore Pokémon and do many more things. Anyone can use
@@ -37,6 +37,22 @@ export default function AboutPage() {
           Tell all your Pokemon-lovers friends around the world about this site!
         </p>
       </div>
+
+      <a
+        href="https://www.producthunt.com/posts/pokemon-awesome?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-pokemon&#0045;awesome"
+        target="_blank"
+        rel="noreferrer"
+        title="Pokemon Awesome on Product Hunt"
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=357768&theme=light"
+          alt="Pokemon&#0032;Awesome - The&#0032;coolest&#0032;Pokemon&#0032;website&#0032;ever&#0033; | Product Hunt"
+          className="inline-block"
+          width="250"
+          height="54"
+        />
+      </a>
 
       <h2 className="pt-11 pb-5 text-2xl font-bold">Notes</h2>
       <div className="max-w-2xl space-y-5">

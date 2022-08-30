@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react';
 import { BsGithub } from 'react-icons/bs';
+import { FaProductHunt } from 'react-icons/fa';
 import { HiMoon, HiSun } from 'react-icons/hi';
 import { useIsomorphicLayoutEffect as useLayoutEffect } from 'react-power-ups';
 
@@ -30,7 +31,17 @@ export default function Header() {
           </div>
         </Link>
 
-        <div className="flex items-center gap-3 self-center">
+        <div className="flex items-center gap-1 self-center">
+          <a
+            href="https://www.producthunt.com/posts/pokemon-awesome"
+            target="_blank"
+            rel="noreferrer"
+            title="Pokemon Awesome on Product Hunt"
+            className="p-2 text-2xl text-[#ea532a]"
+          >
+            <span className="sr-only">Pokemon Awesome on Product Hunt</span>
+            <FaProductHunt />
+          </a>
           <a
             href="https://github.com/afiiif"
             title="Pokemon Awesome on GitHub"
@@ -41,7 +52,7 @@ export default function Header() {
           </a>
           <label
             htmlFor="darkmode-toggle"
-            className="relative inline-flex cursor-pointer items-center text-2xl"
+            className="relative ml-2 inline-flex cursor-pointer items-center text-2xl"
             title="Toggle dark mode"
           >
             <input

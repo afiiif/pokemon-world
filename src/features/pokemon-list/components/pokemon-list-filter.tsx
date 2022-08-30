@@ -20,7 +20,7 @@ export default function PokemonListFilter({ filter, setFilter }: Props) {
   const [setKeyword] = useDebounceFn<[ChangeEvent<HTMLInputElement>]>(({ target }) => {
     setFilter((prev) => ({ ...prev, name: target.value.trim() }));
     replace(getNewRoute({ q: target.value.trim() }));
-  }, 600);
+  }, 800);
 
   const isFilteredByGenOrType = filter.generationId || filter.typeId;
 

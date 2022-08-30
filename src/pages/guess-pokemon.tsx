@@ -79,6 +79,19 @@ export default function GuessPokemonPage() {
       <NextSeo
         title="Who's That Pokémon?"
         description="Prove that you are truly a Pokemon lover! Guess as many Pokemon as you can and claim the highest score."
+        openGraph={{
+          images: [
+            {
+              url: `${
+                process.env.NEXT_PUBLIC_BASE_URL || ''
+              }/images/guess-pokemon-game-thumbnail-1200x630.jpg`,
+              width: 1200,
+              height: 630,
+              alt: 'Pokemon Awesome',
+              type: 'image/jpeg',
+            },
+          ],
+        }}
       />
 
       <h1 className="h1 pb-6">Who&apos;s That Pokémon?</h1>

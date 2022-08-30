@@ -1,11 +1,14 @@
 import { NextSeo } from 'next-seo';
 
+import DefaultOgImage from '@/components/headless/seo/default-og-image';
 import Nav from '@/features/statistics/components/nav';
 
 export default function StatisticsPage() {
   return (
     <>
       <NextSeo title="Statistics of Pokemon" />
+      <DefaultOgImage />
+
       <h1 className="h1 pb-6">Statistics</h1>
 
       <Nav />

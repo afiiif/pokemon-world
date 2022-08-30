@@ -6,6 +6,7 @@ import { dehydrate, DehydratedState, useQueries } from 'react-query';
 
 import { fetchPokemonEvolution } from '@/api/queries/pokemon-evolution';
 import { fetchPokemonGenAndTypes } from '@/api/queries/pokemon-gen-and-types';
+import DefaultOgImage from '@/components/headless/seo/default-og-image';
 import getQueryClient from '@/config/react-query';
 import Filter from '@/features/pokemon-evolution/components/filter';
 import PokemonEvolutionChain from '@/features/pokemon-evolution/components/pokemon-evolution-chain';
@@ -56,6 +57,7 @@ export default function EvolutionsPage() {
         title="Pokémon Evolutions"
         description="Explore Pokemon evolution chain easily. Get an insight into what your favorite Pokemon would evolve into!"
       />
+      <DefaultOgImage />
 
       <h1 className="h1 pb-2">Pokémon Evolutions</h1>
 

@@ -1,9 +1,13 @@
 import { NextSeo } from 'next-seo';
 
+import DefaultOgImage from '@/components/headless/seo/default-og-image';
+
 export default function AboutPage() {
   return (
     <>
       <NextSeo title="About" />
+      <DefaultOgImage />
+
       <h1 className="h1 pb-7">About Pokémon Awesome</h1>
 
       <div className="max-w-2xl space-y-5">

@@ -1,7 +1,9 @@
 import Link from 'next/link';
+import { NextSeo } from 'next-seo';
 import { HiTrash } from 'react-icons/hi';
 
 import PokemonImage from '@/components/commons/pokemon-image';
+import DefaultOgImage from '@/components/headless/seo/default-og-image';
 import { useMyPokemons } from '@/features/my-pokemons/contexts/my-pokemons';
 import { formatPokemonId } from '@/helpers/pokemon';
 import { snakeCaseToTitleCase } from '@/utils/string';
@@ -12,6 +14,9 @@ export default function MyPokemonsPage() {
   if (myPokemons.length === 0) {
     return (
       <>
+        <NextSeo title="My Pokémons" />
+        <DefaultOgImage />
+
         <div className="space-y-5 italic">
           <p>
             <span>So you wanna be the master of Pokémon?</span>
@@ -35,6 +40,9 @@ export default function MyPokemonsPage() {
 
   return (
     <>
+      <NextSeo title="My Pokémons" />
+      <DefaultOgImage />
+
       <h1 className="h1 pb-6">My Pokémons</h1>
 
       <div className="pokemon-card-container">

@@ -36,6 +36,7 @@ export default function StatisticsTypesPage() {
           ],
         }}
       />
+
       <h1 className="h1 pb-6">Statistics</h1>
 
       <Nav />

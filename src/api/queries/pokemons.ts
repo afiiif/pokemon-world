@@ -1,4 +1,4 @@
-import { QueryFunctionContext, useInfiniteQuery } from 'react-query';
+import { QueryFunctionContext, useInfiniteQuery } from '@tanstack/react-query';
 
 import fetcher from '../fetcher';
 

@@ -1,9 +1,9 @@
+import { useQueries } from '@tanstack/react-query';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useId } from 'react';
 import { HiOutlineArrowsExpand } from 'react-icons/hi';
 import { IoMdCloseCircle } from 'react-icons/io';
-import { useQueries } from 'react-query';
 
 import { fetchPokemon } from '@/api/queries/pokemon';
 import { snakeCaseToTitleCase } from '@/utils/string';

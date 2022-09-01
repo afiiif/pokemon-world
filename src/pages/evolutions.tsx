@@ -1,8 +1,8 @@
+import { dehydrate, DehydratedState, useQueries } from '@tanstack/react-query';
 import { GetStaticPropsResult } from 'next';
 import { NextSeo } from 'next-seo';
 import { useState } from 'react';
 import { useIntersection } from 'react-power-ups';
-import { dehydrate, DehydratedState, useQueries } from 'react-query';
 
 import { fetchPokemonEvolution } from '@/api/queries/pokemon-evolution';
 import { fetchPokemonGenAndTypes } from '@/api/queries/pokemon-gen-and-types';

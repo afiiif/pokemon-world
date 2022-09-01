@@ -1,8 +1,8 @@
+import { dehydrate, DehydratedState } from '@tanstack/react-query';
 import { GetStaticPropsResult } from 'next';
 import { NextSeo } from 'next-seo';
 import { useCallback, useEffect, useState } from 'react';
 import { useFirstMount, useLocalStorage } from 'react-power-ups';
-import { dehydrate, DehydratedState } from 'react-query';
 
 import PokemonImage from '@/components/commons/pokemon-image';
 import getQueryClient from '@/config/react-query';

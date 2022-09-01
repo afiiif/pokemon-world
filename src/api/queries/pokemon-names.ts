@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 
 const fetchPokemonNames: () => Promise<string[]> = async () => {
   const res = await fetch('/generated/pokemons.json');

@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 
 import { Pokemon_V2_Generation, Pokemon_V2_Type } from '@/generated/graphql.types';
 import { toSentenceCase } from '@/utils/string';

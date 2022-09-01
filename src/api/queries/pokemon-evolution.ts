@@ -1,4 +1,4 @@
-import { QueryFunctionContext, useQuery } from 'react-query';
+import { QueryFunctionContext, useQuery } from '@tanstack/react-query';
 
 import { PokemonEvolutionFilter } from '@/pages/api/pokemons/evolution';
 import { PokemonEvolution } from '@/types/pokemon';

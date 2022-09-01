@@ -1,9 +1,9 @@
 import '@/styles/globals.css';
 
+import { Hydrate, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import type { AppProps } from 'next/app';
 import { useState } from 'react';
-import { Hydrate, QueryClientProvider } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools';
 
 import DefaultSeo from '@/components/headless/seo/default-seo';
 import Layout from '@/components/layouts/layout';

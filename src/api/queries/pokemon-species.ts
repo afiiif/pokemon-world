@@ -1,4 +1,4 @@
-import { QueryFunctionContext, useQuery } from 'react-query';
+import { QueryFunctionContext, useQuery } from '@tanstack/react-query';
 
 import { Maybe, Pokemon_V2_Pokemon, Pokemon_V2_Pokemonspecies } from '@/generated/graphql.types';
 

@@ -1,6 +1,6 @@
+import { dehydrate, DehydratedState } from '@tanstack/react-query';
 import { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from 'next';
 import Masonry from 'react-masonry-css';
-import { dehydrate, DehydratedState } from 'react-query';
 
 import { fetchPokemon, useQueryPokemonTypes } from '@/api/queries/pokemon';
 import { fetchPokemonSpecies } from '@/api/queries/pokemon-species';

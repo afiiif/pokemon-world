@@ -17,6 +17,7 @@
     "lint:types": "tsc --noEmit",
     "code-check": "yarn format:fix && yarn lint && yarn lint:types",
     "test:e2e": "playwright test",
+    "test:e2e-gen": "npx playwright codegen http://localhost:3000/",
     "codegen": "graphql-codegen",
     "generate:pokemons": "tsc scripts/pokemons.ts --outDir .temp && node .temp/scripts/pokemons.js",
     "generate:statistics": "tsc scripts/statistics.ts --outDir .temp && node .temp/scripts/statistics.js",
@@ -27,6 +28,8 @@
     "@headlessui/react": "^1.6.6",
     "@nivo/chord": "^0.79.1",
     "@nivo/core": "^0.79.0",
+    "@tanstack/react-query": "^4.2.3",
+    "@tanstack/react-query-devtools": "^4.2.3",
     "clsx": "^1.2.1",
     "graphql": "^16.6.0",
     "graphql-request": "^5.0.0",
@@ -40,7 +43,6 @@
     "react-icons": "^4.4.0",
     "react-masonry-css": "^1.0.16",
     "react-power-ups": "^2.0.1",
-    "react-query": "^4.0.0-beta.23",
     "react-slick": "^0.29.0"
   },
   "devDependencies": {

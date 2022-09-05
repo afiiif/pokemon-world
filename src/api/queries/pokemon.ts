@@ -1,4 +1,4 @@
-import { QueryFunctionContext, useQuery, UseQueryOptions } from 'react-query';
+import { QueryFunctionContext, useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 import { PokemonAbilities, PokemonBase, PokemonMoves, PokemonStats } from '@/types/pokemon';
 

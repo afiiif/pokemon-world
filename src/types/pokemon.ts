@@ -18,7 +18,10 @@ export type PokemonAbilities = {
 }[];
 
 export type PokemonMoves = {
-  pokemon_v2_move: Pick<Pokemon_V2_Move, 'name' | 'type_id' | 'power'>;
+  pokemon_v2_move: Pick<
+    Pokemon_V2_Move,
+    'name' | 'type_id' | 'power' | 'accuracy' | 'pp' | 'pokemon_v2_movedamageclass'
+  >;
 }[];
 
 export type MyPokemon = {

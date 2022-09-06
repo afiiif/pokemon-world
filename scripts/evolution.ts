@@ -22,6 +22,15 @@ const query = gql`
             }
           }
         }
+        pokemon_v2_pokemonevolutions {
+          min_level
+          pokemon_v2_evolutiontrigger {
+            name
+          }
+          pokemon_v2_item {
+            name
+          }
+        }
       }
     }
   }
@@ -35,7 +44,12 @@ type FetchPokemonEvolutionResponse = {
 
 type PokemonSpeciesRaw = Pick<
   Pokemon_V2_Pokemonspecies,
-  'id' | 'name' | 'evolves_from_species_id' | 'pokemon_v2_generation' | 'pokemon_v2_pokemons'
+  | 'id'
+  | 'name'
+  | 'evolves_from_species_id'
+  | 'pokemon_v2_generation'
+  | 'pokemon_v2_pokemons'
+  | 'pokemon_v2_pokemonevolutions'
 >;
 
 type PokemonSpecies = {
@@ -45,19 +59,36 @@ type PokemonSpecies = {
   generationId: number;
   generation: string;
   types: string[];
+  trigger: string;
+  minLevel?: Maybe<number>;
+  item?: string;
 };
 
-const transformSpecies = (species: PokemonSpeciesRaw): PokemonSpecies => ({
-  evolvesFromSpeciesId: species.evolves_from_species_id,
-  id: species.id,
-  name: species.name,
-  generationId: species.pokemon_v2_generation!.id,
-  generation:
-    GENERATION_ROMAN_NUM[species.pokemon_v2_generation!.id as keyof typeof GENERATION_ROMAN_NUM],
-  types: species.pokemon_v2_pokemons[0].pokemon_v2_pokemontypes.map(
-    ({ pokemon_v2_type }) => pokemon_v2_type!.name,
-  ),
-});
+const transformSpecies = (species: PokemonSpeciesRaw): PokemonSpecies => {
+  let evolution = species.pokemon_v2_pokemonevolutions[0];
+
+  const isTriggerByLevelButNoMinLevel =
+    evolution?.pokemon_v2_evolutiontrigger!.name === 'level-up' && !evolution?.min_level;
+
+  if (isTriggerByLevelButNoMinLevel) {
+    evolution = species.pokemon_v2_pokemonevolutions.at(-1)!;
+  }
+
+  return {
+    evolvesFromSpeciesId: species.evolves_from_species_id,
+    id: species.id,
+    name: species.name,
+    generationId: species.pokemon_v2_generation!.id,
+    generation:
+      GENERATION_ROMAN_NUM[species.pokemon_v2_generation!.id as keyof typeof GENERATION_ROMAN_NUM],
+    types: species.pokemon_v2_pokemons[0].pokemon_v2_pokemontypes.map(
+      ({ pokemon_v2_type }) => pokemon_v2_type!.name,
+    ),
+    trigger: evolution?.pokemon_v2_evolutiontrigger!.name,
+    minLevel: evolution?.min_level,
+    item: evolution?.pokemon_v2_item?.name,
+  };
+};
 
 request<FetchPokemonEvolutionResponse>(API_ENDPOINT, query).then((data) => {
   const evolutions: PokemonSpecies[][] = [];

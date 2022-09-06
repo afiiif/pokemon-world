@@ -38,5 +38,6 @@ yarn-error.log*
 /src/generated/graphql.types.ts
 /public/sw.js
 /public/workbox-*.js
+/public/fallback-*.js
 /.temp
 /public/generated

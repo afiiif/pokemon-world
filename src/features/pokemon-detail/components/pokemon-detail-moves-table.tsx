@@ -40,7 +40,7 @@ export default function PokemonDetailMovesTable({ pokemon }: Props) {
                   {moveType}
                 </td>
                 <td
-                  className="border-b border-r px-2 py-1"
+                  className="whitespace-nowrap border-b border-r px-2 py-1"
                   title={move.pokemon_v2_movedamageclass!.name}
                 >
                   {{

@@ -8,6 +8,7 @@ import { useIntersection } from 'react-power-ups';
 import { fetchPokemonGenAndTypes } from '@/api/queries/pokemon-gen-and-types';
 import { fetchPokemons, QueryPokemonFilter, useInfQueryPokemons } from '@/api/queries/pokemons';
 import getQueryClient from '@/config/react-query';
+import { TYPE } from '@/constants/pokemon';
 import PokemonCard from '@/features/pokemon-list/components/pokemon-card';
 import PokemonCardsShimmer from '@/features/pokemon-list/components/pokemon-cards-shimmer';
 import PokemonListFilter from '@/features/pokemon-list/components/pokemon-list-filter';
@@ -84,7 +85,17 @@ export default function PokemonListPage() {
       </div>
       <hr className="-mx-6 mb-8 hidden lg:block" />
 
-      {isPreviousData && <div className="relative -top-4 text-center">⏳ Loading...</div>}
+      {isPreviousData ? (
+        <div className="relative -top-4 text-center">⏳ Loading...</div>
+      ) : (
+        !!filter.typeId && (
+          <div className="-mt-2 mb-5 italic">
+            NOTE:&nbsp; If you see Pokémons{' '}
+            <b>without {TYPE[filter.typeId as keyof typeof TYPE]} type</b>, it was because those
+            Pokémons <b>have another form</b> with {TYPE[filter.typeId as keyof typeof TYPE]} type.
+          </div>
+        )
+      )}
       <div className={clsx('pokemon-card-container', isPreviousData && 'opacity-60')}>
         {pokemons.map((pokemon) => (
           <PokemonCard key={pokemon.id} {...pokemon} />

@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { test } from '@playwright/test';
 
 test('Pokemon list, filter & search', async ({ page }) => {
   // Go to Homepage
@@ -58,7 +58,9 @@ test('Pokemon detail & compare pokemon', async ({ page }) => {
   await expect(page).toHaveURL('http://localhost:3000/compare?pokemons=pikachu,charmander');
   await expect(page.locator('text="Pikachu vs Charmander"')).toBeVisible();
 
-  // See Charmander detail from pokemon comparison page
-  await page.locator('text=Details →').nth(1).click();
-  await expect(page).toHaveURL('http://localhost:3000/pokemon/charmander');
+test('compare pokemon', async ({ page }) => {
+  const compagePage = new ComparePage(page);
+  // Compare Pokemon: Pikachu vs Squirtle
+  await compagePage.open();
+  await compagePage.compare('Pikachu', 'Squirtle');
 });

@@ -42,7 +42,7 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
     "react-masonry-css": "^1.0.16",
-    "react-power-ups": "^2.0.1",
+    "react-power-ups": "^2.0.2",
     "react-slick": "^0.29.0"
   },
   "devDependencies": {

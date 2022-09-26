@@ -10,7 +10,11 @@ import Layout from '@/components/layouts/layout';
 import getQueryClient from '@/config/react-query';
 import MyPokemonsProvider from '@/features/my-pokemons/components/my-pokemons-provider';
 
-export default function App({ Component, pageProps }: AppProps) {
+type Props = AppProps<{
+  dehydratedState: unknown;
+}>;
+
+export default function App({ Component, pageProps }: Props) {
   const [queryClient] = useState(getQueryClient);
 
   return (

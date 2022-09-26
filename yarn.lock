@@ -6000,10 +6000,10 @@ react-masonry-css@^1.0.16:
   resolved "https://registry.yarnpkg.com/react-masonry-css/-/react-masonry-css-1.0.16.tgz#72b28b4ae3484e250534700860597553a10f1a2c"
   integrity sha512-KSW0hR2VQmltt/qAa3eXOctQDyOu7+ZBevtKgpNDSzT7k5LA/0XntNa9z9HKCdz3QlxmJHglTZ18e4sX4V8zZQ==
 
-react-power-ups@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/react-power-ups/-/react-power-ups-2.0.1.tgz#4528bff84725e216104cef0a6166a32910b283aa"
-  integrity sha512-cxiOvogf56SNJv9dpP2VI/Gz/yN5HpiuFQLmr0J/U99ICwveOzmSWS+/Nm8Y2OSzfQoymfM/WGtZjFmBHjeqWg==
+react-power-ups@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/react-power-ups/-/react-power-ups-2.0.2.tgz#3df402b6a5739ddcaca342f4ba37d156ff6bab9b"
+  integrity sha512-s6504EHDN/pI7FxroolYFHowI1jMupf7VGvoRFB4rHh6FeFZ+cAHVeXn7v0akSUHxwQ1dxe/badwi04z21gaAg==
 
 react-slick@^0.29.0:
   version "0.29.0"

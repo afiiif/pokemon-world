@@ -50,7 +50,7 @@
     "@commitlint/config-conventional": "^17.1.0",
     "@graphql-codegen/cli": "^2.13.5",
     "@graphql-codegen/typescript": "^2.7.3",
-    "@graphql-codegen/typescript-operations": "^2.5.3",
+    "@graphql-codegen/typescript-operations": "^2.5.4",
     "@playwright/test": "^1.27.0",
     "@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",
     "@types/node": "18.8.3",

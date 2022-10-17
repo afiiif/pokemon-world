@@ -33,6 +33,11 @@ const POKEMON = /* GraphQL */ `
           name
           type_id
           power
+          accuracy
+          pp
+          pokemon_v2_movedamageclass {
+            name
+          }
         }
       }
     }

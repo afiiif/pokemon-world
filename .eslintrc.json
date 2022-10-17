@@ -5,7 +5,6 @@
     "project": "./tsconfig.eslint.json"
   },
   "rules": {
-    "jsx-a11y/anchor-is-valid": "warn",
     "unicorn/prefer-query-selector": "warn"
   },
   "overrides": [

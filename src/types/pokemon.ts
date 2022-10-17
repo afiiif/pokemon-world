@@ -1,4 +1,5 @@
 import {
+  Maybe,
   Pokemon_V2_Ability,
   Pokemon_V2_Move,
   Pokemon_V2_Pokemon,
@@ -17,7 +18,10 @@ export type PokemonAbilities = {
 }[];
 
 export type PokemonMoves = {
-  pokemon_v2_move: Pick<Pokemon_V2_Move, 'name' | 'type_id' | 'power'>;
+  pokemon_v2_move: Pick<
+    Pokemon_V2_Move,
+    'name' | 'type_id' | 'power' | 'accuracy' | 'pp' | 'pokemon_v2_movedamageclass'
+  >;
 }[];
 
 export type MyPokemon = {
@@ -33,4 +37,7 @@ export type PokemonEvolution = {
   generationId: number;
   generation: string;
   types: string[];
+  trigger?: string;
+  minLevel?: Maybe<number>;
+  item?: string;
 }[];

@@ -68,6 +68,9 @@
 
   #__next {
     @apply lg:grid lg:grid-cols-[auto_13rem_minmax(0,_65rem)_auto];
+    main {
+      @apply lg:col-start-3;
+    }
   }
 
   @media screen(xl) {
@@ -83,11 +86,14 @@
   }
 
   #_nav {
-    @media screen and (max-height: 600px) {
-      @apply hidden;
-    }
     @apply fixed bottom-0 z-10 w-full border-t bg-white dark:bg-dark-card
            lg:relative lg:col-start-2 lg:h-full lg:min-h-[calc(100vh_-_80px)] lg:border-r lg:border-t-0 lg:bg-transparent dark:lg:bg-transparent;
+
+    /* Virtual keyboard shown */
+    @media screen and (max-height: 480px) and (max-width: 767.98px) {
+      @apply hidden;
+    }
+
     .nav-link {
       @apply flex h-full w-full flex-col items-center rounded-md p-1.5 text-center hover:bg-slate-100 focus:bg-slate-100 dark:hover:bg-dark-light dark:focus:bg-dark-light
              lg:mt-0.5 lg:flex-row lg:gap-2 lg:p-3 lg:text-left

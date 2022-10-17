@@ -42,3 +42,4 @@ The starter template contains:
 - 🔗 [Absolute Import](./tsconfig.json) — Import modules using `@/` prefix
 - 💟 [React Icons](https://react-icons.github.io/react-icons/) — Include popular icons in your React projects easily
 - 🌟 [React Power-Ups](https://github.com/afiiif/react-power-ups) — Collection of React hooks to speed-up your app development
+- 🔥 [Renovate](https://github.com/renovatebot/github-action) - GitHub Action to run Renovate self-hosted

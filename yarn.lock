@@ -5405,10 +5405,10 @@ next-seo@^5.6.0:
   resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-5.6.0.tgz#70cb96199e77718d0ffb499c43c7317aba905797"
   integrity sha512-6o7OJq+/V7ZrijayG94BvNOYLQg9xQp0OAwLpA5kdlSei3mYsVbSB32UBIqSxT6uqRf55Jmd56ScG65IDnJShw==
 
-next-sitemap@^3.1.24:
-  version "3.1.24"
-  resolved "https://registry.yarnpkg.com/next-sitemap/-/next-sitemap-3.1.24.tgz#4520db61616390d4e5272e471d43218b2c361bc3"
-  integrity sha512-dEFOI6cnNffDcmxis/1IVNK2JI1wtxxGoj2ipP7L8xDVbxjyuuH2V8MEajHPPrIhybfGk6gyZ5HDpXgVcTv9QA==
+next-sitemap@^3.1.25:
+  version "3.1.25"
+  resolved "https://registry.yarnpkg.com/next-sitemap/-/next-sitemap-3.1.25.tgz#6c34c5ded502495bce0e8f6ea7d761fb8673a54c"
+  integrity sha512-+unneurDQyhZZqwumlE9LmBDyk2BAzTE4tJeXq0qOWNvfjw+Mp1/ciDrQgaP/CG/JJvKvKUhUsg2CqTQEuAqQA==
   dependencies:
     "@corex/deepmerge" "^4.0.29"
     minimist "^1.2.6"

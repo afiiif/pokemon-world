@@ -55,7 +55,7 @@
     "@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",
     "@types/node": "18.11.9",
     "@types/react": "18.0.21",
-    "@types/react-dom": "18.0.6",
+    "@types/react-dom": "18.0.8",
     "@types/react-slick": "^0.23.10",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.1",

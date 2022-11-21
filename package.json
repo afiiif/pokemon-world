@@ -48,7 +48,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.2.0",
     "@commitlint/config-conventional": "^17.2.0",
-    "@graphql-codegen/cli": "^2.13.7",
+    "@graphql-codegen/cli": "^2.13.12",
     "@graphql-codegen/typescript": "^2.8.2",
     "@graphql-codegen/typescript-operations": "^2.5.5",
     "@playwright/test": "^1.27.1",

@@ -1658,10 +1658,10 @@
   resolved "https://registry.yarnpkg.com/@next/env/-/env-12.3.1.tgz#18266bd92de3b4aa4037b1927aa59e6f11879260"
   integrity sha512-9P9THmRFVKGKt9DYqeC2aKIxm8rlvkK38V1P1sRE7qyoPBIs8l9oo79QoSdPtOWfzkbDAVUqvbQGgTMsb8BtJg==
 
-"@next/eslint-plugin-next@13.0.3":
-  version "13.0.3"
-  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-13.0.3.tgz#b81ff1f90d8fba7f02fcbe01e87275b0d6e77e4f"
-  integrity sha512-slmTAHNKDyc7jhx4VF8lFbmOPWJ3PShtUUWpb6x9+ga59CyOxgP6AdcDhxfapnWYACKe/TwYiaveufu7LqXgZg==
+"@next/eslint-plugin-next@13.0.5":
+  version "13.0.5"
+  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-13.0.5.tgz#75af8572ee3163908f08cf357d65ccd24edf5e6b"
+  integrity sha512-H9U9B1dFnCDmylDZ6/dYt95Ie1Iu+SLBMcO6rkIGIDcj5UK+DNyMiWm83xWBZ1gREM8cfp5Srv1g6wqf8pM4lw==
   dependencies:
     glob "7.1.7"
 
@@ -1845,10 +1845,10 @@
     tslib "^2.4.0"
     webcrypto-core "^1.7.4"
 
-"@pkgr/utils@^2.2.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@pkgr/utils/-/utils-2.3.0.tgz#3b8491f112a80839450498816767eb03b7db6139"
-  integrity sha512-7dIJ9CRVzBnqyEl7diUHPUFJf/oty2SeoVzcMocc5PeOUDK9KGzvgIBjGRRzzlRDaOjh3ADwH0WeibQvi3ls2Q==
+"@pkgr/utils@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@pkgr/utils/-/utils-2.3.1.tgz#0a9b06ffddee364d6642b3cd562ca76f55b34a03"
+  integrity sha512-wfzX8kc1PMyUILA+1Z/EqoE4UCXGy0iRGMhPwdfae1+f0OXlLqCk+By+aMzgJBzR9AzS4CDizioG6Ss1gvAFJw==
   dependencies:
     cross-spawn "^7.0.3"
     is-glob "^4.0.3"
@@ -3568,16 +3568,16 @@ eslint-config-airbnb@^19.0.4:
     object.assign "^4.1.2"
     object.entries "^1.1.5"
 
-eslint-config-next@^13.0.3:
-  version "13.0.3"
-  resolved "https://registry.yarnpkg.com/eslint-config-next/-/eslint-config-next-13.0.3.tgz#f601bf8d64457e335a130ba1518bfd41942e142d"
-  integrity sha512-i2JoQP8gGv303GjXTonA27fm1ckRRkRoAP1WYEQgN0D2DDoFeBPqlJgHlMHnXKWjmNct/sW8jQEvy9am2juc8g==
+eslint-config-next@^13.0.5:
+  version "13.0.5"
+  resolved "https://registry.yarnpkg.com/eslint-config-next/-/eslint-config-next-13.0.5.tgz#7a72d8b422358f1141046a7e952f06249369a765"
+  integrity sha512-lge94W7ME6kNCO96eCykq5GbKbllzmcDNDhh1/llMCRgNPl0+GIQ8dOoM0I7uRQVW56VmTXFybJFXgow11a5pg==
   dependencies:
-    "@next/eslint-plugin-next" "13.0.3"
+    "@next/eslint-plugin-next" "13.0.5"
     "@rushstack/eslint-patch" "^1.1.3"
     "@typescript-eslint/parser" "^5.42.0"
     eslint-import-resolver-node "^0.3.6"
-    eslint-import-resolver-typescript "^2.7.1"
+    eslint-import-resolver-typescript "^3.5.2"
     eslint-plugin-import "^2.26.0"
     eslint-plugin-jsx-a11y "^6.5.1"
     eslint-plugin-react "^7.31.7"
@@ -3614,29 +3614,18 @@ eslint-import-resolver-node@^0.3.6:
     debug "^3.2.7"
     resolve "^1.20.0"
 
-eslint-import-resolver-typescript@^2.7.1:
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/eslint-import-resolver-typescript/-/eslint-import-resolver-typescript-2.7.1.tgz#a90a4a1c80da8d632df25994c4c5fdcdd02b8751"
-  integrity sha512-00UbgGwV8bSgUv34igBDbTOtKhqoRMy9bFjNehT40bXg6585PNIct8HhXZ0SybqB9rWtXj9crcku8ndDn/gIqQ==
-  dependencies:
-    debug "^4.3.4"
-    glob "^7.2.0"
-    is-glob "^4.0.3"
-    resolve "^1.22.0"
-    tsconfig-paths "^3.14.1"
-
-eslint-import-resolver-typescript@^3.1.1:
-  version "3.2.5"
-  resolved "https://registry.yarnpkg.com/eslint-import-resolver-typescript/-/eslint-import-resolver-typescript-3.2.5.tgz#cec82e42d93f61a039672e2ba7dc3e3663c86219"
-  integrity sha512-yEBi/EWxFFMjcZTBxrgdu5cFAXB2atOhYDhp0P0yHqjZa5YiPNqQVt4/lNNVWwW7Kf8IIZmyeBboWOgsfffe7w==
+eslint-import-resolver-typescript@^3.1.1, eslint-import-resolver-typescript@^3.5.2:
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/eslint-import-resolver-typescript/-/eslint-import-resolver-typescript-3.5.2.tgz#9431acded7d898fd94591a08ea9eec3514c7de91"
+  integrity sha512-zX4ebnnyXiykjhcBvKIf5TNvt8K7yX6bllTRZ14MiurKPjDpCAZujlszTdB8pcNXhZcOf+god4s9SjQa5GnytQ==
   dependencies:
     debug "^4.3.4"
     enhanced-resolve "^5.10.0"
-    get-tsconfig "npm:@unts/get-tsconfig@^4.1.1"
+    get-tsconfig "^4.2.0"
     globby "^13.1.2"
-    is-core-module "^2.9.0"
+    is-core-module "^2.10.0"
     is-glob "^4.0.3"
-    synckit "^0.7.2"
+    synckit "^0.8.4"
 
 eslint-module-utils@^2.7.3:
   version "2.7.3"
@@ -4177,10 +4166,10 @@ get-symbol-description@^1.0.0:
     call-bind "^1.0.2"
     get-intrinsic "^1.1.1"
 
-"get-tsconfig@npm:@unts/get-tsconfig@^4.1.1":
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/@unts/get-tsconfig/-/get-tsconfig-4.1.1.tgz#f2d308a0c9e56a73b815b0525d4bf37a28914cdd"
-  integrity sha512-8mPf1bBzF2S+fyuyYOQWjDcaJTTgJ14UAnXW9I3KwrqioRWG1byRXHwciYdqXpbdOiu7Fg4WJbymBIakGk+aMA==
+get-tsconfig@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/get-tsconfig/-/get-tsconfig-4.2.0.tgz#ff368dd7104dab47bf923404eb93838245c66543"
+  integrity sha512-X8u8fREiYOE6S8hLbq99PeykTDoLVnxvF4DjWKJmz9xy2nNRdUcV8ZN9tniJFeKyTU3qnC9lL8n4Chd6LmVKHg==
 
 git-raw-commits@^2.0.0:
   version "2.0.11"
@@ -4219,7 +4208,7 @@ glob@7.1.7:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-glob@^7.0.3, glob@^7.1.1, glob@^7.1.3, glob@^7.1.6, glob@^7.2.0:
+glob@^7.0.3, glob@^7.1.1, glob@^7.1.3, glob@^7.1.6:
   version "7.2.3"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.2.3.tgz#b8df0fb802bbfa8e89bd1d938b4e16578ed44f2b"
   integrity sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==
@@ -4613,6 +4602,13 @@ is-callable@^1.1.4, is-callable@^1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/is-callable/-/is-callable-1.2.4.tgz#47301d58dd0259407865547853df6d61fe471945"
   integrity sha512-nsuwtxZfMX67Oryl9LCQ+upnC0Z0BgpwntpS89m1H/TLF0zNfzfLMV/9Wa/6MZsj0acpEjAO0KF1xT6ZdLl95w==
+
+is-core-module@^2.10.0:
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/is-core-module/-/is-core-module-2.11.0.tgz#ad4cb3e3863e814523c96f3f58d26cc570ff0144"
+  integrity sha512-RRjxlvLDkD1YJwDbroBHMb+cukurkDWNyHx7D3oNB5x9rb5ogcksMC5wHCadcXoo67gVr/+3GFySh3134zi6rw==
+  dependencies:
+    has "^1.0.3"
 
 is-core-module@^2.5.0, is-core-module@^2.8.1, is-core-module@^2.9.0:
   version "2.9.0"
@@ -6797,12 +6793,12 @@ swap-case@^2.0.2:
   dependencies:
     tslib "^2.0.3"
 
-synckit@^0.7.2:
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/synckit/-/synckit-0.7.2.tgz#43c07b5a8101ee45355aebf0216895309fd32a6f"
-  integrity sha512-CSZRtSRZ8RhJGMtWyLRqlarmWPPlsgZJHtV6cz0VTHNOg+R7UBoE2eNPQmB5Qrhtk3RX2AAcJmVwMXFULVQSwg==
+synckit@^0.8.4:
+  version "0.8.4"
+  resolved "https://registry.yarnpkg.com/synckit/-/synckit-0.8.4.tgz#0e6b392b73fafdafcde56692e3352500261d64ec"
+  integrity sha512-Dn2ZkzMdSX827QbowGbU/4yjWuvNaCoScLLoMo/yKbu+P4GBR6cRGKZH27k6a9bRzdqcyd1DE96pQtQ6uNkmyw==
   dependencies:
-    "@pkgr/utils" "^2.2.0"
+    "@pkgr/utils" "^2.3.1"
     tslib "^2.4.0"
 
 tailwindcss@^3.2.4:

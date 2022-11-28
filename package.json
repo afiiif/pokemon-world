@@ -51,7 +51,7 @@
     "@graphql-codegen/cli": "^2.13.12",
     "@graphql-codegen/typescript": "^2.8.2",
     "@graphql-codegen/typescript-operations": "^2.5.7",
-    "@playwright/test": "^1.27.1",
+    "@playwright/test": "^1.28.1",
     "@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",

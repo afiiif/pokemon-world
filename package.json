@@ -46,7 +46,7 @@
     "react-slick": "^0.29.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.4.0",
+    "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.0",
     "@graphql-codegen/cli": "^2.16.2",
     "@graphql-codegen/typescript": "^2.8.5",

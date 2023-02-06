@@ -25,7 +25,7 @@
     "prepare-data": "yarn generate:pokemons && yarn generate:statistics && yarn generate:evolution"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.8",
+    "@headlessui/react": "^1.7.9",
     "@nivo/chord": "^0.79.1",
     "@nivo/core": "^0.79.0",
     "@tanstack/react-query": "^4.2.3",

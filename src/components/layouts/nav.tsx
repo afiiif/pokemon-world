@@ -9,6 +9,7 @@ import {
   HiOutlineLightBulb,
   HiOutlineMenu,
   HiOutlinePresentationChartLine,
+  HiOutlineQuestionMarkCircle,
   HiOutlineSwitchHorizontal,
   HiOutlineViewGrid,
   HiOutlineX,
@@ -35,6 +36,12 @@ export default function Nav() {
           <Link href="/compare" className="nav-link">
             <HiOutlineColorSwatch className="text-2xl" />
             Compare
+          </Link>
+        </li>
+        <li>
+          <Link href="/random" className="nav-link">
+            <HiOutlineQuestionMarkCircle className="text-2xl" />
+            Random
           </Link>
         </li>
         <li className="order-2 flex-1">

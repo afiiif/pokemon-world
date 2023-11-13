@@ -36,7 +36,7 @@ export async function getStaticProps({ params }: Context): Promise<Result> {
 
   const evolutions = allEvolutions.filter((pokemons) =>
     pokemons.some(({ name }) => name === pokemonSpeciesName),
-  );
+  ) as PokemonEvolution[];
 
   try {
     const queryClient = getQueryClient();
@@ -82,7 +82,6 @@ type Props = {
 export default function PokemonDetailPage({ evolutions }: Props) {
   const { pokemon } = useCurrentPokemon();
   const pokemonTypes = useQueryPokemonTypes(pokemon.name).data!;
-
   return (
     <>
       <PokemonDetailSeo />

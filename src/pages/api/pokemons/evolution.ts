@@ -1,7 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import { PokemonEvolution } from '@/types/pokemon';
-import evolutions from '~/generated/pokemon-evolution.json';
+import evolutionsUnsave from '~/generated/pokemon-evolution.json';
+
+const evolutions = evolutionsUnsave as PokemonEvolution[];
 
 export type PokemonEvolutionFilter = {
   generationId?: number;

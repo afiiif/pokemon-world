@@ -39,7 +39,7 @@ export default function PokemonEvolutionChain({ evolution, className }: Props) {
               <Link href={href} className="text-lg font-medium hover:underline">
                 {snakeCaseToTitleCase(pokemon.name)}
               </Link>
-              <div className="text-xs opacity-70">Generation {pokemon.generation}</div>
+              <div className="text-cs opacity-70">Generation {pokemon.generation}</div>
             </div>
             {idx > 0 && (
               <>
@@ -61,6 +61,7 @@ export default function PokemonEvolutionChain({ evolution, className }: Props) {
                       {pokemon.minLevel}
                     </div>
                   )}
+
                   {pokemon.item && (
                     <a
                       href={`https://pokemondb.net/item/${pokemon.item}`}
@@ -78,7 +79,8 @@ export default function PokemonEvolutionChain({ evolution, className }: Props) {
                       />
                     </a>
                   )}
-                  {pokemon.trigger !== 'level-up' && !pokemon.item && (
+
+                  {pokemon.trigger !== 'level-up' && !pokemon.item && pokemon.trigger && (
                     <button
                       type="button"
                       className="w-full py-1.5 text-lg md:py-1"
